@@ -41,13 +41,26 @@
         <div class="ui-body" class="contentBlok"> 
             <ul data-role="listview" >
                 <li  data-role="list-divider" ><h3>Maak uw keuze</h3></li>
-                <li><a href="recreant.html">Recreant</a></li>
-                <li><a href="terreinbeheerder.html">Terreinbeheerder</a></li>
+                <li><a href="#popupRec" data-rel="popup">Recreant</a></li>
+                <li><a href="#popupTer" data-rel="popup">Terreinbeheerder</a></li>
                 <li>Overheid</li>
                 <li>Bedrijfsleven</li>
                 <li>Belangenbehartiger</li>
             </ul>
         </div>
+
+        <div data-role="popup" id="popupRec">
+            <p>'Natuurlijk Samen' Would Like To Use Your Current Location<p>
+            <a href="#" data-role="button" data-inline="true" data-rel="back">Don't Allow</a>
+            <a href="recreant.html" data-role="button" data-inline="true" data-theme="b">Allow</a>
+        </div>
+
+        <div data-role="popup" id="popupTer">
+            <p>'Natuurlijk Samen' Would Like To Use Your Current Location<p>
+            <a href="#" data-role="button" data-inline="true" data-rel="back">Don't Allow</a>
+            <a href="terreinbeheerder.html" data-role="button" data-inline="true" data-theme="b">Allow</a>
+        </div>
+
 
     </div> <!-- end content -->
 
