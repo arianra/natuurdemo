@@ -15,7 +15,7 @@
 
 <div data-role="page"> 
     
-    <div data-role="header">
+    <div data-role="header" data-id="indexPersist" data-position="fixed">
 
                 <a href="index.html" data-role="button" class="ui-btn-left">Options</a>
                 <span class="ui-title" />
@@ -28,7 +28,26 @@
 
     </div> <!-- end header -->
 
-    <div data-role="content">
+    <div data-role="content" id="main">
+
+        <div class="ui-body" id="titelBlok">
+
+            <div id="titelFoto"></div>
+            <div id="titelHeader"></div>
+            <div id="kopHeader"></div>
+
+        </div>
+
+        <div class="ui-body" id="contentBlok"> 
+            <ul data-role="listview" >
+                <li  data-role="list-divider" ><h3>Maak uw keuze</h3></li>
+                <li><a href="recreant.html">Recreant</a></li>
+                <li><a href="terreinbeheerder.html">Terreinbeheerder</a></li>
+                <li>Overheid</li>
+                <li>Bedrijfsleven</li>
+                <li>Belangenbehartiger</li>
+            </ul>
+        </div>
 
     </div> <!-- end content -->
 
