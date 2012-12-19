@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Natuurlijk Samen</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="css/normalize.css">
+       <!-- <link rel="stylesheet" href="css/nd.css"> -->
+    </head>
+    <body>
+
+
+<div data-role="page"> 
+    
+    <div data-role="header" data-id="indexPersist" data-position="fixed">
+
+                <a href="index.html" class="opties">opties</a>
+                <span class="ui-title" />
+                <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                    <a href="index.html" data-role="button">Zoek</a>
+                    <a href="index.html" data-role="button">Help</a>
+                </div>
+
+    </div> <!-- end header -->
+
+            <div class="ui-body" class="titelBlok">
+
+            <div class="titelFoto"></div>
+            <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> DetailInformatie </div>
+            <div class="kopHeader"></div>
+
+        </div>
+
+    <div data-role="content" class="main">
+
+    	<div class="ui-grid-a">
+		<div class="ui-block-a"><button type="button">Maak Foto / Video</button></div>
+		<div class="ui-block-b"><button type="button">Plaats Pin Op Kaart</button></div>	   
+	</div>
+
+	<div >
+		<textarea name="textareaMelding" id="textareaMelding" placeholder="Beschrijf de melding..."></textarea>
+	</div>
+
+	<div>
+		<ul data-role="listview" data-inset="true">
+			<li><a href="#">Foto's <span class="ui-li-count">0</span></a></li>
+			<li><a href="#">Video's <span class="ui-li-count">0</span></a></li>
+		</ul>
+	</div>
+
+    </div> <!-- end content -->
+
+
+	
+</div>  <!-- end page -->
+
+
+        
+
+
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+        <script src="js/lib/jquery.mobile.subpage.js"></script>
+        <script src="js/nd.js"></script>
+    </body>
+</html>
