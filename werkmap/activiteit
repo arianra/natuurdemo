@@ -1,0 +1,91 @@
+<div data-role="page" id="pageActiviteit"> 
+    
+    <div data-role="header" data-id="indexPersist" data-position="fixed">
+
+                <a href="index.html" class="opties">opties</a>
+                <span class="ui-title" />
+                <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                    <a href="index.html" data-role="button">Camera</a>
+                    <a href="index.html" data-role="button">Map</a>
+                    <a href="index.html" data-role="button">Zoek</a>
+                    <a href="index.html" data-role="button">Help</a>
+                </div>
+
+    </div> <!-- end header -->
+
+    <div data-role="content" class="main">
+
+        <div class="ui-body" class="titelBlok">
+
+            <div class="titelFoto"></div>
+            <div class="titelHeader"><h2>Kies je Activiteit<h2></div>
+            <div class="kopHeader"></div>
+
+        </div>
+
+            <ul data-role="listview">
+
+                <li data-role="list-divider"> Sport </li>
+                <li><a href="#pageVervoer"> Fietsen </a></li>
+                <li><a href="#pageVervoer"> Hardlopen/Joggen </a></li>
+                <li><a href="#pageVervoer"> Nordic walking </a></li>
+                <li><a href="#pageVervoer"> Paardrijden </a></li>
+                <li><a href="#pageVervoer"> Vissen </a></li>
+
+                <li data-role="list-divider"> Watersport</li>
+                <li><a href="#pageVervoer"> Zwemmen </a></li>
+                <li><a href="#pageVervoer"> Zeilen </a></li>
+                <li><a href="#pageVervoer"> Surfen </a></li>
+                <li><a href="#pageVervoer"> Kanoen </a></li>
+                <li><a href="#pageVervoer"> Roeien </a></li>
+                <li><a href="#pageVervoer"> Kitesurfen</a></li>
+                <li><a href="#pageVervoer"> Varen </a></li>
+                <li><a href="#pageVervoer"> Waterfieten </a></li>
+
+                <li data-role="list-divider"> Ontspanning</li>
+                <li><a href="#pageVervoer"> Fietsen </a></li>
+                <li><a href="#pageVervoer"> Wandelen </a></li>
+                <li><a href="#pageVervoer"> Picknicken</a></li>
+                <li><a href="#pageVervoer"> Hond uitlaten</a></li>
+                <li><a href="#pageVervoer"> Wandelen</a></li>
+                <li><a href="#pageVervoer"> Spa </a></li>
+                <li><a href="#pageVervoer"> Vissen </a></li>
+
+                <li data-role="list-divider"> Eten &quot; Drinken</li>
+                <li><a href="#pageVervoer"> Restaurant </a>
+                    <ul>
+                        <li><a href="#pageVervoer"> Pannenkoekenhuis </a></li>
+                        <li><a href="#pageVervoer"> Chinees </a></li>
+                        <li><a href="#pageVervoer"> Wild </a></li>
+                        <li><a href="#pageVervoer"> Pizzeria </a></li>
+                    </ul>
+                </li>
+                <li><a href="#pageVervoer"> Cafe </a></li>
+                <li><a href="#pageVervoer"> Hotel </a></li>
+                <li><a href="#pageVervoer"> Snackbar </a></li>
+
+                <li data-role="list-divider"> Zoek dieren in de natuur</li>
+                <li><a href="#pageVervoer"> Zoogdieren </a></li>
+                <li><a href="#pageVervoer"> Vogels </a></li>
+                <li><a href="#pageVervoer"> Insecten </a></li>
+                <li><a href="#pageVervoer"> Reptielen / Amfibieen </a></li>
+                <li><a href="#pageVervoer"> Vissen </a></li>
+
+                <li data-role="list-divider"> Zoek planten in de natuur </li>
+                <li><a href="#pageVervoer"> Bloemen </a></li>
+                <li><a href="#pageVervoer"> Bomen </a></li>
+                <li><a href="#pageVervoer"> Paddenstoelen / Schimmels</a></li>
+
+                <li data-role="list-divider"> Anders</li>
+                <li><a href="#pageVervoer"> Ik voeg een activiteit toe </a></li>
+
+            </ul>
+
+    </div> <!-- end content -->
+
+	
+    <div data-role="footer"> 
+	<h4>Footer content</h4> 
+	</div> 
+	
+</div>  <!-- end page -->
