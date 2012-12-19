@@ -20,8 +20,6 @@
                 <a href="index.html" class="opties">opties</a>
                 <span class="ui-title" />
                 <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-                    <a href="index.html" data-role="button">Camera</a>
-                    <a href="index.html" data-role="button">Map</a>
                     <a href="index.html" data-role="button">Zoek</a>
                     <a href="index.html" data-role="button">Help</a>
                 </div>
@@ -30,31 +28,27 @@
 
     <div data-role="content" class="main">
 
-        <div class="ui-body" class="titelBlok">
+        <h3>Login <span>Terreinbeheerder</span></h3>
+        <div class="ui-body">
+            <form>
+                <input type="text" name="name" id="inputLogin" placeholder="login"/>
+                <input type="password" name="name" id="inputPassword" placeholder="wachtwoord"/>
+                <input type="button" id="buttonLogin" value="Verstuur" />
+            </form>
+        </div> 
 
-            <div class="titelFoto"></div>
-            <div class="titelHeader"></div>
-            <div class="kopHeader"></div>
-
-        </div>
-
-
-            <ul data-role="listview" >
-                <li  data-role="list-divider"><h3>Maak uw keuze</h3></li>
-                <li><a href="recreant.html" data-prefetch data-ajax="false" data-transition="slide">Recreant</a></li>
-                <li><a href="terreinbeheerder.html">Terreinbeheerder</a></li>
-                <li><a href="overheid.html">Overheid</a></li>
-                <li><a href="bedrijfsleven.html">Bedrijfsleven</a></li>
-                <li><a href="belangenbehartiger.html">Belangenbehartiger</a></li>
-            </ul>
 
 
     </div> <!-- end content -->
 
-	
     <div data-role="footer"> 
-	<h4>Footer content</h4> 
-	</div> 
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#">Wachtwoord Vergeten?</a></li>
+                <li><a href="#">Nieuwe Gebruiker</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div> 
 	
 </div>  <!-- end page -->
 
