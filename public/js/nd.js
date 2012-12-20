@@ -26,6 +26,13 @@ var reminaingHeightPercentage = function( arr ){
 	return includedPercentage;
 }
 
+$(document).bind('pagechange' , function(){
+	if ($.mobile.activePage.attr('id') == 'pageActiviteit')
+	{
+		var iets = reminaingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] );
+		console.log( iets )
+	}
+});
 
 // Map vars - initialized and later populated
 var map;
