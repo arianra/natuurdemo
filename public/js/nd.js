@@ -1,4 +1,6 @@
 
+
+if ($("#map_canvas").length > 0){
 // Map vars - initialized and later populated
 var map;
 var point;
@@ -62,16 +64,12 @@ function initialize() {
 // ERROR HANDLING
 function handleNoGeolocation(errorFlag) {
 	if (errorFlag) {
-		var content = 'Error: De geolocotie-service is mislukt.';
+		//'Error: De geolocotie-service is mislukt.';
+		map.setCenter(pos);
 	} else {
-		var content = 'Error: Je browser ondersteund geen geolocation.';
+		//'Error: Je browser ondersteund geen geolocation.';
 	}
 
-	var options = {
-		map: map,
-		position: utrecht,
-		content: content
-	};
 }
 
 // Create all markers - and click functionality
@@ -104,8 +102,8 @@ function createMarker(markertype, latlng, html) {
 		// Only add a tooltip if the clicked marker is not the current location
 		if(markertype !=  'curLocation'){
 			// Add tooltip
-			$('.ui-content').append(contentString);
-			$("#markerTip").css({'position':'absolute','left':Math.round($('.ui-content').width()/2 - 100) + 'px','top':Math.round($('.ui-content').height()/2 - 100) + 'px','z-index':'1000' });
+			$('.main').append(contentString);
+			$("#markerTip").css({'position':'absolute','left':Math.round($('.main').width()/2 - 100) + 'px','top':Math.round($('.main').height()/2 - 100) + 'px','z-index':'1000' });
 			// Click function for marker - only starts when marker is available
 			$('#markerTip').click (function() {
 				if ($("#markerTip").length > 0){
@@ -118,3 +116,4 @@ function createMarker(markertype, latlng, html) {
 
 // initialize map
 google.maps.event.addDomListener(window, 'load', initialize);
+}
