@@ -18,7 +18,7 @@
 
 <div data-role="page"> 
     
-    <div data-role="header" data-id="indexPersist" data-position="fixed">
+    <div data-role="header">
                 <a href="index.html" class="opties">opties</a>
                 <span class="ui-title" />
                 <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
@@ -30,6 +30,7 @@
     </div> <!-- end header -->
 
     <div data-role="content" class="main">
+
         <div class="ui-body" class="titelBlok">
             <div class="titelFoto"></div>
             <div class="titelHeader"><h2>Opzoek naar natuur</h2></div>
@@ -165,7 +166,7 @@
         <!-- SUBPAGES -->
 
         <div data-role="subpage" id="pageActiviteit">  
-            <div data-role="header" data-id="indexPersist" data-position="fixed">
+            <div data-role="header" id="header-balk-activiteit">
                         <a href="index.html" class="opties">opties</a>
                         <span class="ui-title" />
                     <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
@@ -174,18 +175,20 @@
                     </div>
             </div> <!-- end header -->
 
-                   <div class="ui-body" class="titelBlok">
+                <div data-role="content" class="main">
+
+                   <div class="ui-body titelBlok titelblok-activiteit">
                         <div class="titelFoto"></div>
                         <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> Activiteiten in jou buurt</div>
                         <div class="kopHeader"></div>
                     </div>
 
-                <div data-role="content" class="main">
+
                     <div id="map_canvas">
                     </div> 
                 </div> <!-- end content -->
 
-                <div data-role="footer"> 
+                <div data-role="footer" class="footer-balk-activiteit"> 
                     <div data-role="navbar">
                         <ul>
                             <li><a href="#">Route</a></li>
