@@ -36,7 +36,7 @@
         <div class="ui-body" class="titelBlok">
 
             <div class="titelFoto"></div>
-            <div class="titelHeader"><h2>Opzoek Naar Natuur</h2></div>
+            <div class="titelHeader"><h2>Opzoek naar natuur</h2></div>
             <div class="kopHeader"></div>
 
         </div>
@@ -47,9 +47,12 @@
 
         
         <li data-role="fieldcontain">
-            <fieldset>
-                <button > Mijn Huidige Locatie </button> 
-            </fieldset>
+                <label for="formLocatie">Mijn positie:</label>
+                <select name="formLocatie" id="formLocatie" data-native-menu="false"> 
+                <option> Mijn positie </option>
+                <option value="" selected> Mijn huidige locatie </option>
+                <option value=""> Kies een locatie </option>
+
         </li>
         
         
@@ -57,7 +60,7 @@
                 <label for="formActiviteit" class="select">Activiteit:</label>
                 <select name="formActiviteit" id="formActiviteit" data-native-menu="false">
 
-                    <option> Een Activiteit </option>
+                    <option> Een activiteit </option>
 
                     <optgroup label="Sport">
                         <option value=""> Fietsen </option>
@@ -120,7 +123,7 @@
         <li data-role="fieldcontain">
             <label for="formGezelschap" class="select"> Gezelschap: </label>
             <select name="formGezelschap" id="formGezelschap" data-native-menu="false" multiple="multiple">
-                <option> Ik Ben Met Gezelschap </option>
+                <option> Ik ben met gezelschap </option>
                 <option value=""> Ik ben alleen </option>
                 <option value=""> Ik ben met z'n tweeen </option>
                 <option value=""> ik ben met een gezin </option>
@@ -134,7 +137,7 @@
         <li data-role="fieldcontain">
             <label for="formReistijd" class="select"> Reistijd: </label>
             <select name="formReistijd" id="formReistijd" data-native-menu="false">
-                <option>Bepaal Mijn Reistijd</option>
+                <option>Bepaal mijn reistijd</option>
                 <option value="">0 - 15 min</option>
                 <option value="">15 - 30 min</option>
                 <option value="">30 - 60 min</option>
@@ -146,7 +149,7 @@
     <li data-role="fieldcontain">
             <label for="formVervoer" class="select"> Vervoer: </label>
             <select name="formVervoer" id="formVervoer" data-native-menu="false">
-                <option>Ik Kom Met Het Volgende Vervoer</option>
+                <option>Ik kom met het volgende vervoer</option>
                 <option value=""> Lopen </option>
                 <option value=""> Fiets </option>
                 <option value=""> Huurfiets </option>
