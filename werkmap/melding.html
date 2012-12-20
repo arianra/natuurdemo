@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
     <head>
         <meta charset="utf-8">
@@ -17,49 +19,44 @@
     
     <div data-role="header" data-id="indexPersist" data-position="fixed">
 
-                <a href="index.html" class="start">opties</a>
+                <a href="index.html" class="opties">opties</a>
                 <span class="ui-title" />
                 <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-                    <a href="index.html" data-role="button" class="camera">Camera</a>
-                    <a href="index.html" data-role="button" class="map">Map</a>
-                    <a href="index.html" data-role="button" class="zoek">Zoek</a>
-                    <a href="index.html" data-role="button" class="help">Help</a>
+                    <a href="index.html" data-role="button">Zoek</a>
+                    <a href="index.html" data-role="button">Help</a>
                 </div>
 
-	
     </div> <!-- end header -->
-	<div id="header-homepage"></div>
-	<div id="page-title"></div>
-<div id="page-title-arrow"></div>
-	
-	
-    <div data-role="content" class="main">
 
-        <div class="ui-body" class="titelBlok">
+            <div class="ui-body" class="titelBlok">
 
             <div class="titelFoto"></div>
-            <div class="titelHeader"></div>
+            <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> DetailInformatie </div>
             <div class="kopHeader"></div>
 
         </div>
 
+    <div data-role="content" class="main">
 
-            <ul data-role="listview" >
-                <li  data-role="list-divider"><h3>Maak uw keuze</h3></li>
-                <li><a href="recreant.html" data-prefetch data-ajax="false" data-transition="slide">Recreant</a></li>
-                <li><a href="terreinbeheerder.html">Terreinbeheerder</a></li>
-                <li><a href="overheid.html">Overheid</a></li>
-                <li><a href="bedrijfsleven.html">Bedrijfsleven</a></li>
-                <li><a href="belangenbehartiger.html">Belangenbehartiger</a></li>
-            </ul>
+    	<div class="ui-grid-a">
+		<div class="ui-block-a"><button type="button">Maak Foto / Video</button></div>
+		<div class="ui-block-b"><button type="button">Plaats Pin Op Kaart</button></div>	   
+	</div>
 
+	<div >
+		<textarea name="textareaMelding" id="textareaMelding" placeholder="Beschrijf de melding..."></textarea>
+	</div>
+
+	<div>
+		<ul data-role="listview" data-inset="true">
+			<li><a href="#">Foto's <span class="ui-li-count">0</span></a></li>
+			<li><a href="#">Video's <span class="ui-li-count">0</span></a></li>
+		</ul>
+	</div>
 
     </div> <!-- end content -->
 
-	
-  <!--  <div data-role="footer"> 
-	<h4>Footer content</h4> 
-	</div> -->
+
 	
 </div>  <!-- end page -->
 
