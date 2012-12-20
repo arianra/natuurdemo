@@ -1,3 +1,31 @@
+//Gebruik
+// reminaingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ) 
+var reminaingHeightPercentage = function( arr ){
+	if(typeof arr === undefined) return;
+
+	var windowTotal = $(window).outerHeight(), 
+	excludedPercentage = 0,
+	includedPercentage;
+	if(typeof arr != "array"){
+		$.each( arr , function(i,e){
+		excludedPercentage += e.outerHeight();
+		});
+	}
+	else
+	{
+		excludedPercentage = arr.outerHeight();
+	}
+
+	try {
+		includedPercentage = 100 - ( excludedPercentage / windowTotal * 100) ;
+	}
+	catch(err)
+	{
+		console.log( err.message );
+	}
+	return includedPercentage;
+}
+
 
 
 if ($("#map_canvas").length > 0){
