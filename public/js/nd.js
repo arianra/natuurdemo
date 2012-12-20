@@ -1,88 +1,44 @@
 
+// Map vars - initialized and later populated
 var map;
-var locationIcon = 'pointer_icon.png';
+var point;
+var marker;
+
+// Vars to point to location of images
+var locationIcon = 'images/pointer_icon.png';
 
 // Default location to be set if location can't be found
 var utrecht = new google.maps.LatLng(52.2167, 5.1333);
 
-// Locations for markings on the map - these normally should be obtained from a database
-var point = new google.maps.LatLng(52.354425, 4.896241); // sarphatipark
-var marker = createMarker('curLocation',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
-
-var point = new google.maps.LatLng(52.358566, 4.869689); // vondelpark	
-var marker = createMarker('curLocation',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
-
 //initialize map
 function initialize() {
+	// Map options
 	var myOptions = {
 		zoom: 16,
 		disableDefaultUI: true,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-	map = new google.maps.Map($('#map_canvas'),
+	
+	map = new google.maps.Map(document.getElementById('map_canvas'),
 	myOptions);
+	
+	// Locations for markings on the map - these normally should be obtained from a database
+	point = new google.maps.LatLng(52.354425, 4.896241); // sarphatipark
+	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
 
-	// Try HTML5 geolocation
+	point = new google.maps.LatLng(52.358566, 4.869689); // vondelpark	
+	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+
+	// Try HTML5 geolocation - All in this statement is only performed when geolocation is found
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function (position) {
 			var pos = new google.maps.LatLng(position.coords.latitude, 
 			position.coords.longitude);
 			
-			var curLocation = pos;
-			var marker = createMarker('curLocation',curLocation,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
-			
-			
-/*
-			// Marker on the spot of your geolocation
-			var locationMarker = new google.maps.Marker({
-				position: pos,
-				map: map,
-				icon: locationIcon
-			});
+			// Show current position on map - must stay in geolocation function
+			curLocation = pos;
+			marker = createMarker('curLocation',curLocation,'Leave this - does not do anything - but function expects an extra argument')
 		
-			// create current location
-			var curLocation = pos;
-			var marker = createMarker(point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
-			
-			// Add tooltip if a marker is clicked - map will center
-			google.maps.event.addListener(geoMarker, "mousedown", function (e) {
-
-				latLng = geoMarker.getPosition(); // returns LatLng object
-				map.panTo(latLng); // setCenter takes a LatLng object
-				
-				// If it already exists - remove it before adding it
-				if ($("#markerTip").length > 0){
-					$('#markerTip').remove(); 
-				}
-				
-				// Add tooltip
-				$('#container').append('<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>');
-				$("#markerTip").css({'position':'absolute','left':Math.round($('#container').width()/2 - 100) + 'px','top':Math.round($('#container').height()/2 - 100) + 'px' });
-				// Click function for marker - only starts when marker is available
-				$('#markerTip').click (function() {
-					if ($("#markerTip").length > 0){
-						$('#markerTip').remove(); 
-					}
-				});
-				
-			});
-			
-			
-			
-			// Marker for other locations // should be obtained from database - and a function
-			var marker0 = new google.maps.Marker({
-				position: sarphatipark,
-				map: map,
-				icon: iconImage
-			});
-			
-			
-			var marker1 = new google.maps.Marker({
-				position: vondelpark,
-				map: map,
-				icon: iconImage
-			});
-*/			
 			// Mousedown function on map - used to remove tooltips from markers
 			google.maps.event.addListener(map, "mousedown", function (e) {
 				// If markerTip exists - remove it before adding it
@@ -90,10 +46,10 @@ function initialize() {
 					$('#markerTip').remove(); 
 				}
 			});
-
 			
-
+			// Center the map on current location
 			map.setCenter(pos);
+			
 		}, function () {
 			handleNoGeolocation(true);
 		});
@@ -120,6 +76,7 @@ function handleNoGeolocation(errorFlag) {
 
 // Create all markers - and click functionality
 function createMarker(markertype, latlng, html) {
+
 	var contentString = html;
 	// Check what kind of markerIcon the marker should have
 	if(markertype == 'curLocation'){
@@ -127,16 +84,16 @@ function createMarker(markertype, latlng, html) {
 	}else{
 		var iconType = locationIcon;
 	}
-	var marker = new google.maps.Marker({
+
+	marker = new google.maps.Marker({
 		position: latlng,
 		map: map,
 		icon: iconType
-	//zIndex: Math.round(latlng.lat()*-100000)<<5
 	});
 	
 	// Marker mousedown - add and remove a tooltip
-	google.maps.event.addListener(marker, 'mousedown', function() {
-		latLng = marker.getPosition(); // returns LatLng object
+	google.maps.event.addListener(marker, 'mousedown', function() { console.log('mousedown');
+		latLng = this.getPosition(); // returns LatLng object
 		map.panTo(latLng); // setCenter takes a LatLng object
 		
 		// If it already exists - remove it before adding it
@@ -144,15 +101,18 @@ function createMarker(markertype, latlng, html) {
 			$('#markerTip').remove(); 
 		}
 		
-		// Add tooltip
-		$('#container').append(contentString);
-		$("#markerTip").css({'position':'absolute','left':Math.round($('#container').width()/2 - 100) + 'px','top':Math.round($('#container').height()/2 - 100) + 'px' });
-		// Click function for marker - only starts when marker is available
-		$('#markerTip').click (function() {
-			if ($("#markerTip").length > 0){
-				$('#markerTip').remove(); 
-			}
-		});
+		// Only add a tooltip if the clicked marker is not the current location
+		if(markertype !=  'curLocation'){
+			// Add tooltip
+			$('.ui-content').append(contentString);
+			$("#markerTip").css({'position':'absolute','left':Math.round($('.ui-content').width()/2 - 100) + 'px','top':Math.round($('.ui-content').height()/2 - 100) + 'px','z-index':'1000' });
+			// Click function for marker - only starts when marker is available
+			$('#markerTip').click (function() {
+				if ($("#markerTip").length > 0){
+					$('#markerTip').remove(); 
+				}
+			});
+		}
 	});
 }
 
