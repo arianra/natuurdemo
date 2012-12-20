@@ -27,8 +27,6 @@ var reminaingHeightPercentage = function( arr ){
 }
 
 
-
-if ($("#map_canvas").length > 0){
 // Map vars - initialized and later populated
 var map;
 var point;
@@ -48,7 +46,7 @@ function initialize() {
 		disableDefaultUI: true,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-	
+	console.log('initi');
 	map = new google.maps.Map(document.getElementById('map_canvas'),
 	myOptions);
 	
@@ -144,4 +142,3 @@ function createMarker(markertype, latlng, html) {
 
 // initialize map
 google.maps.event.addDomListener(window, 'load', initialize);
-}
