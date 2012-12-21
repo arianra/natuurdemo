@@ -19,21 +19,29 @@
 <div data-role="page"> 
     
     <div data-role="header">
-                <a href="index.html" class="opties">opties</a>
+                <a href="index.html" class="start">opties</a>
+
                 <span class="ui-title" />
                 <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-                    <a href="index.html" data-role="button">Camera</a>
-                    <a href="index.html" data-role="button">Map</a>
-                    <a href="index.html" data-role="button">Zoek</a>
-                    <a href="index.html" data-role="button">Help</a>
+                    <a href="index.html" data-role="button" class="camera">Camera</a>
+                    <a href="index.html" data-role="button" class="map">Map</a>
+                    <a href="index.html" data-role="button" class="zoek">Zoek</a>
+                    <a href="index.html" data-role="button" class="help">Help</a>
                 </div>
     </div> <!-- end header -->
-
+	<div id="header-homepage"></div>
+	<div class="logo-natuurlijksamen-page"></div>
+	<div id="logo-jouwprofiel"></div>
+	<div id="page-title"></div>
+	<div id="page-title-arrow"></div>
+	
     <div data-role="content" class="main">
 
         <div class="ui-body" class="titelBlok">
             <div class="titelFoto"></div>
-            <div class="titelHeader"><h2>Opzoek naar natuur</h2></div>
+
+            <div class="titelHeader"> </div>
+
             <div class="kopHeader"></div>
         </div>
 
@@ -167,6 +175,8 @@
 
         <!-- SUBPAGES -->
 
+
+
         <!-- LOCATIE PAGE -->
         <div data-role="subpage" id="page-locatie"> 
             <div data-role="header" data-id="indexPersist" data-position="fixed">
@@ -174,7 +184,7 @@
                         <a href="index.html" class="opties">opties</a>
                         <span class="ui-title" />
                         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-                            <a href="index.html" data-role="button">Zoek</a>
+                            <a href="#" data-role="button" class="header-knop-zoek">Zoek</a>
                             <a href="index.html" data-role="button">Help</a>
                         </div>
 
@@ -200,13 +210,15 @@
         </div>  <!-- end page -->
 
 
+
+
         <!-- ACTIVITEIT PAGE -->
         <div data-role="subpage" id="pageActiviteit">  
             <div data-role="header" id="header-balk-activiteit">
                         <a href="index.html" class="opties">opties</a>
                         <span class="ui-title" />
                     <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-                        <a href="index.html" data-role="button">Zoek</a>
+                        <a href="#" data-role="button" class="header-knop-zoek">Zoek</a>
                         <a href="index.html" data-role="button">Help</a>
                     </div>
             </div> <!-- end header -->
@@ -237,13 +249,151 @@
 
 
 
+        <!-- DETAIL PAGE -->
+        <div data-role="subpage" id="page-detail"> 
+            <div data-role="header" data-id="indexPersist" data-position="fixed">
+                        <a href="index.html" class="opties">opties</a>
+                        <span class="ui-title" />
+                        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                            <a href="index.html" data-role="button">Zoek</a>
+                            <a href="index.html" data-role="button">Help</a>
+                       </div>
+
+            </div> <!-- end header -->
+                    <div class="ui-body" class="titelBlok">
+                        <div class="titelFoto"></div>
+                        <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> DetailInformatie </div>
+                        <div class="kopHeader"></div>
+                    </div>
+            <div data-role="content" class="main">
+                <div class="ui-body">
+                    <h4>Neque porro quisquam est qui dolorem</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In viverra, est eu porta molestie, augue neque molestie ligula, vel consectetur felis mi blandit leo. Donec lobortis commodo quam id iaculis. Aenean nec lacus id nunc sollicitudin cursus. Morbi pulvinar justo sed justo lacinia interdum. Sed et ligula eros, non varius est. Nullam rutrum nulla erat. Sed dignissim, ligula sit amet adipiscing pretium, enim nunc dictum nunc, a pulvinar velit sapien ac enim. Ut gravida viverra imperdiet. Morbi ultrices diam et neque accumsan pretium at sed turpis. Integer posuere lacus ac nisi pellentesque elementum. Maecenas sed massa sit amet lacus bibendum hendrerit vitae vel leo. Nunc eget risus ut orci ullamcorper aliquet. Donec quis massa non ante pellentesque tincidunt id ut arcu.</p>
+                    <p>In hac habitasse platea dictumst. Curabitur aliquam turpis mi, nec euismod leo. Morbi vitae eleifend dolor. Ut risus mi, feugiat at cursus a, varius porttitor est. Pellentesque accumsan, quam scelerisque mattis sagittis, metus augue vestibulum lectus, quis lobortis sapien ligula sed odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse potenti. Nam a varius augue. Duis accumsan tempus erat, in varius est pulvinar id. Nullam vehicula metus a mauris facilisis tempor mattis risus bibendum. Donec lectus lorem, tempus feugiat luctus eget, blandit vitae nibh. Nunc pharetra euismod mi, eu ornare felis lacinia quis. Suspendisse nec tortor ut sem congue aliquam a nec arcu. Ut et purus ut augue porta elementum a sed augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+                    <p>Quisque massa est, varius non rhoncus a, hendrerit vel nisl. Mauris purus turpis, vehicula consectetur laoreet tempor, suscipit at massa. Etiam id augue diam, id dapibus nisl. Nam rhoncus mi sit amet magna consequat non euismod eros dapibus. Sed vel elit velit. Vestibulum purus justo, ultricies sit amet dictum non, porttitor non ligula. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                    <p>Aenean ac nisl vitae turpis dapibus porta. Phasellus nec magna at arcu laoreet auctor in ut ante. Sed fermentum euismod augue non blandit. Etiam id quam dolor. Pellentesque at mi sit amet neque vestibulum auctor. Integer vel purus metus, ac dapibus purus. Maecenas feugiat risus quis arcu pharetra venenatis. Maecenas pellentesque mi sit amet erat rhoncus egestas. Nulla enim ipsum, gravida at vestibulum ut, euismod eget est. Sed nunc turpis, lacinia vel tristique id, feugiat quis metus. Aenean arcu sapien, vulputate quis facilisis ac, ullamcorper sed nisi. Morbi ornare urna laoreet neque porta gravida. Nulla convallis pharetra quam id ornare. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+                </div> 
+            </div> <!-- end content -->
+        </div>  <!-- end page -->
+
+
+
+
+
+        <!-- ROUTE PAGE -->
+        <div data-role="subpage" id="page-route"> 
+            <div data-role="header" data-id="indexPersist" data-position="fixed">
+                        <a href="index.html" class="opties">opties</a>
+                        <span class="ui-title" />
+                        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                            <a href="index.html" data-role="button">Zoek</a>
+                            <a href="index.html" data-role="button">Help</a>
+                        </div>
+            </div> <!-- end header -->
+
+                    <div class="ui-body" class="titelBlok">
+                        <div class="titelFoto"></div>
+                        <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> Route</div>
+                        <div class="kopHeader"></div>
+                    </div>
+
+            <div data-role="content" class="main">
+                
+            </div> <!-- end content -->
+
+            <div data-role="footer"> 
+                <div data-role="navbar">
+                    <ul>
+                         <li><a href="#" class="ui-btn-active ui-state-persist" >Route</a></li>
+                        <li><a href="#" data-transition="slide">Activiteiten op route</a></li>
+                        <li><a href="#" class="ui-disabled">Delen</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div> 
+        </div>  <!-- end page -->
+
+
+
+
+        <!-- OP ROUTE PAGE -->
+        <div data-role="subpage" id="page-op-route"> 
+            <div data-role="header" data-id="indexPersist" data-position="fixed">
+                        <a href="index.html" class="opties">opties</a>
+                        <span class="ui-title" />
+                        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                            <a href="index.html" data-role="button">Zoek</a>
+                            <a href="index.html" data-role="button">Help</a>
+                        </div>
+            </div> <!-- end header -->
+
+                    <div class="ui-body" class="titelBlok">
+                        <div class="titelFoto"></div>
+                        <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> Activiteiten op de route</div>
+                        <div class="kopHeader"></div>
+                    </div>
+
+            <div data-role="content" class="main">
+                <div >
+                        <ul data-role="listview" data-inset="true">     
+                            <li>
+                                <a href="index.html">
+                                <img src="images/thumb_koffie.png" />
+                                <h3>Koffie</h3>
+                                <p>Cafe</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html">
+                                <img src="images/thumb_brood.png" />
+                                <h3>Lunchen</h3>
+                                <p>Restaurant</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html">
+                                <img src="images/thumb_geit.png" />
+                                <h3>Kinderboerderij</h3>
+                                <p>Dierenboerderij</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html">
+                                <img src="images/thumb_ballon.png" />
+                                <h3>Speurtocht</h3>
+                                <p>Wandeling</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html">
+                                <img src="images/thumb_hert.png" />
+                                <h3>Wild</h3>
+                                <p>Dieren in de natuur</p>
+                                </a>
+                            </li>
+                        </ul>
+                </div>
+            </div> <!-- end content -->
+
+            <div data-role="footer"> 
+                <div data-role="navbar">
+                    <ul>
+                         <li><a href="#" data-transition="slide">Route</a></li>
+                        <li><a href="#" class="ui-btn-active ui-state-persist">Activiteiten op route</a></li>
+                        <li><a href="#" class="ui-disabled">Delen</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div> 
+        </div>  <!-- end page -->
+
+
         <!-- END SUBPAGES -->
 </div>  <!-- end page -->
 
-		<script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=true"></script>
+
         <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
         <script src="js/lib/jquery.mobile.subpage.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=true"></script>
         <script src="js/nd.js"></script>
     </body>
 </html>
