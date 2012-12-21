@@ -60,6 +60,7 @@ var markersArray = [];
 
 // Vars to point to location of images
 var locationIcon = '../public/images/pointer_icon.png';
+var pointIcon = 'page-title-arrow.png';
  
 // Default location to be set if location can't be found
 var utrecht = new google.maps.LatLng(52.033266, 5.429692); // utrechtse heuvelrug
@@ -79,23 +80,23 @@ function initialize() {
 	
 	// Locations for markings on the map - these normally should be obtained from a database
 	point = new google.maps.LatLng(52.354425, 4.896241); // sarphatipark
-	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+	marker = createMarker(pointIcon,point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
 
 	point = new google.maps.LatLng(52.358566, 4.869689); // vondelpark	
-	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+	marker = createMarker(pointIcon,point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
 	
 	// LOCATIES UTRECHTSE HEUVELRUG DEMO
 	point = new google.maps.LatLng(52.03479225466794, 5.427267551422119);	
-	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+	marker = createMarker(pointIcon,point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
 	
 	point = new google.maps.LatLng(52.0348054550579, 5.429971218109131);
-	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+	marker = createMarker(pointIcon,point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
 	
 	point = new google.maps.LatLng(52.034171831943716, 5.432460308074951);
-	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+	marker = createMarker(pointIcon,point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
 	
 	point = new google.maps.LatLng(52.03318177785052, 5.4264092445373535);	
-	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+	marker = createMarker(pointIcon,point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
 	
 	
 	
@@ -107,12 +108,13 @@ function initialize() {
 			
 			// Show current position on map - must stay in geolocation function
 			curLocation = pos;
-			locationMarker = createMarker('curLocation',curLocation,'empty argumenr')
+			locationMarker = createMarker(locationIcon,curLocation,'empty argumenr')
 			
 			// Mousedown function on map - used to remove tooltips from markers
 			google.maps.event.addListener(map, "mousedown", function (e) {
 			//gotoLocation();
 			markersArray[6].setMap(null);
+			console.log(markersArray[6].icon);
 				// If markerTip exists - remove it before adding it
 				if ($("#markerTip").length > 0){
 					$('#markerTip').remove(); 
@@ -148,7 +150,7 @@ function createMarker(markertype, latlng, html) {
 console.log('marker?');
 	var contentString = html;
 	// Check what kind of markerIcon the marker should have
-	if(markertype == 'curLocation'){
+	if(markertype == locationIcon){
 		var iconType = locationIcon;
 	}else{
 		var iconType = locationIcon;
