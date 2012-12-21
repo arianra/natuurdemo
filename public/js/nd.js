@@ -44,8 +44,7 @@ $(document).bind('pagechange' , function(){
 
 		GMap.init();
 
-
-		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.initGeo(); } )
+		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init(); } )
 	}
 });
 
@@ -75,7 +74,10 @@ var GMap = {
 		this.map = new google.maps.Map(document.getElementById(this.containerID),
 		this.defaultOptions);
 
-		this.centerToDefault()
+		this.centerToDefault();
+
+		google.maps.event.trigger(map, 'resize');
+		this.map.setZoom( this.map.getZoom() );
 	},
 	initGeo: function() {
 		var self = this;
