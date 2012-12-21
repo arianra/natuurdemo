@@ -36,6 +36,7 @@ var remainingHeightPercentage = function (arr, num) {
 $(document).bind('pagechange' , function(){
 	if ($.mobile.activePage.attr('id') == 'pageActiviteit')
 	{
+		console.log( $('#'+GMap.containerID).length )
 		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
 		$(".main").css({'height':contentHeight + 'px'});
 		$("#map_canvas").css({'height':contentHeight + 'px'});
@@ -43,7 +44,7 @@ $(document).bind('pagechange' , function(){
 	}
 });
 
-$( 'header-knop-zoek' ).on( 'click' , function(){ this.preventDefault() GMap.initGeo() } )
+//$( 'header-knop-zoek' ).on( 'click' , function(){ this.preventDefault(); GMap.initGeo(); } )
 
 var GMap = {
 	containerID: 'map_canvas',
