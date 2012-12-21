@@ -26,6 +26,15 @@ var reminaingHeightPercentage = function( arr ){
 	return includedPercentage;
 }
 
+$(document).bind('pagechange' , function(){
+	if ($.mobile.activePage.attr('id') == 'pageActiviteit')
+	{
+		var contentHeight = Math.round(reminaingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
+		console.log( contentHeight );
+		$(".main").css({'height':contentHeight + '%'});
+		$("#map_canvas").css({'height':contentHeight + '%'});
+	}
+});
 
 // Map vars - initialized and later populated
 var map;
@@ -46,7 +55,8 @@ function initialize() {
 		disableDefaultUI: true,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-	console.log('initi');
+	
+	// Set original map
 	map = new google.maps.Map(document.getElementById('map_canvas'),
 	myOptions);
 	
@@ -126,7 +136,7 @@ function createMarker(markertype, latlng, html) {
 		}
 		
 		// Only add a tooltip if the clicked marker is not the current location
-		if(markertype !=  'curLocation'){
+		if(markertype != 'curLocation'){
 			// Add tooltip
 			$('.main').append(contentString);
 			$("#markerTip").css({'position':'absolute','left':Math.round($('.main').width()/2 - 100) + 'px','top':Math.round($('.main').height()/2 - 100) + 'px','z-index':'1000' });
