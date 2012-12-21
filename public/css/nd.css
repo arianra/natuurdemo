@@ -639,6 +639,9 @@ background-image:url(../images/icons-36-black.png);
  * 
  * DIT IS OM DE GOOGLE MAP TE ZIEN - NIET ALLE CSS HIERONDER PAST BINNEN DE REST VAN HET DESIGN
  */
+ 
+
+
 
  /*
 .ui-page{
@@ -654,12 +657,7 @@ background-image:url(../images/icons-36-black.png);
 	padding: 0;
 	overflow: hidden;
 }
-#map_canvas{
-	
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
+
 #popupInfo{
 	position: relative;
 	width: 100%;
