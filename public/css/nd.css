@@ -787,6 +787,9 @@ div.main-homepage.ui-content {
 	margin-top:-1px; 
 	height:15px; 
 	width:20px;
- 
-  
-	}
+}
+
+#menuBottom{
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
