@@ -23,7 +23,7 @@ var remainingHeightPercentage = function( arr , num ){
 		if( numType == 'percentage' ){
 		included = 100 - ( excluded / windowTotal * 100) ;
 		}
-		else( numType == 'pixel' ){
+		else{
 		included = windowTotal - excluded;	
 		}
 	}
