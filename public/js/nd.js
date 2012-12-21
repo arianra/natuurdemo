@@ -1,9 +1,8 @@
 //Gebruik
 // reminaingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ) 
-var reminaingHeightPercentage = function( arr , num = 'pixel' ){
+var remainingHeightPercentage = function( arr , num){
 	if(typeof arr === undefined) return;
-
-
+	numType = 'pixel';
 	var windowTotal = $(window).outerHeight(), 
 	excluded = 0,
 	included;
@@ -20,10 +19,10 @@ var reminaingHeightPercentage = function( arr , num = 'pixel' ){
 
 	try {
 		if( numType == 'percentage' ){
-		included = 100 - ( excluded / windowTotal * 100) ;
+			included = 100 - ( excluded / windowTotal * 100) ;
 		}
 		else( numType == 'pixel' ){
-		included = windowTotal - excluded;	
+			included = windowTotal - excluded;	
 		}
 	}
 	catch(err)
@@ -36,10 +35,10 @@ var reminaingHeightPercentage = function( arr , num = 'pixel' ){
 $(document).bind('pagechange' , function(){
 	if ($.mobile.activePage.attr('id') == 'pageActiviteit')
 	{
-		var contentHeight = Math.round(reminaingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
+		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
 		console.log( contentHeight );
-		$(".main").css({'height':contentHeight + '%'});
-		$("#map_canvas").css({'height':contentHeight + '%'});
+		$(".main").css({'height':contentHeight + 'px'});
+		$("#map_canvas").css({'height':contentHeight + 'px'});
 	}
 });
 
