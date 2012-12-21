@@ -37,7 +37,6 @@ var remainingHeightPercentage = function( arr , num ){
 $(document).bind('pagechange' , function(){
 	if ($.mobile.activePage.attr('id') == 'pageActiviteit')
 	{
-		console.log( 'bind? ' );
 		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
 		console.log( contentHeight );
 		$(".main").css({'height':contentHeight + 'px'});
