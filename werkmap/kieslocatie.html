@@ -5,9 +5,10 @@
         <title>Natuurlijk Samen</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/nd.css">
+       <!-- <link rel="stylesheet" href="css/nd.css"> -->
     </head>
     <body>
 
@@ -16,11 +17,9 @@
     
     <div data-role="header" data-id="indexPersist" data-position="fixed">
 
-                <a href="index.html" data-role="button" class="ui-btn-left">Options</a>
+                <a href="index.html" class="opties">opties</a>
                 <span class="ui-title" />
                 <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-                    <a href="index.html" data-role="button">Camera</a>
-                    <a href="index.html" data-role="button">Map</a>
                     <a href="index.html" data-role="button">Zoek</a>
                     <a href="index.html" data-role="button">Help</a>
                 </div>
@@ -37,8 +36,11 @@
 
         </div>
 
-        <div class="ui-body" class="contentBlok"> 
-            
+        <h3>Bevestig uw Locatie</h3>
+        <div id="map_canvas">
+        </div> 
+        <div>
+                    <a href="#" data-role="button" data-transition="slide">Bevestig</a>
         </div>
 
     </div> <!-- end content -->
@@ -47,11 +49,11 @@
 
 
         
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+
+
         <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-        <!-- <script src="js/lib/underscore-min.js"></script> -->
         <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-		<script src="js/lib/jquery.ui.map.full.min.js"></script>
+        <script src="js/lib/jquery.mobile.subpage.js"></script>
         <script src="js/nd.js"></script>
     </body>
 </html>

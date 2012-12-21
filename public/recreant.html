@@ -16,11 +16,11 @@
 
 
 
-<div data-role="page" id="pageActiviteit"> 
+<div data-role="page"> 
     
-    <div data-role="header" data-id="indexPersist" data-position="fixed">
+    <div data-role="header">
+                <a href="index.html" class="opties">opties</a>
 
-                <a href="index.html" class="start">opties</a>
                 <span class="ui-title" />
                 <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
                     <a href="index.html" data-role="button" class="camera">Camera</a>
@@ -28,7 +28,6 @@
                     <a href="index.html" data-role="button" class="zoek">Zoek</a>
                     <a href="index.html" data-role="button" class="help">Help</a>
                 </div>
-
     </div> <!-- end header -->
 	<div id="header-homepage"></div>
 	<div class="logo-natuurlijksamen-page"></div>
@@ -39,158 +38,358 @@
     <div data-role="content" class="main">
 
         <div class="ui-body" class="titelBlok">
-
             <div class="titelFoto"></div>
-            <div class="titelHeader"><h2>Wat is jouw profiel</h2></div>
-            <div class="kopHeader"></div>
 
+            <div class="titelHeader"><h2>Wat is jouw profiel</h2></div>
+
+            <div class="kopHeader"></div>
         </div>
 
-        <!-- FORM -->
-<form>
-    <ul data-role="listview" data-inset="true">
+                <!-- FORM -->
+        <form>
+            <ul data-role="listview" data-inset="true">
 
-        
-        <li data-role="fieldcontain">
-            <fieldset>
-                <button > Mijn Huidige Locatie </button> 
-            </fieldset>
-        </li>
-        
-        
-        <li data-role="fieldcontain">
-                <label for="formActiviteit" class="select">Activiteit:</label>
-                <select name="formActiviteit" id="formActiviteit" data-native-menu="false">
+                <li data-role="fieldcontain">
+                    <label for="formLocatie">Mijn positie:</label>
+                    <select name="formLocatie" id="formLocatie" data-native-menu="false"> 
+                        <option> Mijn positie </option>
+                        <option value="" selected> Mijn huidige locatie </option>
+                        <option value=""> Kies een locatie </option>
+                    </select>
+                </li>
+                
+                
+                <li data-role="fieldcontain">
+                        <label for="formActiviteit" class="select">Activiteit:</label>
+                        <select name="formActiviteit" id="formActiviteit" data-native-menu="false">
 
-                    <option> Een Activiteit </option>
+                            <option> Een activiteit </option>
 
-                    <optgroup label="Sport">
-                        <option value=""> Fietsen </option>
-                        <option value=""> Hardlopen / Joggen </option>
-                        <option value=""> Nordic Walking </option>
-                        <option value=""> Paardrijden </option>
-                        <option value=""> Vissen </option>
-                    </optgroup>
+                            <optgroup label="Sport">
+                                <option value=""> Fietsen </option>
+                                <option value=""> Hardlopen / Joggen </option>
+                                <option value=""> Nordic Walking </option>
+                                <option value=""> Paardrijden </option>
+                                <option value=""> Vissen </option>
+                            </optgroup>
 
-                    <optgroup label="Watersport">
-                        <option value=""> Zwemmen </option>
-                        <option value=""> Zeilen </option>
-                        <option value=""> Surfen </option>
-                        <option value=""> Kanoen </option>
-                        <option value=""> Roeien </option>
-                        <option value=""> Kitesurfen </option>
-                        <option value=""> Varen </option>
-                        <option value=""> Waterfietsen </option>
-                    </optgroup>
+                            <optgroup label="Watersport">
+                                <option value=""> Zwemmen </option>
+                                <option value=""> Zeilen </option>
+                                <option value=""> Surfen </option>
+                                <option value=""> Kanoen </option>
+                                <option value=""> Roeien </option>
+                                <option value=""> Kitesurfen </option>
+                                <option value=""> Varen </option>
+                                <option value=""> Waterfietsen </option>
+                            </optgroup>
 
-                    <optgroup label="Ontspanning">
-                        <option value=""> Fietsen </option>
-                        <option value=""> Wandelen </option>
-                        <option value=""> Picknicken </option>
-                        <option value=""> Hond uitlaten </option>
-                        <option value=""> Wandelen </option>
-                        <option value=""> Spa </option>
-                        <option value=""> Vissen </option>
-                        
-                    </optgroup>
+                            <optgroup label="Ontspanning">
+                                <option value=""> Fietsen </option>
+                                <option value=""> Wandelen </option>
+                                <option value=""> Picknicken </option>
+                                <option value=""> Hond uitlaten </option>
+                                <option value=""> Wandelen </option>
+                                <option value=""> Spa </option>
+                                <option value=""> Vissen </option>
+                                
+                            </optgroup>
 
-                    <optgroup label="Eten &quot; Drinken">
-                        <option value=""> Restaurant </option>
-                        <option value=""> Cafe </option>
-                        <option value=""> Hotel </option>
-                        <option value=""> Snackbar </option>
-                    </optgroup>
+                            <optgroup label="Eten &quot; Drinken">
+                                <option value=""> Restaurant </option>
+                                <option value=""> Cafe </option>
+                                <option value=""> Hotel </option>
+                                <option value=""> Snackbar </option>
+                            </optgroup>
 
-                    <optgroup label="Zoek dieren in de natuur">
-                        <option value=""> Zoogdieren </option>
-                        <option value=""> Vogels </option>
-                        <option value=""> Insecten </option>
-                        <option value=""> Reptielen / Amfibieen </option>
-                        <option value=""> Vissen </option>
-                    </optgroup>
+                            <optgroup label="Zoek dieren in de natuur">
+                                <option value=""> Zoogdieren </option>
+                                <option value=""> Vogels </option>
+                                <option value=""> Insecten </option>
+                                <option value=""> Reptielen / Amfibieen </option>
+                                <option value=""> Vissen </option>
+                            </optgroup>
 
-                    <optgroup label="Zoek planten in de natuur">
-                        <option value=""> Bloemen </option>
-                        <option value=""> Bomen </option>
-                        <option value=""> Paddenstoelen / Schimmels </option>
-                    </optgroup>
+                            <optgroup label="Zoek planten in de natuur">
+                                <option value=""> Bloemen </option>
+                                <option value=""> Bomen </option>
+                                <option value=""> Paddenstoelen / Schimmels </option>
+                            </optgroup>
 
-                    <optgroup label="Anders">
-                        <option value=""> Ik voeg een activiteit toe </option>
-                    </optgroup>
+                            <optgroup label="Anders">
+                                <option value=""> Ik voeg een activiteit toe </option>
+                            </optgroup>
 
-                </select>
-        </li>
+                        </select>
+                </li>
 
-        <li data-role="fieldcontain">
-            <label for="formGezelschap" class="select"> Gezelschap: </label>
-            <select name="formGezelschap" id="formGezelschap" data-native-menu="false" multiple="multiple">
-                <option> Ik Ben Met Gezelschap </option>
-                <option value=""> Ik ben alleen </option>
-                <option value=""> Ik ben met z'n tweeen </option>
-                <option value=""> ik ben met een gezin </option>
-                <option value=""> ik ben met vrienden </option>
-                <option value=""> ik ben met 50 plussers </option>
-                <option value=""> ik heb een hond </option>
-                <option value=""> ik heb een paard </option>
-            </select>
-        </li>
+                <li data-role="fieldcontain">
+                    <label for="formGezelschap" class="select"> Gezelschap: </label>
+                    <select name="formGezelschap" id="formGezelschap" data-native-menu="false" multiple="multiple">
+                        <option> Ik ben met gezelschap </option>
+                        <option value=""> Ik ben alleen </option>
+                        <option value=""> Ik ben met z'n tweeen </option>
+                        <option value=""> ik ben met een gezin </option>
+                        <option value=""> ik ben met vrienden </option>
+                        <option value=""> ik ben met 50 plussers </option>
+                        <option value=""> ik heb een hond </option>
+                        <option value=""> ik heb een paard </option>
+                    </select>
+                </li>
 
-        <li data-role="fieldcontain">
-            <label for="formReistijd" class="select"> Reistijd: </label>
-            <select name="formReistijd" id="formReistijd" data-native-menu="false">
-                <option>Bepaal Mijn Reistijd</option>
-                <option value="">0 - 15 min</option>
-                <option value="">15 - 30 min</option>
-                <option value="">30 - 60 min</option>
-                <option value="">1 - 3 uur</option>
-                <option value="">3 uur en meer</option>
-            </select>
-        </li>
+                <li data-role="fieldcontain">
+                    <label for="formReistijd" class="select"> Reistijd: </label>
+                    <select name="formReistijd" id="formReistijd" data-native-menu="false">
+                        <option>Bepaal mijn reistijd</option>
+                        <option value="">0 - 15 min</option>
+                        <option value="">15 - 30 min</option>
+                        <option value="">30 - 60 min</option>
+                        <option value="">1 - 3 uur</option>
+                        <option value="">3 uur en meer</option>
+                    </select>
+                </li>
 
-    <li data-role="fieldcontain">
-            <label for="formVervoer" class="select"> Vervoer: </label>
-            <select name="formVervoer" id="formVervoer" data-native-menu="false">
-                <option>Ik Kom Met Het Volgende Vervoer</option>
-                <option value=""> Lopen </option>
-                <option value=""> Fiets </option>
-                <option value=""> Huurfiets </option>
-                <option value=""> Auto </option>
-                <option value=""> Bus / Metro </option>
-                <option value=""> Trein </option>
-                <option value=""> Boot </option>
-                <option value=""> Motor </option>
-                <option value=""> Brommer / Scooter </option>
-                <option value=""> Anders </option>
-            </select>
-        </li>
+            <li data-role="fieldcontain">
+                    <label for="formVervoer" class="select"> Vervoer: </label>
+                    <select name="formVervoer" id="formVervoer" data-native-menu="false">
+                        <option>Ik kom met het volgende vervoer</option>
+                        <option value=""> Lopen </option>
+                        <option value=""> Fiets </option>
+                        <option value=""> Huurfiets </option>
+                        <option value=""> Auto </option>
+                        <option value=""> Bus / Metro </option>
+                        <option value=""> Trein </option>
+                        <option value=""> Boot </option>
+                        <option value=""> Motor </option>
+                        <option value=""> Brommer / Scooter </option>
+                        <option value=""> Anders </option>
+                    </select>
+                </li>
+            </ul>
+        </form>
 
-         <li data-role="fieldcontain">
-            <fieldset>
-                <button data-theme="a"> Zoek </button> 
-            </fieldset>
-        </li>
-
-    </ul>
-</form>
+            <a href="#pageActiviteit" data-role="button" data-transition="slide" id="searchButton"> Zoek </a>
+    </div> <!-- end content MAINPAGE -->   
 
 
-        <!-- END FORM -->
+
+        <!-- SUBPAGES -->
 
 
-    </div> <!-- end content -->
 
-    
-    <div data-role="footer"> 
-    <h4>Footer content</h4> 
-    </div> 
-    
+        <!-- LOCATIE PAGE -->
+        <div data-role="subpage" id="page-locatie"> 
+            <div data-role="header" data-id="indexPersist" data-position="fixed">
+
+                        <a href="index.html" class="opties">opties</a>
+                        <span class="ui-title" />
+                        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                            <a href="index.html" data-role="button">Zoek</a>
+                            <a href="index.html" data-role="button">Help</a>
+                        </div>
+
+            </div> <!-- end header -->
+
+            <div data-role="content" class="main">
+
+                <div class="ui-body" class="titelBlok">
+
+                    <div class="titelFoto"></div>
+                    <div class="titelHeader"></div>
+                    <div class="kopHeader"></div>
+
+                </div>
+
+                <h3>Bevestig uw Locatie</h3>
+                <div id="map_canvas">
+                </div> 
+                <div>
+                            <a href="#" data-role="button" data-transition="slide">Bevestig</a>
+                </div>
+            </div> <!-- end content -->
+        </div>  <!-- end page -->
+
+
+
+
+        <!-- ACTIVITEIT PAGE -->
+        <div data-role="subpage" id="pageActiviteit">  
+            <div data-role="header" id="header-balk-activiteit">
+                        <a href="index.html" class="opties">opties</a>
+                        <span class="ui-title" />
+                    <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                        <a href="index.html" data-role="button">Zoek</a>
+                        <a href="index.html" data-role="button">Help</a>
+                    </div>
+            </div> <!-- end header -->
+
+                <div data-role="content" class="main">
+
+                   <div class="ui-body titelBlok titelblok-activiteit">
+                        <div class="titelFoto"></div>
+                        <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> Activiteiten in jou buurt</div>
+                        <div class="kopHeader"></div>
+                    </div>
+
+
+                    <div id="map_canvas"></div> 
+                </div> <!-- end content -->
+
+                <div data-role="footer" class="footer-balk-activiteit"> 
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a href="#">Route</a></li>
+                            <li><a href="#">Foto maken</a></li>
+                            <li><a href="#">Delen</a></li>
+                        </ul>
+                    </div><!-- /navbar -->
+                </div> 
+        </div>  <!-- end page -->
+
+
+
+
+        <!-- DETAIL PAGE -->
+        <div data-role="subpage" class="page-detail"> 
+            <div data-role="header" data-id="indexPersist" data-position="fixed">
+                        <a href="index.html" class="opties">opties</a>
+                        <span class="ui-title" />
+                        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                            <a href="index.html" data-role="button">Zoek</a>
+                            <a href="index.html" data-role="button">Help</a>
+                       </div>
+
+            </div> <!-- end header -->
+                    <div class="ui-body" class="titelBlok">
+                        <div class="titelFoto"></div>
+                        <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> DetailInformatie </div>
+                        <div class="kopHeader"></div>
+                    </div>
+            <div data-role="content" class="main">
+                <div class="ui-body">
+                    <h4>Neque porro quisquam est qui dolorem</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In viverra, est eu porta molestie, augue neque molestie ligula, vel consectetur felis mi blandit leo. Donec lobortis commodo quam id iaculis. Aenean nec lacus id nunc sollicitudin cursus. Morbi pulvinar justo sed justo lacinia interdum. Sed et ligula eros, non varius est. Nullam rutrum nulla erat. Sed dignissim, ligula sit amet adipiscing pretium, enim nunc dictum nunc, a pulvinar velit sapien ac enim. Ut gravida viverra imperdiet. Morbi ultrices diam et neque accumsan pretium at sed turpis. Integer posuere lacus ac nisi pellentesque elementum. Maecenas sed massa sit amet lacus bibendum hendrerit vitae vel leo. Nunc eget risus ut orci ullamcorper aliquet. Donec quis massa non ante pellentesque tincidunt id ut arcu.</p>
+                    <p>In hac habitasse platea dictumst. Curabitur aliquam turpis mi, nec euismod leo. Morbi vitae eleifend dolor. Ut risus mi, feugiat at cursus a, varius porttitor est. Pellentesque accumsan, quam scelerisque mattis sagittis, metus augue vestibulum lectus, quis lobortis sapien ligula sed odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse potenti. Nam a varius augue. Duis accumsan tempus erat, in varius est pulvinar id. Nullam vehicula metus a mauris facilisis tempor mattis risus bibendum. Donec lectus lorem, tempus feugiat luctus eget, blandit vitae nibh. Nunc pharetra euismod mi, eu ornare felis lacinia quis. Suspendisse nec tortor ut sem congue aliquam a nec arcu. Ut et purus ut augue porta elementum a sed augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+                    <p>Quisque massa est, varius non rhoncus a, hendrerit vel nisl. Mauris purus turpis, vehicula consectetur laoreet tempor, suscipit at massa. Etiam id augue diam, id dapibus nisl. Nam rhoncus mi sit amet magna consequat non euismod eros dapibus. Sed vel elit velit. Vestibulum purus justo, ultricies sit amet dictum non, porttitor non ligula. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                    <p>Aenean ac nisl vitae turpis dapibus porta. Phasellus nec magna at arcu laoreet auctor in ut ante. Sed fermentum euismod augue non blandit. Etiam id quam dolor. Pellentesque at mi sit amet neque vestibulum auctor. Integer vel purus metus, ac dapibus purus. Maecenas feugiat risus quis arcu pharetra venenatis. Maecenas pellentesque mi sit amet erat rhoncus egestas. Nulla enim ipsum, gravida at vestibulum ut, euismod eget est. Sed nunc turpis, lacinia vel tristique id, feugiat quis metus. Aenean arcu sapien, vulputate quis facilisis ac, ullamcorper sed nisi. Morbi ornare urna laoreet neque porta gravida. Nulla convallis pharetra quam id ornare. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+                </div> 
+            </div> <!-- end content -->
+        </div>  <!-- end page -->
+
+
+
+
+
+        <!-- ROUTE PAGE -->
+        <div data-role="subpage" id="page-route"> 
+            <div data-role="header" data-id="indexPersist" data-position="fixed">
+                        <a href="index.html" class="opties">opties</a>
+                        <span class="ui-title" />
+                        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                            <a href="index.html" data-role="button">Zoek</a>
+                            <a href="index.html" data-role="button">Help</a>
+                        </div>
+            </div> <!-- end header -->
+
+                    <div class="ui-body" class="titelBlok">
+                        <div class="titelFoto"></div>
+                        <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> Route</div>
+                        <div class="kopHeader"></div>
+                    </div>
+
+            <div data-role="content" class="main">
+                
+            </div> <!-- end content -->
+
+            <div data-role="footer"> 
+                <div data-role="navbar">
+                    <ul>
+                         <li><a href="#" class="ui-btn-active ui-state-persist" >Route</a></li>
+                        <li><a href="#" data-transition="slide">Activiteiten op route</a></li>
+                        <li><a href="#" class="ui-disabled">Delen</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div> 
+        </div>  <!-- end page -->
+
+
+
+
+        <!-- OP ROUTE PAGE -->
+        <div data-role="subpage" id="page-op-route"> 
+            <div data-role="header" data-id="indexPersist" data-position="fixed">
+                        <a href="index.html" class="opties">opties</a>
+                        <span class="ui-title" />
+                        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                            <a href="index.html" data-role="button">Zoek</a>
+                            <a href="index.html" data-role="button">Help</a>
+                        </div>
+            </div> <!-- end header -->
+
+                    <div class="ui-body" class="titelBlok">
+                        <div class="titelFoto"></div>
+                        <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> Activiteiten op de route</div>
+                        <div class="kopHeader"></div>
+                    </div>
+
+            <div data-role="content" class="main">
+                <div >
+                        <ul data-role="listview" data-inset="true">     
+                            <li>
+                                <a href="index.html">
+                                <img src="images/thumb_koffie.png" />
+                                <h3>Koffie</h3>
+                                <p>Cafe</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html">
+                                <img src="images/thumb_brood.png" />
+                                <h3>Lunchen</h3>
+                                <p>Restaurant</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html">
+                                <img src="images/thumb_geit.png" />
+                                <h3>Kinderboerderij</h3>
+                                <p>Dierenboerderij</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html">
+                                <img src="images/thumb_ballon.png" />
+                                <h3>Speurtocht</h3>
+                                <p>Wandeling</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html">
+                                <img src="images/thumb_hert.png" />
+                                <h3>Wild</h3>
+                                <p>Dieren in de natuur</p>
+                                </a>
+                            </li>
+                        </ul>
+                </div>
+            </div> <!-- end content -->
+
+            <div data-role="footer"> 
+                <div data-role="navbar">
+                    <ul>
+                         <li><a href="#" data-transition="slide">Route</a></li>
+                        <li><a href="#" class="ui-btn-active ui-state-persist">Activiteiten op route</a></li>
+                        <li><a href="#" class="ui-disabled">Delen</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div> 
+        </div>  <!-- end page -->
+
+
+        <!-- END SUBPAGES -->
 </div>  <!-- end page -->
 
-
-
-<!-- END PAGES -->
-
+		<script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=true"></script>
         <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
         <script src="js/lib/jquery.mobile.subpage.js"></script>

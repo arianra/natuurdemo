@@ -678,6 +678,7 @@ background-image:url(../images/icons-36-black.png);
 	height:100px; }	
  
 
+ 
 .main-homepage {
 	margin-left: auto;
 	margin-right: auto;
@@ -692,7 +693,7 @@ background-image:url(../images/icons-36-black.png);
 
 #backgr-homepage {
 	background-image: url(../images/background-nederland.png);
--webkit-background-size: cover; /*for webKit*/
+	-webkit-background-size: cover; /*for webKit*/
     -moz-background-size: cover; /*Mozilla*/
     -o-background-size: cover; /*opera*/
     background-size: cover; /*generic*/ 
@@ -709,36 +710,7 @@ background-image:url(../images/icons-36-black.png);
 }
 
  
-
-
-#page-title {
-	background:#87a513; 
-	height:50px;
-	z-index:1;
-	}
-
-#page-title-arrow {  
-	background-image:url(../images/page-title-arrow.png); 
-	margin-left:20px; 
-	margin-top:-1px; 
-	height:14px; 
-	width:20px}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+#page-title {background:#87a513; height:50px; 	z-index:1;}
+#page-title-arrow {   background-image:url(../images/page-title-arrow.png); margin-left:20px; margin-top:-1px; height:15px; width:20px}
 
