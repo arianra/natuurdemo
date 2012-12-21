@@ -1,6 +1,7 @@
 
 .ui-mobile, .ui-mobile .ui-page {
-	background:#5b4077
+	background:#662D91;
+	
 }
 /*jQuerymobile*/
 .ui-bar-b {
@@ -26,14 +27,14 @@ background-image:linear-gradient(#9ad945,#7eb238);
 	background:#662d91;
 	color:#fff;
 	font-weight:700;
-	text-shadow:0 0 0 #fff;
+	/*text-shadow:0 0 0 #fff;*/
 	background-image:linear-gradient(#8e3ecb,#3d1b57);
 }
 
 .ui-body-a,.ui-overlay-a {
 	border:1px solid #7e7e7e;
 	color:#000;
-	text-shadow:0 0 0 #eee;
+	/*text-shadow:0 0 0 #eee;*/
 	background:#e6e6e6;
 	background-image:linear-gradient(#fdfdfd,#cfcfcf);
 }
@@ -43,60 +44,63 @@ background-image:linear-gradient(#9ad945,#7eb238);
 	background:#662d91;
 	font-weight:700;
 	color:#fff;
-	text-shadow:0 0 0;
+	/*text-shadow:0 0 0;*/
 	background-image:linear-gradient(#6e309c,#5d2985);
 }
 
 .ui-btn-hover-a {
-border:1px solid #662d91;
-background:#9e9e9e;
-font-weight:700;
-color:#333;
-text-shadow:0 1px 0 #eee;
-background-image:linear-gradient(#adadad,#8e8e8e);
+	border:1px solid #662d91;
+	background:#9e9e9e;
+	font-weight:700;
+	color:#333;
+	/*text-shadow:0 1px 0 #eee;*/
+	background-image:linear-gradient(#adadad,#8e8e8e);
 }
 
 .ui-btn-down-a {
-border:1px solid #777;
-background:#777;
-font-weight:700;
-color:#fff;
-text-shadow:0 0 0 #eee;
-background-image:linear-gradient(#8207NaN,#6b06NaN);
+	border:1px solid #777;
+	background:#777;
+	font-weight:700;
+	color:#fff;
+	/*text-shadow:0 0 0 #eee;*/
+	background-image:linear-gradient(#8207NaN,#6b06NaN);
 }
 
 .ui-bar-b {
-border:1px solid #8cc63f;
-background:#8cc63f;
-color:#fff;
-font-weight:700;
-text-shadow:0 1px 1px #444;
-background-image:linear-gradient(#9ad945,#7eb238);
+	border:1px solid #8cc63f;
+	background:#8cc63f;
+	color:#fff;
+	font-weight:700;
+	/*text-shadow:0 1px 1px #444;*/
+	background-image:linear-gradient(#9ad945,#7eb238);
+	border-radius: 1em 1em 0em 0em;
+	-moz-border-radius:.1em 1em 0em 0em;
+	-webkit-border-radius:1em 1em 0em 0em;
 }
 
 .ui-body-b,.ui-overlay-b {
-border:1px solid #aaa;
-color:#333;
-text-shadow:0 1px 0 #fff;
-background:#e6e6e6;
-background-image:linear-gradient(#e6e6e6,#e6e6e6);
+	border:1px solid #aaa;
+	color:#333;
+	/*text-shadow:0 1px 0 #fff;*/
+	background:#e6e6e6;
+	background-image:linear-gradient(#e6e6e6,#e6e6e6);
 }
 
 .ui-bar-c {
-border:1px solid #662d91;
-background:#662d91;
-color:#fff;
-font-weight:700;
-text-shadow:0 0 0 #fff;
-background-image:linear-gradient(#8b3dc6,#401c5b);
+	border:1px solid #662d91;
+	background:#662d91;
+	color:#fff;
+	font-weight:700;
+	/*text-shadow:0 0 0 #fff;*/
+	background-image:linear-gradient(#8b3dc6,#401c5b);
 }
 
 .ui-body-c,.ui-overlay-c {
-border:1px solid #aaa;
-color:#333;
-text-shadow:0 1px 0 #fff;
-background:#f9f9f9;
-background-image:linear-gradient(#f9f9f9,#eeeeee);
+	border:1px solid #aaa;
+	color:#333;
+	/*text-shadow:0 1px 0 #fff;*/
+	background:#f9f9f9;
+	background-image:linear-gradient(#f9f9f9,#eeeeee);
 }
 
 a.ui-link-inherit {
@@ -210,13 +214,16 @@ pointer-events:none;
 }
 
 .ui-icon,.ui-icon-searchfield:after {
-background:rgba(0,0,0,0.5);
+/*background:rgba(0,0,0,0.5);*/
+background:none;
 background-image:url(../images/icons-18-white.png);
 background-repeat:no-repeat;
 -moz-border-radius:9px;
 -webkit-border-radius:9px;
 border-radius:9px;
 }
+
+.ui-btn-text a:hover {color:white !important; text-shadow:0px !important}
 
 .ui-icon-alt {
 background:rgba(255,255,255,.3);
@@ -412,6 +419,7 @@ width:100%;
 height:100%;
 }
 
+/*
 .ui-overlay-shadow {
 -moz-box-shadow:0 0 12px rgba(0,0,0,.6);
 -webkit-box-shadow:0 0 12px rgba(0,0,0,.6);
@@ -441,7 +449,7 @@ box-shadow:inset 0 1px 4px rgba(0,0,0,.2);
 -webkit-box-shadow:0 1px 0 rgba(255,255,255,.4);
 box-shadow:0 1px 0 rgba(255,255,255,.4);
 }
-
+*/
 .ui-btn:focus,.ui-link-inherit:focus {
 outline:0;
 }
@@ -556,6 +564,7 @@ background-image:url(../images/icons-36-black.png);
 }
 
 
+.titelHeader {color:white; none;}
 
 /* header icons*/
 .header-start {background:red; height:50px; position:relative}
@@ -620,11 +629,116 @@ background-image:url(../images/icons-36-black.png);
 	
 /*end icons*/
 
-#header-homepage {   background-image:url(../images/header-homepage.jpg);-webkit-background-size: cover; /*for webKit*/
-        -moz-background-size: cover; /*Mozilla*/
-        -o-background-size: cover; /*opera*/
-        background-size: cover; /*generic*/ height:100px; }	
+.logo-natuurlijksamen-page {
+	background-image:url(../images/logo-natuurlijksamen-page.png);
+	width: 250px;
+	height: 38px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-top: -23px;
+	margin-bottom: -22px;
+	z-index: 2;
+	position:relative
+}
+
+#logo-natuurlijksamen {
+	background-image:url(../images/logo-natuurlijksamen.png);
+	width: 300px;
+	height: 45px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-top: -23px;
+	margin-bottom: -22px;
+	z-index: 2;
+	position:relative
+}
+
+
+#logo-jouwprofiel {
+	background-image:url(../images/logo-jouwprofiel.png);
+	width: 300px;
+	height: 45px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-top: -23px;
+	margin-bottom: -22px;
+	z-index: 2;
+	position:relative
+}
+
+#header-homepage { 
+	background-image:url(../images/header-homepage.jpg);
+	-webkit-background-size: cover; /*for webKit*/
+    -moz-background-size: cover; /*Mozilla*/
+    -o-background-size: cover; /*opera*/
+    background-size: cover; /*generic*/ 
+	height:100px; }	
  
 
-#page-title {background:#87a513; height:50px}
-#page-title-arrow {   background-image:url(../images/page-title-arrow.png); margin-left:20px; margin-top:-1px; height:15px; width:20px}
+.main-homepage {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 80%;
+	margin-top:-485px;
+	z-index:3;
+	position:relative
+}
+
+
+
+#backgr-homepage {
+	background-image: url(../images/background-nederland.png);
+-webkit-background-size: cover; /*for webKit*/
+    -moz-background-size: cover; /*Mozilla*/
+    -o-background-size: cover; /*opera*/
+    background-size: cover; /*generic*/ 
+	height:515px;
+	max-height:515px;
+	width:450px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-top: -30px;
+	margin-bottom: -20px;
+	z-index: 2;
+	position: relative;
+}
+
+ 
+
+
+#page-title {
+	background:#87a513; 
+	height:50px;
+	z-index:1;
+	}
+
+#page-title-arrow {  
+	background-image:url(../images/page-title-arrow.png); 
+	margin-left:20px; 
+	margin-top:-1px; 
+	height:14px; 
+	width:20px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
