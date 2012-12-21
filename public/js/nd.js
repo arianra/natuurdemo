@@ -1,7 +1,8 @@
 //Gebruik
 // reminaingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ) 
-var reminaingHeightPercentage = function( arr , num = 'pixel' ){
+var reminaingHeightPercentage = function( arr , num ){
 	if(typeof arr === undefined) return;
+	numType = ( num === undefined ) ? 'pixel' : num;
 
 
 	var windowTotal = $(window).outerHeight(), 
