@@ -91,7 +91,7 @@ background-image:linear-gradient(#9ad945,#7eb238);
 	background:#662d91;
 	color:#fff;
 	font-weight:700;
-	/*text-shadow:0 0 0 #fff;*/
+	text-shadow:none !important;
 	background-image:linear-gradient(#8b3dc6,#401c5b);
 }
 
@@ -108,15 +108,15 @@ text-decoration:none!important;
 }
 
 .ui-btn-active {
-border:1px solid #8cc63f;
-background:#8cc63f;
-font-weight:700;
-color:#fff;
-cursor:pointer;
-text-shadow:0 1px 1px #444;
-text-decoration:none;
-background-image:linear-gradient(#9ad945,#7eb238);
-font-family:Helvetica,Arial,sans-serif;
+	border:1px solid #8cc63f;
+	background:#8cc63f;
+	font-weight:700;
+	color:#fff;
+	cursor:pointer;
+	text-shadow:0 1px 1px #444;
+	text-decoration:none;
+	background-image:linear-gradient(#9ad945,#7eb238);
+	font-family:Helvetica,Arial,sans-serif;
 }
 
 .ui-btn-inner {
@@ -503,11 +503,13 @@ background-image:none;
 border-width:0;
 }
 
-.ui-body-a .ui-link-inherit,.ui-btn-up-b:visited,.ui-btn-up-b a.ui-link-inherit,.ui-btn-hover-b:visited,.ui-btn-hover-b:hover,.ui-btn-hover-b a.ui-link-inherit,.ui-btn-down-b:visited,.ui-btn-up-c:visited,.ui-btn-up-c a.ui-link-inherit,.ui-btn-hover-c:visited,.ui-btn-hover-c:hover,.ui-btn-hover-c a.ui-link-inherit,.ui-btn-down-c:visited,.ui-btn-down-c:hover,.ui-btn-down-c a.ui-link-inherit {
+.ui-body-a .ui-link-inherit,.ui-btn-up-b:visited,.ui-btn-up-b a.ui-link-inherit,.ui-btn-hover-b:visited, a.ui-link-inherit,.ui-btn-down-b:visited,.ui-btn-up-c:visited,.ui-btn-up-c a.ui-link-inherit,.ui-btn-hover-c:visited, a.ui-link-inherit,.ui-btn-down-c:visited,.ui-btn-down-c:hover,.ui-btn-down-c a.ui-link-inherit {
 color:#000;
 }
 
-
+.ui-body-a .ui-link-inherit,.ui-btn-hover-b:hover,.ui-btn-hover-c:hover,.ui-btn-hover-c a.ui-link-inherit,.ui-btn-down-c:hover,.ui-btn-down-c a.ui-link-inherit {
+color:white; text-shadow:none !important
+}
 
 
 .ui-body-a .ui-link,.ui-body-b .ui-link,.ui-body-c .ui-link {
@@ -543,7 +545,7 @@ text-decoration:none;
 
 .ui-btn-down-b,.ui-btn-down-c {
 	border:1px solid #eaeaea;
-	background:#eaeaea;
+	background:#a381bd;
 	font-weight:700;
 	color:#fff;
 	background-image:linear-gradient(#d2d2d2,#FFFFFF);
@@ -557,12 +559,24 @@ background-image:url(../images/icons-36-white.png);
 -webkit-background-size:776px 18px;
 background-size:776px 18px;
 }
-
+}
 .ui-icon-alt {
 background-image:url(../images/icons-36-black.png);
 }
+
+ .ui-content .ui-listview-inset {
+	-moz-box-shadow: 2px 2px 10px black;
+	-webkit-box-shadow: 2px 2px 10px black;
+	box-shadow: 2px 2px 10px black;
 }
 
+div.main-homepage.ui-content {	
+	-moz-box-shadow: 2px 2px 10px black;
+	-webkit-box-shadow: 2px 2px 10px black;
+	box-shadow: 2px 2px 10px black;
+	padding:2px 15px 15px;
+	border-radius:20px
+	}
 
 .titelHeader {color:white; none;}
 
@@ -615,8 +629,6 @@ background-image:url(../images/icons-36-black.png);
 	padding: 0 !important;			
 	}
 	
-
-	
 .help { 
     background-image:url(../images/header-help.png);
     display:block;
@@ -633,13 +645,12 @@ background-image:url(../images/icons-36-black.png);
 	background-image:url(../images/logo-natuurlijksamen-page.png);
 	width: 250px;
 	height: 38px;
-	margin-left: auto;
-	margin-right: auto;
 	text-align: center;
 	margin-top: -23px;
-	margin-bottom: -22px;
+	margin-right: 20px;
 	z-index: 2;
-	position:relative
+	position:relative;
+	float:right;
 }
 
 #logo-natuurlijksamen {
@@ -655,18 +666,15 @@ background-image:url(../images/icons-36-black.png);
 	position:relative
 }
 
-
 #logo-jouwprofiel {
 	background-image:url(../images/logo-jouwprofiel.png);
-	width: 300px;
-	height: 45px;
-	margin-left: auto;
-	margin-right: auto;
+	width: 188px;
+	height: 25px;
 	text-align: center;
-	margin-top: -23px;
-	margin-bottom: -22px;
 	z-index: 2;
-	position:relative
+	position:absolute;
+	margin-top:15px;
+	margin-left:15px;
 }
 
 #header-homepage { 
@@ -684,11 +692,10 @@ background-image:url(../images/icons-36-black.png);
 	margin-right: auto;
 	text-align: center;
 	width: 80%;
-	margin-top:-485px;
+	margin-top:-375px;
 	z-index:3;
 	position:relative
 }
-
 
 
 #backgr-homepage {
@@ -697,9 +704,9 @@ background-image:url(../images/icons-36-black.png);
     -moz-background-size: cover; /*Mozilla*/
     -o-background-size: cover; /*opera*/
     background-size: cover; /*generic*/ 
-	height:515px;
-	max-height:515px;
-	width:450px;
+	height:450px;
+	max-height:450px;
+	width:391px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
@@ -709,8 +716,15 @@ background-image:url(../images/icons-36-black.png);
 	position: relative;
 }
 
+  
+#page-title {background:#87a513; height:50px; z-index:1; border-bottom:1px solid #ccc}
+#page-title-arrow {   
+	background-image:url(../images/page-title-arrow.png); 
+	margin-left:20px; 
+	margin-top:-1px; 
+	height:15px; 
+	width:20px;
  
- 
-#page-title {background:#87a513; height:50px; 	z-index:1;}
-#page-title-arrow {   background-image:url(../images/page-title-arrow.png); margin-left:20px; margin-top:-1px; height:15px; width:20px}
+  
+	}
 
