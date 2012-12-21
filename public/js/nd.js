@@ -1,9 +1,9 @@
 //Gebruik
 // remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ) 
 var remainingHeightPercentage = function( arr , num ){
+	
 	if(typeof arr === undefined) return;
 	numType = ( num === undefined ) ? 'pixel' : num;
-
 
 	var windowTotal = $(window).outerHeight(), 
 	excluded = 0,
@@ -21,10 +21,10 @@ var remainingHeightPercentage = function( arr , num ){
 
 	try {
 		if( numType == 'percentage' ){
-		included = 100 - ( excluded / windowTotal * 100) ;
+			included = 100 - ( excluded / windowTotal * 100) ;
 		}
 		else{
-		included = windowTotal - excluded;	
+			included = windowTotal - excluded;	
 		}
 	}
 	catch(err)
@@ -37,10 +37,13 @@ var remainingHeightPercentage = function( arr , num ){
 $(document).bind('pagechange' , function(){
 	if ($.mobile.activePage.attr('id') == 'pageActiviteit')
 	{
-		var iets = remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] );
-		console.log( iets )
+		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
+		console.log( contentHeight );
+		$(".main").css({'height':contentHeight + 'px'});
+		$("#map_canvas").css({'height':contentHeight + 'px'});
 	}
 });
+
 
 // Map vars - initialized and later populated
 var map;
@@ -62,6 +65,7 @@ function initialize() {
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	
+	// Set original map
 	map = new google.maps.Map(document.getElementById('map_canvas'),
 	myOptions);
 	
@@ -105,16 +109,12 @@ function initialize() {
 // ERROR HANDLING
 function handleNoGeolocation(errorFlag) {
 	if (errorFlag) {
-		var content = 'Error: De geolocotie-service is mislukt.';
+		//'Error: De geolocotie-service is mislukt.';
+		map.setCenter(pos);
 	} else {
-		var content = 'Error: Je browser ondersteund geen geolocation.';
+		//'Error: Je browser ondersteund geen geolocation.';
 	}
 
-	var options = {
-		map: map,
-		position: utrecht,
-		content: content
-	};
 }
 
 // Create all markers - and click functionality
@@ -145,10 +145,10 @@ function createMarker(markertype, latlng, html) {
 		}
 		
 		// Only add a tooltip if the clicked marker is not the current location
-		if(markertype !=  'curLocation'){
+		if(markertype != 'curLocation'){
 			// Add tooltip
-			$('.ui-content').append(contentString);
-			$("#markerTip").css({'position':'absolute','left':Math.round($('.ui-content').width()/2 - 100) + 'px','top':Math.round($('.ui-content').height()/2 - 100) + 'px','z-index':'1000' });
+			$('.main').append(contentString);
+			$("#markerTip").css({'position':'absolute','left':Math.round($('.main').width()/2 - 100) + 'px','top':Math.round($('.main').height()/2 - 100) + 'px','z-index':'1000' });
 			// Click function for marker - only starts when marker is available
 			$('#markerTip').click (function() {
 				if ($("#markerTip").length > 0){
