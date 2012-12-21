@@ -1,5 +1,5 @@
 //Gebruik
-// remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ) 
+// remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') ] ) 
 var remainingHeightPercentage = function( arr , num ){
 	
 	if(typeof arr === undefined) return;
@@ -35,10 +35,16 @@ var remainingHeightPercentage = function( arr , num ){
 }
 
 $(document).bind('pagechange' , function(){
+		//Knoei FIX
+	var contentHeight = Math.round(remainingHeightPercentage( [ $('.ui-header') , $('.ui-footer')]));
+		console.log( contentHeight );
+		//$(".main").css({'height':contentHeight + 'px'});
+		$("#map_canvas").css({'height':contentHeight + 'px'});
+		//Knoei FIX
+
 	if ($.mobile.activePage.attr('id') == 'pageActiviteit')
 	{
-		console.log( 'bind? ' );
-		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
+		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') ]));
 		console.log( contentHeight );
 		$(".main").css({'height':contentHeight + 'px'});
 		$("#map_canvas").css({'height':contentHeight + 'px'});
@@ -50,12 +56,13 @@ $(document).bind('pagechange' , function(){
 var map;
 var point;
 var marker;
+var markersArray = [];
 
 // Vars to point to location of images
-var locationIcon = 'images/pointer_icon.png';
-
+var locationIcon = '../public/images/pointer_icon.png';
+ 
 // Default location to be set if location can't be found
-var utrecht = new google.maps.LatLng(52.2167, 5.1333);
+var utrecht = new google.maps.LatLng(52.033266, 5.429692); // utrechtse heuvelrug
 
 //initialize map
 function initialize() {
@@ -76,7 +83,22 @@ function initialize() {
 
 	point = new google.maps.LatLng(52.358566, 4.869689); // vondelpark	
 	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
-
+	
+	// LOCATIES UTRECHTSE HEUVELRUG DEMO
+	point = new google.maps.LatLng(52.03479225466794, 5.427267551422119);	
+	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+	
+	point = new google.maps.LatLng(52.0348054550579, 5.429971218109131);
+	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+	
+	point = new google.maps.LatLng(52.034171831943716, 5.432460308074951);
+	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+	
+	point = new google.maps.LatLng(52.03318177785052, 5.4264092445373535);	
+	marker = createMarker('point',point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+	
+	
+	
 	// Try HTML5 geolocation - All in this statement is only performed when geolocation is found
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function (position) {
@@ -85,10 +107,12 @@ function initialize() {
 			
 			// Show current position on map - must stay in geolocation function
 			curLocation = pos;
-			marker = createMarker('curLocation',curLocation,'Leave this - does not do anything - but function expects an extra argument')
-		
+			locationMarker = createMarker('curLocation',curLocation,'empty argumenr')
+			
 			// Mousedown function on map - used to remove tooltips from markers
 			google.maps.event.addListener(map, "mousedown", function (e) {
+			//gotoLocation();
+			markersArray[6].setMap(null);
 				// If markerTip exists - remove it before adding it
 				if ($("#markerTip").length > 0){
 					$('#markerTip').remove(); 
@@ -96,7 +120,7 @@ function initialize() {
 			});
 			
 			// Center the map on current location
-			map.setCenter(pos);
+			map.panTo(pos);
 			
 		}, function () {
 			handleNoGeolocation(true);
@@ -111,16 +135,17 @@ function initialize() {
 function handleNoGeolocation(errorFlag) {
 	if (errorFlag) {
 		//'Error: De geolocotie-service is mislukt.';
-		map.setCenter(pos);
+		map.panTo(utrecht);
 	} else {
 		//'Error: Je browser ondersteund geen geolocation.';
+		map.panTo(utrecht);
 	}
 
 }
 
 // Create all markers - and click functionality
 function createMarker(markertype, latlng, html) {
-
+console.log('marker?');
 	var contentString = html;
 	// Check what kind of markerIcon the marker should have
 	if(markertype == 'curLocation'){
@@ -134,6 +159,7 @@ function createMarker(markertype, latlng, html) {
 		map: map,
 		icon: iconType
 	});
+	markersArray.push(marker);
 	
 	// Marker mousedown - add and remove a tooltip
 	google.maps.event.addListener(marker, 'mousedown', function() { console.log('mousedown');
@@ -162,3 +188,14 @@ function createMarker(markertype, latlng, html) {
 
 // initialize map
 google.maps.event.addDomListener(window, 'load', initialize);
+
+// Goes to another location and adds markers 
+function gotoLocation() {		
+	marker = createMarker('curLocation',utrecht,'empty argument');
+	//zoomInOut(map, 10, map.getZoom()); // call smoothZoom, parameters map, final zoomLevel, and starting zoom level
+	map.panBy($(window).outerWidth()/2,0);
+	setTimeout(function(){map.panTo(utrecht); map.panTo}, 300);
+}
+
+
+

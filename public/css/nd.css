@@ -635,38 +635,46 @@ background-image:url(../images/icons-36-black.png);
 /*
  *
  *
- * MAP CSS
+ * CONTENT
  * 
- * DIT IS OM DE GOOGLE MAP TE ZIEN - NIET ALLE CSS HIERONDER PAST BINNEN DE REST VAN HET DESIGN
+ * 
  */
  
-
-
-
- /*
-.ui-page{
-	width: 100%;
-	height: 100%;
-}
+ 
 .ui-content{
-	position: relative;
-	top: -200px;
-	margin-bottom: -200px;
-	width: 100%;
-	height: 100%;
+	margin: 0;
 	padding: 0;
-	overflow: hidden;
 }
 
+/*
+ *
+ *
+ * MAP
+ * 
+ * 
+ */
+
+/* title for google maps */
+#mapTitelBlok{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 100px;
+	z-index: 2000;
+}
+#markerTip .ui-btn-hover-c{
+	background: white;
+	color: #454545;
+	background-image: none;
+}
+
+/*
 #popupInfo{
 	position: relative;
 	width: 100%;
 	height: 100%;
 	padding: 0;
 	margin: 0;
-}
-#markerTip .ui-btn-hover-c{
-	background: white;
-	background-image: none;
 }
 */
