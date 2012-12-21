@@ -318,17 +318,21 @@
         <!-- OP ROUTE PAGE -->
         <div data-role="subpage" id="page-op-route"> 
             <div data-role="header" data-id="indexPersist" data-position="fixed">
-                        <a href="index.html" class="opties">opties</a>
+                        <a href="index.html" class="start">opties</a>
                         <span class="ui-title" />
                         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-                            <a href="index.html" data-role="button">Zoek</a>
-                            <a href="index.html" data-role="button">Help</a>
+                    <a href="index.html" data-role="button" class="zoek">Zoek</a>
+                    <a href="index.html" data-role="button" class="help">Help</a>
                         </div>
             </div> <!-- end header -->
 
-                    <div class="ui-body" class="titelBlok">
+                    <div  class="titelBlok">
                         <div class="titelFoto"></div>
-                        <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> Activiteiten op de route</div>
+                        <div class="titelHeader">
+							<div id="page-title"> <a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >
+							terug</a> Activiteiten op de route</div>
+							<div id="page-title-arrow"></div>
+						</div>
                         <div class="kopHeader"></div>
                     </div>
 

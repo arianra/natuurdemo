@@ -582,6 +582,10 @@ div.main-homepage.ui-content {
 
 /* header icons*/
 .header-start {background:red; height:50px; position:relative}
+
+.btn-green {
+	background:black
+}
 			
 .start { 
     background-image:url(../images/header-start.png);
@@ -646,7 +650,7 @@ div.main-homepage.ui-content {
 	width: 250px;
 	height: 38px;
 	text-align: center;
-	margin-top: -23px;
+	margin-top: -50px;
 	margin-right: 20px;
 	z-index: 2;
 	position:relative;
@@ -769,7 +773,14 @@ div.main-homepage.ui-content {
 }
 
   
-#page-title {background:#87a513; height:50px; z-index:1; border-bottom:1px solid #ccc}
+#page-title {
+	background:#87a513; 
+	height:40px; 
+	padding:10px 10px 10px 20px;
+	z-index:1; 
+	border-bottom:1px solid #ccc}
+	
+	
 #page-title-arrow {   
 	background-image:url(../images/page-title-arrow.png); 
 	margin-left:20px; 
