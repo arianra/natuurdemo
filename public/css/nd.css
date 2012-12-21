@@ -582,6 +582,10 @@ div.main-homepage.ui-content {
 
 /* header icons*/
 .header-start {background:red; height:50px; position:relative}
+
+.btn-green {
+	background:black
+}
 			
 .start { 
     background-image:url(../images/header-start.png);
@@ -646,7 +650,7 @@ div.main-homepage.ui-content {
 	width: 250px;
 	height: 38px;
 	text-align: center;
-	margin-top: -23px;
+	margin-top: -50px;
 	margin-right: 20px;
 	z-index: 2;
 	position:relative;
@@ -686,6 +690,58 @@ div.main-homepage.ui-content {
 	height:100px; }	
  
 
+#page-title {background:#87a513; height:50px}
+#page-title-arrow {   background-image:url(../images/page-title-arrow.png); margin-left:20px; margin-top:-1px; height:15px; width:20px}
+
+
+
+
+/*
+ *
+ *
+ * CONTENT
+ * 
+ * 
+ */
+ 
+ 
+.ui-content{
+	margin: 0;
+	padding: 0;
+}
+
+/*
+ *
+ *
+ * MAP
+ * 
+ * 
+ */
+
+/* title for google maps */
+#mapTitelBlok{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 100px;
+	z-index: 2000;
+}
+#markerTip .ui-btn-hover-c{
+	background: white;
+	color: #454545;
+	background-image: none;
+}
+
+/*
+#popupInfo{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+*/
  
 .main-homepage {
 	margin-left: auto;
@@ -717,7 +773,14 @@ div.main-homepage.ui-content {
 }
 
   
-#page-title {background:#87a513; height:50px; z-index:1; border-bottom:1px solid #ccc}
+#page-title {
+	background:#87a513; 
+	height:40px; 
+	padding:10px 10px 10px 20px;
+	z-index:1; 
+	border-bottom:1px solid #ccc}
+	
+	
 #page-title-arrow {   
 	background-image:url(../images/page-title-arrow.png); 
 	margin-left:20px; 
@@ -727,4 +790,3 @@ div.main-homepage.ui-content {
  
   
 	}
-
