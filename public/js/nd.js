@@ -1,6 +1,6 @@
 //Gebruik
-// reminaingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ) 
-var reminaingHeightPercentage = function( arr , num ){
+// remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ) 
+var remainingHeightPercentage = function( arr , num ){
 	if(typeof arr === undefined) return;
 	numType = ( num === undefined ) ? 'pixel' : num;
 
@@ -37,7 +37,7 @@ var reminaingHeightPercentage = function( arr , num ){
 $(document).bind('pagechange' , function(){
 	if ($.mobile.activePage.attr('id') == 'pageActiviteit')
 	{
-		var iets = reminaingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] );
+		var iets = remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] );
 		console.log( iets )
 	}
 });
