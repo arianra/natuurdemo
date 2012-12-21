@@ -690,6 +690,58 @@ div.main-homepage.ui-content {
 	height:100px; }	
  
 
+#page-title {background:#87a513; height:50px}
+#page-title-arrow {   background-image:url(../images/page-title-arrow.png); margin-left:20px; margin-top:-1px; height:15px; width:20px}
+
+
+
+
+/*
+ *
+ *
+ * CONTENT
+ * 
+ * 
+ */
+ 
+ 
+.ui-content{
+	margin: 0;
+	padding: 0;
+}
+
+/*
+ *
+ *
+ * MAP
+ * 
+ * 
+ */
+
+/* title for google maps */
+#mapTitelBlok{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 100px;
+	z-index: 2000;
+}
+#markerTip .ui-btn-hover-c{
+	background: white;
+	color: #454545;
+	background-image: none;
+}
+
+/*
+#popupInfo{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+*/
  
 .main-homepage {
 	margin-left: auto;
@@ -738,4 +790,3 @@ div.main-homepage.ui-content {
  
   
 	}
-
