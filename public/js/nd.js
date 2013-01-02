@@ -40,6 +40,9 @@ $(document).bind('pagechange' , function(){
 		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-locatie') , $('.titelblok-locatie') , $('.bevestig-div-locatie') ] ));
 		$("#map-canvas-locatie").css({'height':contentHeight + 'px'});
 		GMap.init( 'map-canvas-locatie' );
+
+		GMap.clickToPositionLocation( true );
+
 		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init('map-canvas-locatie'); } )
 	}
 	else if ($.mobile.activePage.attr('id') == 'page-activiteit')
@@ -122,7 +125,7 @@ var GMap = {
 
 		this.centerToDefault();
 
-		this.clickToPositionLocation( true )
+		
 
 		//bug in Google Maps. Laadt anders niet op iOS.
 		google.maps.event.trigger(this.map, 'resize');
