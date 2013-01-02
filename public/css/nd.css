@@ -727,6 +727,12 @@ div.main-homepage.ui-content {
 	top: 100px;
 	z-index: 2000;
 }
+#mapContainer{
+
+}
+#markerTip{
+	width: 100px;
+}
 #markerTip .ui-btn-hover-c{
 	background: white;
 	color: #454545;
