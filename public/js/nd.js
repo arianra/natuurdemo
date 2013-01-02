@@ -41,10 +41,8 @@ $(document).bind('pagechange' , function(){
 		$(".main").css({'height':contentHeight + 'px'});
 		$("#map_canvas").css({'height':contentHeight + 'px'});
 
-
-		GMap.init();
-
-		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init(); } )
+		//GMap.init();
+		$(".header-knop-zoek").click(GMap.init());
 	}
 });
 
