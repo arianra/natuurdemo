@@ -719,7 +719,7 @@ div.main-homepage.ui-content {
  */
 
 /* title for google maps */
-#mapTitelBlok{
+.titelblok-activiteit{
 	margin: 0;
 	padding: 0;
 	position: absolute;
@@ -727,6 +727,24 @@ div.main-homepage.ui-content {
 	top: 100px;
 	z-index: 2000;
 }
+.titelblok-locatie{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 100px;
+	z-index: 2000;
+}
+
+#map-canvas-locatie{
+
+}
+.bevestig-div-locatie{
+	margin: 0;
+	padding: 0;
+	z-index: 2000;
+}
+
 #markerTip .ui-btn-hover-c{
 	background: white;
 	color: #454545;
