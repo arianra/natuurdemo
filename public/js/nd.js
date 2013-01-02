@@ -74,6 +74,8 @@ $( document ).on('click' , '[ data-role="navbar" ] a' ,function(){
 var GMap = {
 	containerID: 'map_canvas',
 	defaultLocation: new google.maps.LatLng(52.2167, 5.1333),
+	utrecht: new google.maps.LatLng(52.033266, 5.429692), // utrechtse heuvelrug
+	currentLocation: '',
 	defaultOptions: {
 		zoom: 16,
 		disableDefaultUI: true,
@@ -92,21 +94,42 @@ var GMap = {
 		this.clear();
 		this.containerID = ( typeof mapID === 'string') ? mapID : 'map_canvas' ;
 		this.setup();
+		
 	},
 	setup: function(){
 		this.map = new google.maps.Map(document.getElementById(this.containerID),
 		this.defaultOptions);
-
 		this.centerToDefault();
-
 
 		//bug in Google Maps. Laadt anders niet op iOS.
 		google.maps.event.trigger(this.map, 'resize');
 		this.map.setZoom( this.map.getZoom() );
 		
-		point = new google.maps.LatLng(52.2167, 5.1333);	
-		marker = this.createMarker('#current','current',point,'<div id="markerTip"><a href="#page-detail" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+		if (this.containerID == 'map-canvas-locatie'){
+			//var point = new google.maps.LatLng(52.2167, 5.1333);	
+			//var marker = this.createMarker('#current','current',point,'<div id="markerTip"><a href="#page-detail" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+			this.initGeo();
+			this.changeMarkerLocation();
+		}else if (this.containerID == 'map-canvas-activiteit'){
+			// LOCATIES UTRECHTSE HEUVELRUG DEMO
+			var marker = this.createMarker('#current', self.markerTypes[0],this.utrecht,'empty argument');
+			this.map.setCenter( this.utrecht );
+			
+			var point = new google.maps.LatLng(52.03479225466794, 5.427267551422119);	
+			var marker = this.createMarker('#evenement',self.markerTypes[2], point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
 	
+			var point = new google.maps.LatLng(52.0348054550579, 5.429971218109131);
+			var marker = this.createMarker('#evenement',self.markerTypes[2], point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+	
+			var point = new google.maps.LatLng(52.034171831943716, 5.432460308074951);
+			var marker = this.createMarker('#evenement',self.markerTypes[2], point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+	
+			var point = new google.maps.LatLng(52.03318177785052, 5.4264092445373535);	
+			var marker = this.createMarker('#evenement',self.markerTypes[2], point,'<div id="markerTip"><a href="#popupInfo" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')		
+	console.log(self.currentLocation);
+		}else if (this.containerID == 'map-canvas-route'){
+			this.calcRoute();
+		}	
 	},
 	clear: function(cont){
 		var container = ( (arguments.length > 0) && ( typeof cont === 'string' ) ) ? cont : this.containerID ;
@@ -117,18 +140,24 @@ var GMap = {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function (position) {
 				
-				self.geoLocation = new google.maps.LatLng(position.coords.latitude, 
-				position.coords.longitude);
-
-				self.createMarker( '#marker-geo-location' , self.markerTypes[0] , this.geoLocation , '<p>Ik aanvaard geen halve maatpakken</p>' )
-				self.centerToPoint( this.geoLocation );
+				self.geoLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				console.log ('geo ' + self.geoLocation);
+				self.createMarker( '#current' , self.markerTypes[0] , self.geoLocation , '<p>Ik aanvaard geen halve maatpakken</p>' )
+				self.centerToPoint( self.geoLocation );
+				self.currentLocation = self.geoLocation;
 				
 			}, function () {
 				self.handleNoGeolocation(true);
+				self.createMarker( '#current' , self.markerTypes[0] , defaultLocation , '<p>Ik aanvaard geen halve maatpakken</p>' )
+				self.centerToPoint( self.geoLocation );
+				self.currentLocation = defaultLocation;
 			});
 		} else {
 			// Browser doesn't support Geolocation
 			self.handleNoGeolocation(false);
+			self.createMarker( '#current' , self.markerTypes[0] , defaultLocation , '<p>Ik aanvaard geen halve maatpakken</p>' )
+			self.centerToPoint( self.geoLocation );
+			self.currentLocation = defaultLocation;
 		}
 	},
 	handleNoGeo: function(error) {
@@ -146,14 +175,33 @@ var GMap = {
 	centerToPoint: function( point ){
 		if( arguments.length < 1 )return;
 
-		try{
-			var point = ( point instanceof google.maps.LatLng ) ? point : new new google.maps.LatLng( point[0] , point[1] );
+		try{ console.log ('point ' + point);
+			var point = ( point instanceof google.maps.LatLng ) ? point : new google.maps.LatLng( point[0] , point[1] );
 			this.map.setCenter( point )
 		}
 		catch(err){
 			console.log( err );
 		}
 
+	},
+	calcRoute: function() {
+		directionsDisplay = new google.maps.DirectionsRenderer();
+		directionsDisplay.setMap(this.map);
+		var directionsService = new google.maps.DirectionsService();
+	
+		var start = self.currentLocation;
+		var end = self.utrecht;
+		var request = {
+			origin:start,
+			destination:end,
+			travelMode: google.maps.TravelMode.DRIVING
+		};
+
+		directionsService.route(request, function(result, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(result);
+			}
+		});	
 	},
 	createMarker: function( selector , type , point , html ) {
 		var mdListener,
@@ -195,7 +243,7 @@ var GMap = {
 			self.removeMarker();
 			
 			// Only add a tooltip if the clicked marker is not the current location
-			if(type != 'currentz'){
+			if(type != 'currentzd'){
 				$('#mapContainer').append(contentString);// Add tooltip
 				$("#markerTip").css({'position':'absolute','left':Math.round($('#mapContainer').width()/2 - 50) + 'px','top':Math.round($('#mapContainer').height()/2 - 100) + 'px','z-index':'1001' });
 			}
@@ -203,21 +251,34 @@ var GMap = {
 		});
 	},
 	markerDrag: function (type, html){ // Only works well on touch devices
-		drag: google.maps.event.addListener(marker.marker, "mouseout", function() {
+		var dragMarker = google.maps.event.addListener(marker.marker, "mouseout", function() {
 			// If a markerTip exists - remove it before adding it
-			//self.removeMarker();
+			//self.removeMarkerTip();
 		});
 	},
 	mapMouseDown: function (){
-		mapClick: google.maps.event.addListener(this.map, 'mousedown', function(event) {
+		var mapClick = google.maps.event.addListener(this.map, 'mousedown', function(event) {
 			// If a markerTip exists - remove it before adding it
-			self.removeMarker();
+			self.removeMarkerTip();
 		});
 	},
-	removeMarker: function(){
+	removeMarkerTip: function(){
 		if ($("#markerTip").length > 0){
 				$('#markerTip').remove(); 
 		}
+	},
+	changeMarkerLocation: function(){
+		var self = this;
+		var mapClick = google.maps.event.addListener(this.map, 'click', function(event) {
+			// remove the markers
+			for (var i = 0; i < self.markers.length; i++ ) {
+				self.markers[i].marker.setMap(null);
+			}
+			self.markers.length = 0; // empty array
+			// add marker on mouse position
+			self.createMarker('#current' , self.markerTypes[0] , event.latLng , 'empty');
+			self.currentLocation = event.latLng;
+		});
 	}
 
 }
