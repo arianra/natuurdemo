@@ -79,14 +79,37 @@ var GMap = {
 		disableDefaultUI: true,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	},
-	markers: [],
+	allMarkers: [],
 	markerTypes: [
-	{ type:'current' , icon: 'images/pointer_icon.png'},
-	{ type:'found' , icon: 'images/pointer_icon.png' },
-	{ type:'evenement' , icon: 'images/pointer_icon.png' },
-	{ type:'aanbieding' , icon: 'images/pointer_icon.png' },
-	{ type:'melding' , icon: 'images/pointer_icon.png' }
+	{ type:'current' , icon: 'images/pointer_icon.png' , popup: 'current' },
+	{ type:'found' , icon: 'images/pointer_icon.png' , popup: 'full' },
+	{ type:'evenement' , icon: 'images/pointer_icon.png' , popup: 'detail' },
+	{ type:'aanbieding' , icon: 'images/pointer_icon.png' , popup: 'detail' },
+	{ type:'melding' , icon: 'images/pointer_icon.png' , popup: 'detail' }
 	],
+	popupContent: {
+		current: "<div class=\"popup-content\">"
+			+	"<a href=\"#page-locatie\" data-transition=slide\" data-role=\"button\">"
+			+		"Change location"
+			+	"</a>"
+			+"</div>"
+		,
+		full: "\
+			<div class=\"popup-content\">\
+				<a href=\"#page-detail\" data-transition=\"slide\" data-role=\"button\">\
+					Zie meer informatie\
+				</a>\
+			</div>\
+			"
+		, 
+		detail:"\
+			<div class=\"popup-content\">\
+				<a href=\"#page-detail\" data-transition=\"slide\" data-role=\"button\">\
+					Zie meer informatie\
+				</a>\
+			</div>\
+			"
+	},
 
 	init: function(mapID){
 		this.clear();
@@ -99,13 +122,14 @@ var GMap = {
 
 		this.centerToDefault();
 
+		this.clickToPositionLocation( true )
 
 		//bug in Google Maps. Laadt anders niet op iOS.
 		google.maps.event.trigger(this.map, 'resize');
 		this.map.setZoom( this.map.getZoom() );
 		
-		point = new google.maps.LatLng(52.2167, 5.1333);	
-		marker = this.createMarker('#current','current',point,'<div id="markerTip"><a href="#page-detail" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
+		//point = new google.maps.LatLng(52.2167, 5.1333);	
+		//marker = this.createMarker('#current','current',point,'<div id="markerTip"><a href="#page-detail" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
 	
 	},
 	clear: function(cont){
@@ -161,31 +185,45 @@ var GMap = {
 		type = type,
 		point = point,
 		html = html,
-		self = this;
-
+		self = this,
 		marker = {
 			selector: selector,
 			content: html,
 			point: ( point instanceof google.maps.LatLng ) ? point : new google.maps.LatLng(point[0], point[1]),
 			type: type,
 			marker: new google.maps.Marker({
+				animation: 'DROP',
 				position: point,
 				map: self.map,
-				clickable: true
-				//icon: type['icon'],
+				clickable: true,
+				icon: type['icon']
 				//mouseDownListener: mdListener
 			})
 		};
-		self.markers.push( marker );
+		self.allMarkers.push( marker );
 		
 		// Initialize marker mouse down listener && map mouse down listener
-		self.markerMouseDown(type, html);
-		self.markerDrag(type, html);
-		self.mapMouseDown(type, html);
+		//self.markerMouseDown(type, html);
+		//self.markerDrag(type, html);
+		//self.mapMouseDown(type, html);
 	},
-	markerMouseDown: function (type, html){
+	clickToPositionLocation: function( t ){
+		var toggle = ( arguments.length < 1 ) ? true : t,
 		self = this;
-		markerClick: google.maps.event.addListener(marker.marker, 'mousedown', function() { 
+
+		if( toggle ){
+			this.mapClickListener = google.maps.event.addListener( this.map , 'click' , function( ltlng ){
+				self.centerToPoint( ltlng.latLng )
+			} );
+		}
+		else{
+			if( !this.mapClickListener ) return;
+			google.maps.event.removeListener( this.mapClickListener );
+		}
+	}, /*
+	markerMouseDown: function (type, html){
+		var self = this;
+		this.markerClick = google.maps.event.addListener(marker.marker, 'mousedown', function() { 
 			latLng = this.getPosition(); // returns LatLng object
 			this.map.panTo(latLng); // setCenter takes a LatLng object
 			
@@ -203,17 +241,19 @@ var GMap = {
 		});
 	},
 	markerDrag: function (type, html){ // Only works well on touch devices
-		drag: google.maps.event.addListener(marker.marker, "mouseout", function() {
-			// If a markerTip exists - remove it before adding it
-			//self.removeMarker();
-		});
-	},
-	mapMouseDown: function (){
-		mapClick: google.maps.event.addListener(this.map, 'mousedown', function(event) {
+		
+		this.drag = google.maps.event.addListener(marker.marker, "mouseout", function() {
 			// If a markerTip exists - remove it before adding it
 			self.removeMarker();
 		});
 	},
+	mapMouseDown: function (){
+		var self = this;
+		this.mapClick = google.maps.event.addListener(this.map, 'mousedown', function(event) {
+			// If a markerTip exists - remove it before adding it
+			self.removeMarker();
+		});
+	}, */
 	removeMarker: function(){
 		if ($("#markerTip").length > 0){
 				$('#markerTip').remove(); 
