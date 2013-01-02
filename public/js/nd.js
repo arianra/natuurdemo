@@ -59,10 +59,17 @@ $(document).bind('pagechange' , function(){
 		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-route') , $('.footer-balk-route')  , $('.titelblok-route') ] ));
 		$("#map-canvas-route").css({'height':contentHeight + 'px'});
 
+		//GMap.init('map_canvas');
+		$(".header-knop-zoek").click(GMap.init('map_canvas'));
 
+<<<<<<< HEAD
 		GMap.init( 'map-canvas-route' );
 
 		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init('map-canvas-route'); } )
+=======
+		//$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init(); } )
+
+>>>>>>> 0e2664d699601c838bf81d7999e97f75c345a17f
 	}
 
 });
