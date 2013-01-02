@@ -36,13 +36,15 @@ var remainingHeightPercentage = function (arr, num) {
 $(document).bind('pagechange' , function(){
 	if ($.mobile.activePage.attr('id') == 'pageActiviteit')
 	{
-		console.log( 'bind? ' );
 		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
 		$(".main").css({'height':contentHeight + 'px'});
 		$("#map_canvas").css({'height':contentHeight + 'px'});
 
-		//GMap.init();
-		$(".header-knop-zoek").click(GMap.init());
+		//GMap.init('map_canvas');
+		$(".header-knop-zoek").click(GMap.init('map_canvas'));
+
+		//$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init(); } )
+
 	}
 });
 
@@ -65,7 +67,9 @@ var GMap = {
 	{ type:'melding' , icon: 'images/pointer_icon.png' }
 	],
 
-	init: function(){
+	init: function(mapID){
+		this.clear();
+		this.containerID = ( typeof mapID === 'string') ? mapID : 'map_canvas' ;
 		this.setup();
 	},
 	setup: function(){
@@ -74,8 +78,11 @@ var GMap = {
 
 		this.centerToDefault();
 
-		google.maps.event.trigger(map, 'resize');
+		google.maps.event.trigger(this.map, 'resize');
 		this.map.setZoom( this.map.getZoom() );
+	},
+	clear: function(){
+		$('#' + this.containerID).find("*").remove();
 	},
 	initGeo: function() {
 		var self = this;
