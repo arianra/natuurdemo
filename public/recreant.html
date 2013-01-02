@@ -16,7 +16,7 @@
 
 
 
-<div data-role="page"> 
+<div data-role="page" id="page-zoek" data-dom-cache="true"> 
     
     <div data-role="header">
                 <a href="index.html" class="start">opties</a>
@@ -168,7 +168,8 @@
             </ul>
         </form>
 
-            <a href="#page-locatie" data-role="button" data-transition="slide" id="searchButton"> Zoek </a>
+            <a href="#page-locatie" data-role="button" data-transition="slide" id="search-button"> Zoek </a>
+
     </div> <!-- end content MAINPAGE -->   
 
 
@@ -179,7 +180,9 @@
 
         <!-- LOCATIE PAGE -->
         <div data-role="subpage" id="page-locatie"> 
-            <div data-role="header" id="header-balk-locatie" data-id="indexPersist" data-position="fixed">
+
+            <div data-role="header" class="header-balk-locatie">
+
 
                         <a href="index.html" class="opties">opties</a>
                         <span class="ui-title" />
@@ -192,19 +195,19 @@
 
             <div data-role="content" class="main">
 
-                <div class="ui-body" class="titelBlok" id="mapTitelBlok">
+                <div class="ui-body titelblok-locatie">
 
                     <div class="titelFoto"></div>
-                    <div class="titelHeader"></div>
+                    <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> Bevestig uw Locatie</div>
                     <div class="kopHeader"></div>
 
                 </div>
 
-                <h3>Bevestig uw Locatie</h3>
                 <div id="map-canvas-locatie">
                 </div> 
-                <div>
-                    <a href="#page-activiteit" data-role="button" data-transition="slide" id="locatie-bevestig-knop">Bevestig</a>
+
+                <div class="bevestig-div-locatie">
+                            <a href="#page-activiteit" data-role="button" data-transition="slide" id="bevestig-button">Bevestig</a>
                 </div>
             </div> <!-- end content -->
         </div>  <!-- end page -->
@@ -225,22 +228,25 @@
 
                 <div data-role="content" class="main">
 
-                   <div id="mapTitelBlok" class="ui-body titelBlok titelblok-activiteit">
+                   <div class="ui-body titelblok-activiteit">
                         <div class="titelFoto"></div>
                         <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> Activiteiten in jou buurt</div>
                         <div class="kopHeader"></div>
                     </div>
+
 					<div id="mapContainer">
-						<div id="map_canvas"></div> 
+						<div id="map-canvas-activiteit"></div> 
 					</div>
+					
                 </div> <!-- end content -->
 
                 <div data-role="footer" class="footer-balk-activiteit"> 
                     <div data-role="navbar">
                         <ul>
-                            <li><a href="#">Route</a></li>
-                            <li><a href="#">Foto maken</a></li>
-                            <li><a href="#">Delen</a></li>
+                            <li><a href="#" class="ui-btn-active ui-state-persist" >Activiteiten</a></li>
+                            <li><a href="#page-route" data-transition="slide">Route</a></li>
+                            <li><a href="#" class="ui-disabled">Foto maken</a></li>
+                            <li><a href="#" class="ui-disabled">Delen</a></li>
                         </ul>
                     </div><!-- /navbar -->
                 </div> 
@@ -282,7 +288,7 @@
 
         <!-- ROUTE PAGE -->
         <div data-role="subpage" id="page-route"> 
-            <div data-role="header" data-id="indexPersist" data-position="fixed">
+            <div data-role="header" data-id="indexPersist" data-position="fixed" class="header-balk-route">
                         <a href="index.html" class="opties">opties</a>
                         <span class="ui-title" />
                         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
@@ -291,21 +297,25 @@
                         </div>
             </div> <!-- end header -->
 
-                    <div class="ui-body" class="titelBlok">
+                    <div class="ui-body titelblok-route">
                         <div class="titelFoto"></div>
                         <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> Route</div>
                         <div class="kopHeader"></div>
                     </div>
 
             <div data-role="content" class="main">
-                
+
+                <div id="map-canvas-route"></div>
+
+
             </div> <!-- end content -->
 
-            <div data-role="footer"> 
+            <div data-role="footer" class="footer-balk-route">  
                 <div data-role="navbar">
                     <ul>
+                        <li><a href="#page-activiteit" data-transition="slide">Activiteiten</a></li>
                          <li><a href="#" class="ui-btn-active ui-state-persist" >Route</a></li>
-                        <li><a href="#" data-transition="slide">Activiteiten op route</a></li>
+                        <li><a href="#page-op-route" data-transition="slide">Activiteiten op route</a></li>
                         <li><a href="#" class="ui-disabled">Delen</a></li>
                     </ul>
                 </div><!-- /navbar -->
@@ -381,7 +391,8 @@
             <div data-role="footer"> 
                 <div data-role="navbar">
                     <ul>
-                         <li><a href="#" data-transition="slide">Route</a></li>
+                        <li><a href="#page-activiteit" data-transition="slide">Activiteiten</a></li>
+                         <li><a href="#page-route" data-transition="slide">Route</a></li>
                         <li><a href="#" class="ui-btn-active ui-state-persist">Activiteiten op route</a></li>
                         <li><a href="#" class="ui-disabled">Delen</a></li>
                     </ul>

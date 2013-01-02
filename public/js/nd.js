@@ -34,23 +34,38 @@ var remainingHeightPercentage = function (arr, num) {
 }
 
 $(document).bind('pagechange' , function(){
-	if ($.mobile.activePage.attr('id') == 'page-activiteit')
+
+	if($.mobile.activePage.attr('id') == 'page-locatie')
+	{
+		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-locatie') , $('.titelblok-locatie') , $('.bevestig-div-locatie') ] ));
+		$("#map-canvas-locatie").css({'height':contentHeight + 'px'});
+		GMap.init( 'map-canvas-locatie' );
+		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init('map-canvas-locatie'); } )
+	}
+	else if ($.mobile.activePage.attr('id') == 'page-activiteit')
 	{
 		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
-		$(".main").css({'height':contentHeight + 'px'});
-		$("#map_canvas").css({'height':contentHeight + 'px'});
-
-		GMap.init('map_canvas');
-		//$(".header-knop-zoek").click(GMap.init('map_canvas'));
-	}else if ($.mobile.activePage.attr('id') == 'page-locatie')
-	{
-		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-locatie') , $('.footer-balk-locatie') , $('.titelblok-locatie') ] ));
-		$(".main").css({'height':contentHeight + 'px'});
-		$("#map-canvas-locatie").css({'height':contentHeight + 'px'});
-
-		GMap.init('map-canvas-locatie');
-		//$("#locatie-bevestig-knop").click(GMap.init('map-canvas-locatie'));
+		$("#map-canvas-activiteit").css({'height':contentHeight + 'px'});
+		GMap.init( 'map-canvas-activiteit' );
+		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init('map-canvas-activiteit'); } )
 	}
+	else if ($.mobile.activePage.attr('id') == 'page-route')
+	{
+		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-route') , $('.footer-balk-route')  , $('.titelblok-route') ] ));
+		$("#map-canvas-route").css({'height':contentHeight + 'px'});
+		GMap.init( 'map-canvas-route' );
+		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init('map-canvas-route'); } )
+
+	}
+
+});
+
+$( document ).on('click' , '[ data-role="navbar" ] a' ,function(){  
+
+
+//		if( !$(event.target).parent().parent().hasClass( 'ui-btn-active' ) )  $(event.target).parent().parent().addClass( 'ui-btn-active' );
+
+
 });
 
 /*
@@ -66,7 +81,7 @@ var GMap = {
 	},
 	markers: [],
 	markerTypes: [
-	{ type:'current' , icon: 'images/pointer_icon.png' },
+	{ type:'current' , icon: 'images/pointer_icon.png'},
 	{ type:'found' , icon: 'images/pointer_icon.png' },
 	{ type:'evenement' , icon: 'images/pointer_icon.png' },
 	{ type:'aanbieding' , icon: 'images/pointer_icon.png' },
@@ -84,6 +99,8 @@ var GMap = {
 
 		this.centerToDefault();
 
+
+		//bug in Google Maps. Laadt anders niet op iOS.
 		google.maps.event.trigger(this.map, 'resize');
 		this.map.setZoom( this.map.getZoom() );
 		
@@ -91,8 +108,9 @@ var GMap = {
 		marker = this.createMarker('#current','current',point,'<div id="markerTip"><a href="#page-detail" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
 	
 	},
-	clear: function(){
-		$('#' + this.containerID).find("*").remove();
+	clear: function(cont){
+		var container = ( (arguments.length > 0) && ( typeof cont === 'string' ) ) ? cont : this.containerID ;
+		$('#' + container).find("*").remove();
 	},
 	initGeo: function() {
 		var self = this;
