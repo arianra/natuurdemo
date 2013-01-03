@@ -83,14 +83,14 @@ var GMap = {
 		disableDefaultUI: true,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	},
-	allMarkers: [],
 	markerTypes: [
-	{ type:'current' , icon: 'images/pointer_icon.png' , popup: 'current' },
-	{ type:'found' , icon: 'images/pointer_icon.png' , popup: 'full' },
-	{ type:'evenement' , icon: 'images/pointer_icon.png' , popup: 'detail' },
-	{ type:'aanbieding' , icon: 'images/pointer_icon.png' , popup: 'detail' },
-	{ type:'melding' , icon: 'images/pointer_icon.png' , popup: 'detail' }
+	{ type:'current' , icon: 'images/pointer_icon.png' , popup: 'current' , title: 'Mijn locatie'},
+	{ type:'found' , icon: 'images/pointer_icon.png' , popup: 'full' , title: 'Gevonden activiteiten'},
+	{ type:'evenement' , icon: 'images/pointer_icon.png' , popup: 'detail' , title: 'Evenementen'},
+	{ type:'aanbieding' , icon: 'images/pointer_icon.png' , popup: 'detail' , title: 'Aanbiedingen'},
+	{ type:'melding' , icon: 'images/pointer_icon.png' , popup: 'detail' , title: 'Meldingen'}
 	],
+	isGeoSet: false,
 	popupContent: {
 		current: "<div class=\"popup-content\">"
 			+	"<a href=\"#page-locatie\" data-transition=slide\" data-role=\"button\">"
@@ -135,41 +135,73 @@ var GMap = {
 		$('#' + container).find("*").remove();
 	},
 	runGeoPage: function( ) {
-		var pos;
-	try{
-		pos = this.initGeo();
-	}
-	catch(err){
-		console.log(err);
-	}
 
-	if( pos.hasOwnProperty('coords') ){
-		this.geoLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-		this.geoMarker = this.createMarker( '#marker-geo-location' , this.markerTypes[0] , this.geoLocation , this.popupContent.current );
+		this.initGeo( ['updateGeo','centerToPoint'] );
 
-		this.centerToPoint( this.geoLocation );
-	}
-	else{
-		this.geoMarker = this.createMarker( '#marker-geo-location' , this.markerTypes[0] , this.defaultLocation , this.popupContent.current );
-		this.centerToDefault();
-	}
+		this.centerToPoint( this.defaultLocation );
+		this.updateGeo( this.defaultLocation );
 
-		this.clickToPositionLocation( true , this.geoMarker.marker )
+		this.clickToPositionLocation( true , this.geoMarker.marker );
 
 	},
-	initGeo: function() {
-		var self = this;
+	updateGeo: function( p ){
+		if( this.isGeoSet ){
+			this.geoMarker.marker.setPosition( p );
+		}
+		else {
+			this.geoMarker = this.createGeoMarker( p );
+		}
+
+	},
+	runActivityPage: function(){
+		if(!this.isGeoSet){
+
+		}
+	},
+	initGeo: function(c) {
+		var self = this,
+		callback,
+		isArray = false;
+
+		if( (arguments.length > 0)  ){
+			if(typeof c === 'string'){
+				callback = c;
+			}
+			else if(typeof c == 'object'){
+				callback = c;
+				isArray=true;
+			}
+			else if(typeof c === 'function'){
+				console.log( "pass functions as strings in initGeo()" );
+				return;
+			}
+			else{
+				callback = 'updateGeo';
+			}
+		}
+
 		if (navigator.geolocation) {
+			
 			navigator.geolocation.getCurrentPosition(function (position) {
-				return position;
+				self.geoLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+				if( !isArray ){
+					self[callback]( self.geoLocation );
+				}
+				else {
+					$.each( callback , function(i,e){
+						self[e]( self.geoLocation );
+					});
+				}
+
 			}, function () {
 				self.handleNoGeolocation(true);
 			});
-		} else {
+		}
+		 else {
 			// Browser doesn't support Geolocation
 			self.handleNoGeolocation(false);
 		}
-		return false;
 	},
 	handleNoGeo: function(error) {
 		if(error){
@@ -179,14 +211,36 @@ var GMap = {
 			console.log ('Error: Je browser ondersteund geen geolocation.');
 		}
 	},
+	createGeoMarker: function( g ){
+		var position =  ( g instanceof google.maps.LatLng ) ? g : new new google.maps.LatLng( g.latitude , g.longitude ),
+		marker;
+		marker = this.createMarker( '#marker-geo-location' , this.markerTypes[0] , position , this.popupContent.current );
+		this.isGeoSet = true;
+		return marker;
+	},
+	removeMarker: function( m ){
+
+		if( m instanceof google.maps.Marker){
+   			 this.map.removeOverlay(m);
+   			 this.isGeoSet = false;
+        		}
+        		else if( m.hasOwnProperty( 'marker' ) ){
+        			this.map.removeOverlay( m.marker );
+        			this.isGeoSet = false
+        		}
+        		else {
+        			console.log( "couldnt remove marker" )
+        		}
+
+	},
 	centerToDefault: function(){
 		this.map.setCenter( this.defaultLocation );
 	},
 	centerToPoint: function( point ){
-		if( arguments.length < 1 )return;
+		if( arguments.length < 1 ) return;
 
 		try{
-			var point = ( point instanceof google.maps.LatLng ) ? point : new new google.maps.LatLng( point[0] , point[1] );
+			var point = ( point instanceof google.maps.LatLng ) ? point : new new google.maps.LatLng( point.latitude , point.longitude );
 			this.map.setCenter( point )
 		}
 		catch(err){
@@ -203,7 +257,7 @@ var GMap = {
 		marker = {
 			selector: selector,
 			content: content,
-			point: ( point instanceof google.maps.LatLng ) ? point : new google.maps.LatLng(point[0], point[1]),
+			point: ( point instanceof google.maps.LatLng ) ? point : new google.maps.LatLng(point.latitude, point.longitude),
 			type: type,
 			marker: new google.maps.Marker({
 				map: this.map,
@@ -211,13 +265,11 @@ var GMap = {
 				position: point,
 				map: self.map,
 				clickable: true,
-				icon: type['icon']
+				icon: type['icon'],
+				title: type['title']
 			})
 		};
-		self.allMarkers.push( marker );
 
-
-		
 		return marker;
 		// Initialize marker mouse down listener && map mouse down listener
 		//self.markerMouseDown(type, html);
@@ -228,7 +280,7 @@ var GMap = {
 		var toggle = ( arguments.length < 1 ) ? true : t,
 		marker = ( arguments[1] && (arguments[1] instanceof google.maps.Marker) ) ? m : undefined;
 		self = this;
-		if( m == undefined && toggle ){
+		if( m === undefined && toggle ){
 			console.log( "no marker available" );
 			return;
 		}
@@ -266,7 +318,7 @@ var GMap = {
 		this.drag = google.maps.event.addListener(marker.marker, "mouseout", function() {
 			// If a markerTip exists - remove it before adding it
 			self.removeMarker();
-		});
+		});0141
 	},
 	mapMouseDown: function (){
 		var self = this;
@@ -282,5 +334,4 @@ var GMap = {
 	}
 
 }
-
 })(jQuery)
