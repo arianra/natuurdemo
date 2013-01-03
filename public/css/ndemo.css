@@ -19,9 +19,7 @@
 .titelBlok {
 	background:#87A513;
 	left: 0;
-	position: absolute;
 	width: 100%;
-	top: 42px;
 	font-family: BetaSans, Helvetica, Arial, sans-serif;
 	color:white}
 
@@ -1144,13 +1142,30 @@ a.ui-link-inherit {
 	float:left	
 	}  
 	
-	
 .footer-icon-delen{
 	background-image:url(../images/footer-icon-delen.png);
 	width:20px;
 	height:20px;
 }
 	
+.footer-icon-activiteiten{
+	background-image:url(../images/footer-icon-activiteiten.png);
+	width:20px;
+	height:20px;
+}	
+
+.footer-icon-route{
+	background-image:url(../images/footer-icon-route.png);
+	width:20px;
+	height:20px;
+}
+
+.footer-icon-delen{
+	background-image:url(../images/footer-icon-delen.png);
+	width:20px;
+	height:20px;
+}		
+
 /*end icons*/
 
 .logo-natuurlijksamen-page {
@@ -1195,20 +1210,16 @@ a.ui-link-inherit {
     -moz-background-size: cover; /*Mozilla*/
     -o-background-size: cover; /*opera*/
     background-size: cover; /*generic*/ 
-	height:100px; }	
- 
-
+	height:125px; }	
  
 .main-homepage {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	
 	margin-top:-375px;
 	z-index:3;
 	position:relative
 }
-
 
 #backgr-homepage {
 	background-image: url(../images/background-nederland.png);
@@ -1227,7 +1238,6 @@ a.ui-link-inherit {
 	z-index: 2;
 	position: relative;
 }
-
   
 #page-title {background:#87a513; height:50px; z-index:1; border-bottom:1px solid #ccc}
 #page-title-arrow {   
@@ -1307,4 +1317,5 @@ a.ui-link-inherit {
 	background-image: -o-linear-gradient( #f9f9f9,#eeeeee );
 	background-image: linear-gradient( #f9f9f9,#eeeeee ); */
  }
+ 
  

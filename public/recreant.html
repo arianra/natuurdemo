@@ -206,7 +206,7 @@
                 <div class="ui-body titelblok-locatie">
 
                     <div class="titelFoto"></div>
-                    <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> Bevestig uw Locatie</div>
+                    <div class="titelHeader"><a href="#" data-role="none" data-theme="c" data-inline="true"  data-mini="true" data-rel=back >terug</a> Bevestig uw Locatie</div>
                     <div class="kopHeader"></div>
 
                 </div>
@@ -236,15 +236,14 @@
                     </div>
             </div> <!-- end header -->
 
-                <div data-role="content" class="main">
-
-                   <div class="ui-body titelBlok titelblok-activiteit">
-
+			
+			<div class="ui-body titelBlok titelblok-activiteit">
                         <div class="titelFoto"></div>
-                         <a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> 
-						  Activiteiten in jou buurt 
+                        <div class="titelHeader"><a href="#" data-role="button" data-theme="b"  data-inline="true"  data-mini="true" data-rel=back >terug</a>  Activiteiten in jou buurt</div>
                         <div class="kopHeader"></div>
                     </div>
+					
+					<div data-role="content" class="main">
 
 					<div id="mapContainer">
 						<div id="map-canvas-activiteit"></div> 
@@ -308,9 +307,9 @@
                         </div>
             </div> <!-- end header -->
 
-                    <div class="ui-body titelblok-route">
+                   <div class="ui-body titelBlok titelblok-route">
                         <div class="titelFoto"></div>
-                        <div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> Route</div>
+                        <div class="titelHeader"><a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> Route</div>
                         <div class="kopHeader"></div>
                     </div>
 
@@ -324,10 +323,12 @@
             <div data-role="footer" class="footer-balk-route">  
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#page-activiteit" data-transition="slide">Activiteiten</a></li>
-                         <li><a href="#" class="ui-btn-active ui-state-persist" >Route</a></li>
-                        <li><a href="#page-op-route" data-transition="slide">Activiteiten op route</a></li>
-                        <li><a href="#" class="ui-disabled">Delen</a></li>
+                        <li><a href="#page-activiteit" data-transition="slide" data-theme="c">Activiteiten
+						<span class="footer-icon-activiteiten"></span></a></li>
+                        <li><a href="#" class="ui-btn-active ui-state-persist" data-theme="c">Route
+						<span class="footer-icon-route"></span></a></li>
+                        <li><a href="#page-op-route" data-transition="slide" data-theme="c">Activiteiten op route</a></li>
+                        <li><a href="#" class="ui-disabled" data-theme="c">Delen</a></li>
                     </ul>
                 </div><!-- /navbar -->
             </div> 
@@ -339,7 +340,7 @@
         <!-- OP ROUTE PAGE -->
         <div data-role="subpage" id="page-op-route"> 
             <div data-role="header" data-id="indexPersist" data-position="fixed">
-                        <a href="index.html" class="start">opties</a>
+                        <a href="index.html" data-role="none" class="header-knop-opties">opties</a>
                         <span class="ui-title" />
                         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
                             <a href="index.html" data-role="none" class="header-knop-zoek">Zoek</a>
@@ -348,15 +349,14 @@
                         </div>
             </div> <!-- end header -->
 
-                    <div  class="titelBlok">
+			
+                    <div class="ui-body titelBlok titelblok-activiteiten-op-route">
                         <div class="titelFoto"></div>
-                        <div class="titelHeader">
-							<div id="page-title"> <a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >
-							terug</a> Activiteiten op de route</div>
-							<div id="page-title-arrow"></div>
-						</div>
+                        <div class="titelHeader"><a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> Activiteiten op de route</div>
                         <div class="kopHeader"></div>
-                    </div>
+                    </div> 
+			
+               
 
             <div data-role="content" class="main">
                 <div >
