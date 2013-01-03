@@ -40,8 +40,8 @@ $(document).bind('pagechange' , function(){
 		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-locatie') , $('.titelblok-locatie') , $('.bevestig-div-locatie') ] ));
 		$("#map-canvas-locatie").css({'height':contentHeight + 'px'});
 		GMap.init( 'map-canvas-locatie' );
-
-		GMap.clickToPositionLocation( true );
+				GMap.runGeoPage();
+		//GMap.clickToPositionLocation( true );
 
 		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init('map-canvas-locatie'); } )
 	}
@@ -57,6 +57,7 @@ $(document).bind('pagechange' , function(){
 		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-route') , $('.footer-balk-route')  , $('.titelblok-route') ] ));
 		$("#map-canvas-route").css({'height':contentHeight + 'px'});
 		GMap.init( 'map-canvas-route' );
+
 		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init('map-canvas-route'); } )
 
 	}
@@ -123,33 +124,42 @@ var GMap = {
 		this.map = new google.maps.Map(document.getElementById(this.containerID),
 		this.defaultOptions);
 
-		this.centerToDefault();
-
-		
-
 		//bug in Google Maps. Laadt anders niet op iOS.
 		google.maps.event.trigger(this.map, 'resize');
 		this.map.setZoom( this.map.getZoom() );
-		
-		//point = new google.maps.LatLng(52.2167, 5.1333);	
-		//marker = this.createMarker('#current','current',point,'<div id="markerTip"><a href="#page-detail" data-transition="slide" data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-hover-c ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Tooltip</span></span></a></div>')
-	
 	},
 	clear: function(cont){
 		var container = ( (arguments.length > 0) && ( typeof cont === 'string' ) ) ? cont : this.containerID ;
 		$('#' + container).find("*").remove();
 	},
+	runGeoPage: function( ) {
+		var pos;
+	try{
+		pos = this.initGeo();
+	}
+	catch(err){
+		console.log(err);
+	}
+
+	if( pos.hasOwnProperty('coords') ){
+		this.geoLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		this.geoMarker = this.createMarker( '#marker-geo-location' , this.markerTypes[0] , this.geoLocation , this.popupContent.current );
+
+		this.centerToPoint( this.geoLocation );
+	}
+	else{
+		this.geoMarker = this.createMarker( '#marker-geo-location' , this.markerTypes[0] , this.defaultLocation , this.popupContent.current );
+		this.centerToDefault();
+	}
+
+		this.clickToPositionLocation( true , this.geoMarker.marker )
+
+	},
 	initGeo: function() {
 		var self = this;
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function (position) {
-				
-				self.geoLocation = new google.maps.LatLng(position.coords.latitude, 
-				position.coords.longitude);
-
-				self.createMarker( '#marker-geo-location' , self.markerTypes[0] , this.geoLocation , '<p>Ik aanvaard geen halve maatpakken</p>' )
-				self.centerToPoint( this.geoLocation );
-				
+				return position;
 			}, function () {
 				self.handleNoGeolocation(true);
 			});
@@ -157,14 +167,14 @@ var GMap = {
 			// Browser doesn't support Geolocation
 			self.handleNoGeolocation(false);
 		}
+		return false;
 	},
 	handleNoGeo: function(error) {
 		if(error){
-			//'Error: De geolocotie-service is mislukt.';
-			this.centerToDefault();
+			console.log('Error: De geolocotie-service is mislukt.');
 		}
 		else{
-			//'Error: Je browser ondersteund geen geolocation.';
+			console.log ('Error: Je browser ondersteund geen geolocation.');
 		}
 	},
 	centerToDefault: function(){
@@ -182,41 +192,47 @@ var GMap = {
 		}
 
 	},
-	createMarker: function( selector , type , point , html ) {
-		var mdListener,
-		selector = selector,
+	createMarker: function( selector , type , point , content ) {
+		var selector = selector,
 		type = type,
 		point = point,
-		html = html,
+		content = content,
 		self = this,
 		marker = {
 			selector: selector,
-			content: html,
+			content: content,
 			point: ( point instanceof google.maps.LatLng ) ? point : new google.maps.LatLng(point[0], point[1]),
 			type: type,
 			marker: new google.maps.Marker({
-				animation: 'DROP',
+				map: this.map,
+				animation: 'BOUNCE',
 				position: point,
 				map: self.map,
 				clickable: true,
 				icon: type['icon']
-				//mouseDownListener: mdListener
 			})
 		};
 		self.allMarkers.push( marker );
+
+
 		
+		return marker;
 		// Initialize marker mouse down listener && map mouse down listener
 		//self.markerMouseDown(type, html);
 		//self.markerDrag(type, html);
 		//self.mapMouseDown(type, html);
 	},
-	clickToPositionLocation: function( t ){
+	clickToPositionLocation: function( t , m ){
 		var toggle = ( arguments.length < 1 ) ? true : t,
+		marker = ( arguments[1] && (arguments[1] instanceof google.maps.Marker) ) ? m : undefined;
 		self = this;
-
+		if( m == undefined && toggle ){
+			console.log( "no marker available" );
+			return;
+		}
 		if( toggle ){
 			this.mapClickListener = google.maps.event.addListener( this.map , 'click' , function( ltlng ){
-				self.centerToPoint( ltlng.latLng )
+				marker.setPosition( ltlng.latLng );
 			} );
 		}
 		else{
