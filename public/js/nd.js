@@ -124,6 +124,8 @@ var GMap = {
 		this.map = new google.maps.Map(document.getElementById(this.containerID),
 		this.defaultOptions);
 
+		this.centerToDefault();
+
 		//bug in Google Maps. Laadt anders niet op iOS.
 		google.maps.event.trigger(this.map, 'resize');
 		this.map.setZoom( this.map.getZoom() );
