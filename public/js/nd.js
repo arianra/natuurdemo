@@ -133,6 +133,7 @@ var GMap = {
 	clear: function(cont){
 		var container = ( (arguments.length > 0) && ( typeof cont === 'string' ) ) ? cont : this.containerID ;
 		$('#' + container).find("*").remove();
+		this.isGeoSet = false;
 	},
 	runGeoPage: function( ) {
 
@@ -154,9 +155,37 @@ var GMap = {
 
 	},
 	runActivityPage: function(){
+		//fm staat voor fakemarkers
+		/*
+		var fm = {},
+		rndLocations = [ 	{ latitude:52.046086 , longitude:5.388138 } ,
+					{ latitude:52.05622 , longitude:5.36711 } ,
+					{ latitude:52.031514 , longitude:5.401674 } , 
+					{ latitude:52.053053 , longitude:5.341421 } ,
+					{ latitude:52.033731 , longitude:5.36511 } ,
+					{ latitude:52.043763 , longitude:5.377985 }  
+				];
+
+		$.each( rndLocations , function(i,e){
+			e.latLng = new google.maps.LatLng(e.latitude, e.longitude)
+		});
+
+		fm.koffie = this.createMarker( '#marker-koffie-location' , this.markerTypes[3] , rndLocations[0].latLng , this.popupContent.detail );
+		fm.lunch = this.createMarker( '#marker-lunch-location' , this.markerTypes[3] , rndLocations[1].latLng , this.popupContent.detail );
+		fm.kinderboerderij = this.createMarker( '#marker-kinderboerderij-location' , this.markerTypes[2] , rndLocations[2].latLng , this.popupContent.detail );
+		fm.speurtocht = this.createMarker( '#marker-speurtocht-location' , this.markerTypes[2] , rndLocations[3].latLng  , this.popupContent.detail );
+		fm.wild = this.createMarker( '#marker-wild-location' , this.markerTypes[4] , rndLocations[4].latLng , this.popupContent.detail );
+		fm.uitkijkpost = this.createMarker( '#marker-uitkijkpost-location' , this.markerTypes[1] , rndLocations[5].latLng  , this.popupContent.full);
+
+		for( var e in fm ){
+
+			this.allMarkers.push ( fm[e] );
+		}
+
 		if(!this.isGeoSet){
 
 		}
+		*/
 	},
 	initGeo: function(c) {
 		var self = this,
