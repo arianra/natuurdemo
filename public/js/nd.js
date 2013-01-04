@@ -39,18 +39,23 @@ $(document).bind('pagechange' , function(){
 	{
 		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-locatie') , $('.titelblok-locatie') , $('.bevestig-div-locatie') ] ));
 		$("#map-canvas-locatie").css({'height':contentHeight + 'px'});
-		GMap.init( 'map-canvas-locatie' );
-				GMap.runGeoPage();
-		//GMap.clickToPositionLocation( true );
 
-		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init('map-canvas-locatie'); } )
+		GMap.init( 'map-canvas-locatie' );
+		GMap.runGeoPage();
+
+		$( '.bevestig-div-locatie' ).append( '<a href="#" data-role="button" id="test-button">test</a>' )
+		$( '.bevestig-div-locatie' ).on( 'click' , '#test-button' ,function(){ GMap.runActivityPage() } )
 	}
 	else if ($.mobile.activePage.attr('id') == 'page-activiteit')
 	{
 		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
 		$("#map-canvas-activiteit").css({'height':contentHeight + 'px'});
+		
 		GMap.init( 'map-canvas-activiteit' );
-		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init('map-canvas-activiteit'); } )
+		GMap.runActivityPage();
+
+
+
 	}
 	else if ($.mobile.activePage.attr('id') == 'page-route')
 	{
@@ -58,7 +63,7 @@ $(document).bind('pagechange' , function(){
 		$("#map-canvas-route").css({'height':contentHeight + 'px'});
 		GMap.init( 'map-canvas-route' );
 
-		$( '.header-knop-zoek' ).on( 'click' , function(){ GMap.init('map-canvas-route'); } )
+
 
 	}
 
@@ -90,7 +95,10 @@ var GMap = {
 	{ type:'aanbieding' , icon: 'images/pointer_icon.png' , popup: 'detail' , title: 'Aanbiedingen'},
 	{ type:'melding' , icon: 'images/pointer_icon.png' , popup: 'detail' , title: 'Meldingen'}
 	],
+	allMarkers: [],
 	isGeoSet: false,
+	geoRetryCount: 10,
+	geoRetryCountTotal: 10,
 	popupContent: {
 		current: "<div class=\"popup-content\">"
 			+	"<a href=\"#page-locatie\" data-transition=slide\" data-role=\"button\">"
@@ -134,6 +142,8 @@ var GMap = {
 		var container = ( (arguments.length > 0) && ( typeof cont === 'string' ) ) ? cont : this.containerID ;
 		$('#' + container).find("*").remove();
 		this.isGeoSet = false;
+		this.geoRetryCount = this.geoRetryCountTotal;
+		this.allMarkers = [];
 	},
 	runGeoPage: function( ) {
 
@@ -156,7 +166,7 @@ var GMap = {
 	},
 	runActivityPage: function(){
 		//fm staat voor fakemarkers
-		/*
+		
 		var fm = {},
 		rndLocations = [ 	{ latitude:52.046086 , longitude:5.388138 } ,
 					{ latitude:52.05622 , longitude:5.36711 } ,
@@ -182,10 +192,17 @@ var GMap = {
 			this.allMarkers.push ( fm[e] );
 		}
 
-		if(!this.isGeoSet){
 
+		this.centerToPoint( { latitude:52.046521 , longitude:5.366448 } )
+		this.map.setZoom( 13 );
+
+		if(!this.geoLocation){
+			this.initGeo( ['updateGeo'] );
 		}
-		*/
+		else {
+			this.createGeoMarker( this.geoLocation )
+		}
+		
 	},
 	initGeo: function(c) {
 		var self = this,
@@ -222,10 +239,17 @@ var GMap = {
 						self[e]( self.geoLocation );
 					});
 				}
+				this.geoRetryCount = this.geoRetryCountTotal;
 
 			}, function () {
-				self.handleNoGeolocation(true);
-			});
+
+				console.log( "initGeo() -> getCurrentPosition() failed. retryCount: " + this.geoRetryCount + ". callback: " + callback );
+				if( this.geoRetryCount > 0 ){
+					this.geoRetryCount--;
+					this.intiGeo(callback);
+				}
+
+			} , 12);
 		}
 		 else {
 			// Browser doesn't support Geolocation
@@ -233,12 +257,7 @@ var GMap = {
 		}
 	},
 	handleNoGeo: function(error) {
-		if(error){
-			console.log('Error: De geolocotie-service is mislukt.');
-		}
-		else{
 			console.log ('Error: Je browser ondersteund geen geolocation.');
-		}
 	},
 	createGeoMarker: function( g ){
 		var position =  ( g instanceof google.maps.LatLng ) ? g : new new google.maps.LatLng( g.latitude , g.longitude ),
@@ -269,11 +288,11 @@ var GMap = {
 		if( arguments.length < 1 ) return;
 
 		try{
-			var point = ( point instanceof google.maps.LatLng ) ? point : new new google.maps.LatLng( point.latitude , point.longitude );
+			var point = ( point instanceof google.maps.LatLng ) ? point : new google.maps.LatLng( point.latitude , point.longitude );
 			this.map.setCenter( point )
 		}
 		catch(err){
-			console.log( err );
+			console.log( err.message );
 		}
 
 	},
