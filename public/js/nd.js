@@ -235,9 +235,11 @@ var GMap = {
 				}
 				self.geoRetryCount = self.geoRetryCountTotal;
 
-			}, function () {
+			}, function (err) {
 
 				console.log( "initGeo() -> getCurrentPosition() failed. retryCount: " + self.geoRetryCount + ". callback: " + callback );
+				self.handleNoGeolocation(err);
+
 				if( self.geoRetryCount > 0 ){
 					self.geoRetryCount--;
 					self.intiGeo(callback);
@@ -246,7 +248,8 @@ var GMap = {
 					self.geoLocation = self.defaultLocation;
 				}
 
-			} , 12);
+
+			} , {timeout:12 , enableHighAccuracy: true});
 		}
 		 else {
 			// Browser doesn't support Geolocation
@@ -254,7 +257,25 @@ var GMap = {
 		}
 	},
 	handleNoGeo: function(error) {
-			console.log ('Error: Je browser ondersteund geen geolocation.');
+			if(error){
+				switch(error.code){
+					case error.TIMEOUT:
+						alert ('Timeout');
+						break;
+					case error.POSITION_UNAVAILABLE:
+						alert ('Position unavailable');
+						break;
+					case error.PERMISSION_DENIED:
+						alert ('Permission denied');
+						break;
+					case error.UNKNOWN_ERROR:
+						alert ('Unknown error');
+						break;
+				}
+			}
+			else{
+				alert( 'Geo locatie wordt niet ondersteund.' );
+			}
 	},
 	createGeoMarker: function( g ){
 		var position =  ( g instanceof google.maps.LatLng ) ? g : new new google.maps.LatLng( g.latitude , g.longitude ),
