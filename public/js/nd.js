@@ -43,8 +43,8 @@ $(document).bind('pagechange' , function(){
 		GMap.init( 'map-canvas-locatie' );
 		GMap.runGeoPage();
 
-		$( '.bevestig-div-locatie' ).append( '<a href="#" data-role="button" id="test-button">test</a>' )
-		$( '.bevestig-div-locatie' ).on( 'click' , '#test-button' ,function(){ GMap.runActivityPage() } )
+		//$( '.bevestig-div-locatie' ).append( '<a href="#" data-role="button" id="test-button">test</a>' )
+		//$( '.bevestig-div-locatie' ).on( 'click' , '#test-button' ,function(){ GMap.runActivityPage() } )
 	}
 	else if ($.mobile.activePage.attr('id') == 'page-activiteit')
 	{
@@ -84,16 +84,16 @@ var GMap = {
 	containerID: 'map_canvas',
 	defaultLocation: new google.maps.LatLng(52.2167, 5.1333),
 	defaultOptions: {
-		zoom: 16,
+		zoom: 12,
 		disableDefaultUI: true,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	},
 	markerTypes: [
 	{ type:'current' , icon: 'images/pointer_icon.png' , popup: 'current' , title: 'Mijn locatie'},
-	{ type:'found' , icon: 'images/pointer_icon.png' , popup: 'full' , title: 'Gevonden activiteiten'},
-	{ type:'evenement' , icon: 'images/pointer_icon.png' , popup: 'detail' , title: 'Evenementen'},
-	{ type:'aanbieding' , icon: 'images/pointer_icon.png' , popup: 'detail' , title: 'Aanbiedingen'},
-	{ type:'melding' , icon: 'images/pointer_icon.png' , popup: 'detail' , title: 'Meldingen'}
+	{ type:'found' , icon: 'images/dot_1.png' , popup: 'full' , title: 'Gevonden activiteiten'},
+	{ type:'evenement' , icon: 'images/dot_2.png' , popup: 'detail' , title: 'Evenementen'},
+	{ type:'aanbieding' , icon: 'images/dot_1.png' , popup: 'detail' , title: 'Aanbiedingen'},
+	{ type:'melding' , icon: 'images/dot_2.png' , popup: 'detail' , title: 'Meldingen'}
 	],
 	allMarkers: [],
 	isGeoSet: false,
