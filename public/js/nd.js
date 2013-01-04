@@ -1,3 +1,5 @@
+var NSD = NSD || {};
+
 (function($){
 
 //Gebruik
@@ -33,7 +35,9 @@ var remainingHeightPercentage = function (arr, num) {
     return included;
 }
 
-$(document).bind('pagechange' , function(){
+
+
+$(document).bind('pagechange' , function(e,d){
 
 	if($.mobile.activePage.attr('id') == 'page-locatie')
 	{
@@ -48,13 +52,17 @@ $(document).bind('pagechange' , function(){
 	}
 	else if ($.mobile.activePage.attr('id') == 'page-activiteit')
 	{
-		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
-		$("#map-canvas-activiteit").css({'height':contentHeight + 'px'});
+
 		
-		GMap.init( 'map-canvas-activiteit' );
-		GMap.runActivityPage();
+		if( NSD.prevPageID != 'page-detail'){
 
-
+			var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
+			$("#map-canvas-activiteit").css({'height':contentHeight + 'px'});
+			
+			GMap.init( 'map-canvas-activiteit' );
+			GMap.runActivityPage();
+			
+		}
 
 	}
 	else if ($.mobile.activePage.attr('id') == 'page-route')
@@ -67,6 +75,10 @@ $(document).bind('pagechange' , function(){
 
 	}
 
+});
+
+$(document).bind('pagebeforeshow' , function(e,d){
+	NSD.prevPageID = d.prevPage.attr('id');
 });
 
 /*
@@ -185,7 +197,7 @@ var GMap = {
 			this.activityMarkers.push ( fm[e] );
 		}
 
-		this.createInfoWindowListeners();
+		
 
 		this.centerToPoint( { latitude:52.046521 , longitude:5.366448 } )
 		this.map.setZoom( 13 );
@@ -196,6 +208,8 @@ var GMap = {
 		else {
 			this.createGeoMarker( this.geoLocation )
 		}
+
+		this.createInfoWindowListeners();
 		
 	},
 	initGeo: function(c) {
