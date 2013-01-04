@@ -565,6 +565,9 @@
 	background-image:      -o-linear-gradient( #f9f9f9 /*{d-body-background-start}*/, #eeeeee /*{d-body-background-end}*/); /* Opera 11.10+ */
 	background-image:         linear-gradient( #f9f9f9 /*{d-body-background-start}*/, #eeeeee /*{d-body-background-end}*/);
 }
+
+
+
 .ui-overlay-d {
 	background-image: none;
 	border-width: 0;
