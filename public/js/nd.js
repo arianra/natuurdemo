@@ -37,9 +37,14 @@ var remainingHeightPercentage = function (arr, num) {
 
 $(document).on( 'keypress' , '*' , function(e){
 	if(e.keyCode == 97){
-		alert( GMap.geoLocation );
+		GMap.testDir();
 	}
 }) ;
+
+$('.footer-knop-route').on( 'click' , function(){
+	alert( 'klik' )
+	GMap.testDir();
+});
 
 $(document).bind('pagechange' , function(e,d){
 
@@ -155,6 +160,7 @@ var GMap = {
 		this.isGeoSet = false;
 		this.geoRetryCount = this.geoRetryCountTotal;
 		this.allMarkers = [];
+		this.removeDirections();
 	},
 	runGeoPage: function( ) {
 
@@ -296,8 +302,44 @@ var GMap = {
 				alert( 'Geo locatie wordt niet ondersteund.' );
 			}
 	},
+	initDirections: function(){
+		this.directionRenderer = new google.maps.DirectionsRenderer();
+		this.directionRenderer.setOptions( { suppressMarkers: true , draggable: true } );
+		this.directionRenderer.setMap(this.map);
+
+		this.directionService = new google.maps.DirectionsService();
+	},
+	removeDirections: function(){
+		if( (typeof this.directionRenderer === 'undefined') || (typeof this.directionService === 'undefined') ) return;
+			this.directionRenderer.setMap( null );
+			delete this.directionService;
+	},
+	calculateDirections: function( s , e ){
+		if( arguments.length < 1 ) return;
+		if( (typeof this.directionRenderer === 'undefined') || (typeof this.directionService === 'undefined') ) return;
+		
+		var start = ( typeof s === 'undefined' ) ? self.geoLocation : s,
+		end = e,
+		request = {
+			origin: start,
+			destination: end,
+			travelMode: google.maps.TravelMode.DRIVING
+		},
+		self = this;
+
+		this.directionService.route( request , function( response , status ){
+			if ( status == google.maps.DirectionsStatus.OK) {
+            			self.directionRenderer.setDirections( response );
+            		};
+		});
+
+	},
+	testDir: function( ){
+		this.initDirections();
+		this.calculateDirections( this.geoLocation , new google.maps.LatLng( 52.043763 , 5.377985 ));
+	},
 	createGeoMarker: function( g ){
-		var position =  ( g instanceof google.maps.LatLng ) ? g : new new google.maps.LatLng( g.latitude , g.longitude ),
+		var position =  ( g instanceof google.maps.LatLng ) ? g : new google.maps.LatLng( g.latitude , g.longitude ),
 		marker;
 		marker = this.createMarker( '#marker-geo-location' , this.markerTypes[0] , position , this.popupContent.current );
 		this.isGeoSet = true;
@@ -423,7 +465,7 @@ var GMap = {
 			} );
 		}
 		else{
-			if( !this.mapClickListener ) return;
+			if( typeof this.mapClickListener === 'undefined'  ) return;
 			google.maps.event.removeListener( this.mapClickListener );
 		}
 	}
