@@ -1174,6 +1174,14 @@ a.ui-link-inherit {
 	float: right
 }		
 
+.footer-icon-camera{
+	background-image:url(../images/footer-icon-camera.png);
+	width:20px;
+	height:20px;
+	display: block;
+	float: right
+}	
+
 /*end icons*/
 
 .logo-natuurlijksamen-page {
