@@ -15,15 +15,43 @@
     font-weight:400;
 }
 
-*/
+
 .titelBlok {
 	background:#87A513;
 	left: 0;
 	width: 100%;
 	font-family: BetaSans, Helvetica, Arial, sans-serif;
 	color:white}
+*/
+.titelHeader {
+	background:#87A513;
+	left: 0;
+	width: 101%;
+	font-family: BetaSans, Helvetica, Arial, sans-serif;
+	color:white;
+	padding-left: 10px;
+	margin-left: -15px;
+	height: 50px;
+	padding-top: 9px;
+	padding-top: 9px;
+	margin-top: -7px;
+	-moz-box-shadow: 0px 4px 7px #888;
+	-webkit-box-shadow: 0px 4px 7px #888;
+	box-shadow: 0px 4px 7px #888;
+	z-index: 1;
+	position: relative}
 
+.map-container {
+	padding:0 !important;
+	margin-top:-21px;
+	margin-bottom:-8px
+}
 
+.content-80 {
+	margin-left: auto;
+	margin-right: auto;
+	width:80%
+}
 /* Swatches */
 
 /* A
@@ -1256,12 +1284,15 @@ a.ui-link-inherit {
 }
   
 #page-title {background:#87a513; height:50px; z-index:1; border-bottom:1px solid #ccc}
-#page-title-arrow {   
+.page-title-arrow {   
 	background-image:url(../images/page-title-arrow.png); 
 	margin-left:20px; 
 	margin-top:-1px; 
 	height:15px; 
 	width:20px;
+	z-index:2;
+	position:relative
+	
 	}
 /*
 #searchButton { 
@@ -1286,10 +1317,11 @@ a.ui-link-inherit {
 }	
 
 .ui-content {
-	width: 80%;
+	/*width: 80%;*/
 	margin-left: auto;
 	margin-right: auto;
 }		
+
 
 
 .ui-body-a {
