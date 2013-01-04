@@ -82,10 +82,10 @@ var GMap = {
 	},
 	markerTypes: [
 	{ type:'current' , icon: 'images/pointer_icon.png' , popup: 'current' , title: 'Mijn locatie'},
-	{ type:'found' , icon: 'images/dot_1.png' , popup: 'full' , title: 'Gevonden activiteiten'},
+	{ type:'found' , icon: 'images/dot_4.png' , popup: 'full' , title: 'Gevonden activiteiten'},
 	{ type:'evenement' , icon: 'images/dot_2.png' , popup: 'detail' , title: 'Evenementen'},
-	{ type:'aanbieding' , icon: 'images/dot_1.png' , popup: 'detail' , title: 'Aanbiedingen'},
-	{ type:'melding' , icon: 'images/dot_2.png' , popup: 'detail' , title: 'Meldingen'}
+	{ type:'aanbieding' , icon: 'images/dot_3.png' , popup: 'detail' , title: 'Aanbiedingen'},
+	{ type:'melding' , icon: 'images/dot_1.png' , popup: 'detail' , title: 'Meldingen'}
 	],
 	allMarkers: [],
 	activityMarkers: [],
@@ -240,16 +240,15 @@ var GMap = {
 				console.log( "initGeo() -> getCurrentPosition() failed. retryCount: " + self.geoRetryCount + ". callback: " + callback );
 				self.handleNoGeolocation(err);
 
+				self.geoLocation = self.defaultLocation;
+
 				if( self.geoRetryCount > 0 ){
 					self.geoRetryCount--;
 					self.intiGeo(callback);
 				}
-				else {
-					self.geoLocation = self.defaultLocation;
-				}
 
 
-			} , {timeout:12 , enableHighAccuracy: true});
+			} , {timeout:120 , enableHighAccuracy: true});
 		}
 		 else {
 			// Browser doesn't support Geolocation
