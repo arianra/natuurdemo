@@ -220,6 +220,8 @@ var GMap = {
 			}
 		}
 
+		this.geoLocation = this.defaultLocation;
+
 		if (navigator.geolocation) {
 			
 			navigator.geolocation.getCurrentPosition(function (position) {
@@ -239,8 +241,6 @@ var GMap = {
 
 				console.log( "initGeo() -> getCurrentPosition() failed. retryCount: " + self.geoRetryCount + ". callback: " + callback );
 				self.handleNoGeolocation(err);
-
-				self.geoLocation = self.defaultLocation;
 
 				if( self.geoRetryCount > 0 ){
 					self.geoRetryCount--;
