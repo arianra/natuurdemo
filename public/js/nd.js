@@ -248,6 +248,9 @@ var GMap = {
 					self.geoRetryCount--;
 					self.intiGeo(callback);
 				}
+				else {
+					self.geoLocation = self.defaultLocation;
+				}
 
 			} , 12);
 		}
@@ -266,6 +269,9 @@ var GMap = {
 		this.isGeoSet = true;
 		return marker;
 	},
+	createInfoWindowListeners: function( m ) {
+
+	}
 	removeMarker: function( m ){
 
 		if( m instanceof google.maps.Marker){
@@ -341,45 +347,8 @@ var GMap = {
 			if( !this.mapClickListener ) return;
 			google.maps.event.removeListener( this.mapClickListener );
 		}
-	}, /*
-	markerMouseDown: function (type, html){
-		var self = this;
-		this.markerClick = google.maps.event.addListener(marker.marker, 'mousedown', function() { 
-			latLng = this.getPosition(); // returns LatLng object
-			this.map.panTo(latLng); // setCenter takes a LatLng object
-			
-			var contentString = html;
-		
-			// If it already exists - remove it before adding it
-			self.removeMarker();
-			
-			// Only add a tooltip if the clicked marker is not the current location
-			if(type != 'currentz'){
-				$('#mapContainer').append(contentString);// Add tooltip
-				$("#markerTip").css({'position':'absolute','left':Math.round($('#mapContainer').width()/2 - 50) + 'px','top':Math.round($('#mapContainer').height()/2 - 100) + 'px','z-index':'1001' });
-			}
-				
-		});
-	},
-	markerDrag: function (type, html){ // Only works well on touch devices
-		
-		this.drag = google.maps.event.addListener(marker.marker, "mouseout", function() {
-			// If a markerTip exists - remove it before adding it
-			self.removeMarker();
-		});0141
-	},
-	mapMouseDown: function (){
-		var self = this;
-		this.mapClick = google.maps.event.addListener(this.map, 'mousedown', function(event) {
-			// If a markerTip exists - remove it before adding it
-			self.removeMarker();
-		});
-	}, */
-	removeMarker: function(){
-		if ($("#markerTip").length > 0){
-				$('#markerTip').remove(); 
-		}
 	}
+
 
 }
 })(jQuery)
