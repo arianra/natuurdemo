@@ -239,14 +239,14 @@ var GMap = {
 						self[e]( self.geoLocation );
 					});
 				}
-				this.geoRetryCount = this.geoRetryCountTotal;
+				self.geoRetryCount = self.geoRetryCountTotal;
 
 			}, function () {
 
-				console.log( "initGeo() -> getCurrentPosition() failed. retryCount: " + this.geoRetryCount + ". callback: " + callback );
-				if( this.geoRetryCount > 0 ){
-					this.geoRetryCount--;
-					this.intiGeo(callback);
+				console.log( "initGeo() -> getCurrentPosition() failed. retryCount: " + self.geoRetryCount + ". callback: " + callback );
+				if( self.geoRetryCount > 0 ){
+					self.geoRetryCount--;
+					self.intiGeo(callback);
 				}
 
 			} , 12);
