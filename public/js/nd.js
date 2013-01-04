@@ -35,7 +35,11 @@ var remainingHeightPercentage = function (arr, num) {
     return included;
 }
 
-
+$(document).on( 'keypress' , '*' , function(e){
+	if(e.keyCode == 97){
+		alert( GMap.geoLocation );
+	}
+}) ;
 
 $(document).bind('pagechange' , function(e,d){
 
@@ -105,11 +109,13 @@ var GMap = {
 	geoRetryCount: 10,
 	geoRetryCountTotal: 10,
 	popupContent: {
-		current: "<div class=\"popup-content popup-current\">"
-			+	"<a href=\"#page-locatie\" data-transition=slide\" data-role=\"button\" class=\"popup-knop-change-location\">"
-			+		"Change location"
-			+	"</a>"
-			+"</div>"
+		current: "\
+			<div class=\"popup-content popup-current\">\
+				<a href=\"#page-locatie\"  data-rel=\"back\" data-direction=\"reverse\" data-transition=slide\" data-role=\"button\" class=\"popup-knop-change-location\">\
+					Change location\
+				</a>\
+			</div>\
+			"
 		,
 		full: "\
 			<div class=\"popup-content popup-full\">\
@@ -403,16 +409,17 @@ var GMap = {
 		return marker;
 	},
 	clickToPositionLocation: function( t , m ){
-		var toggle = ( arguments.length < 1 ) ? true : t,
-		marker = ( arguments[1] && (arguments[1] instanceof google.maps.Marker) ) ? m : undefined;
+		var toggle = ( typeof t === 'undefined' ) ? false : !!t,
+		marker = ( !(typeof m === "undefined") && ( m instanceof google.maps.Marker) ) ? m : undefined;
 		self = this;
 		if( m === undefined && toggle ){
-			console.log( "no marker available" );
+			console.log( "Error: no marker available" );
 			return;
 		}
 		if( toggle ){
 			this.mapClickListener = google.maps.event.addListener( this.map , 'click' , function( ltlng ){
 				marker.setPosition( ltlng.latLng );
+				self.geoLocation = ltlng.latLng;
 			} );
 		}
 		else{
