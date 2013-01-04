@@ -69,14 +69,6 @@ $(document).bind('pagechange' , function(){
 
 });
 
-$( document ).on('click' , '[ data-role="navbar" ] a' ,function(){  
-
-
-//		if( !$(event.target).parent().parent().hasClass( 'ui-btn-active' ) )  $(event.target).parent().parent().addClass( 'ui-btn-active' );
-
-
-});
-
 /*
 *	GOOGLE MAPS FUNCTIONS
 */
@@ -96,27 +88,28 @@ var GMap = {
 	{ type:'melding' , icon: 'images/dot_2.png' , popup: 'detail' , title: 'Meldingen'}
 	],
 	allMarkers: [],
+	activityMarkers: [],
 	isGeoSet: false,
 	geoRetryCount: 10,
 	geoRetryCountTotal: 10,
 	popupContent: {
-		current: "<div class=\"popup-content\">"
-			+	"<a href=\"#page-locatie\" data-transition=slide\" data-role=\"button\">"
+		current: "<div class=\"popup-content popup-current\">"
+			+	"<a href=\"#page-locatie\" data-transition=slide\" data-role=\"button\" class=\"popup-knop-change-location\">"
 			+		"Change location"
 			+	"</a>"
 			+"</div>"
 		,
 		full: "\
-			<div class=\"popup-content\">\
-				<a href=\"#page-detail\" data-transition=\"slide\" data-role=\"button\">\
+			<div class=\"popup-content popup-full\">\
+				<a href=\"#page-detail\" data-transition=\"slide\" data-role=\"button\" class=\"popup-knop-meer-info\">\
 					Zie meer informatie\
 				</a>\
 			</div>\
 			"
 		, 
 		detail:"\
-			<div class=\"popup-content\">\
-				<a href=\"#page-detail\" data-transition=\"slide\" data-role=\"button\">\
+			<div class=\"popup-content popup-detail\">\
+				<a href=\"#page-detail\" data-transition=\"slide\" data-role=\"button\" class=\"popup-knop-meer-info\">\
 					Zie meer informatie\
 				</a>\
 			</div>\
@@ -189,9 +182,10 @@ var GMap = {
 
 		for( var e in fm ){
 
-			this.allMarkers.push ( fm[e] );
+			this.activityMarkers.push ( fm[e] );
 		}
 
+		this.createInfoWindowListeners();
 
 		this.centerToPoint( { latitude:52.046521 , longitude:5.366448 } )
 		this.map.setZoom( 13 );
@@ -270,8 +264,51 @@ var GMap = {
 		return marker;
 	},
 	createInfoWindowListeners: function( m ) {
+		var marker = ( arguments.length > 1 ) ? m : false,
+		self = this;
+		
+		if( marker ){
+			marker.clickListener = google.maps.event.addListener( marker.marker , 'click' , function(){ 
+				marker.infoWindow.open(self.map,marker.marker)
+				self.closeInfoWindow( marker , true );
+			});
+		}
+		else{
+			$.each( this.allMarkers , function(i,e){ 
+				e.clickListener = google.maps.event.addListener( e.marker , 'click' , function(){ 
+					e.infoWindow.open(self.map,e.marker);
+					self.closeInfoWindow( e , true );
+				});
+			});
+		}
 
-	}
+		this.mapListener = google.maps.event.addListener( this.map , 'click' , function(){ 
+			self.closeInfoWindow();
+		});
+	},
+	closeInfoWindow: function( m, ex ) {
+		var marker = ( typeof ex === 'undefined' ) ? false : m,
+		exclude = ( typeof ex === 'undefined' ) ? false : !!ex; 
+
+		if(marker){
+
+			if(!exclude){
+				marker.infoWindow.close();
+			}
+			else{
+				$.each( this.allMarkers , function(i,e){
+					if( e !== marker ){
+						e.infoWindow.close();
+					}
+				});
+			}
+		}
+		else{
+			$.each( this.allMarkers , function(i,e){
+				e.infoWindow.close();
+			});
+		}
+	},
 	removeMarker: function( m ){
 
 		if( m instanceof google.maps.Marker){
@@ -321,14 +358,15 @@ var GMap = {
 				clickable: true,
 				icon: type['icon'],
 				title: type['title']
+			}),
+			infoWindow: new google.maps.InfoWindow({
+				content: content
 			})
 		};
 
+		this.allMarkers.push( marker );
+
 		return marker;
-		// Initialize marker mouse down listener && map mouse down listener
-		//self.markerMouseDown(type, html);
-		//self.markerDrag(type, html);
-		//self.mapMouseDown(type, html);
 	},
 	clickToPositionLocation: function( t , m ){
 		var toggle = ( arguments.length < 1 ) ? true : t,
