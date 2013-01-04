@@ -190,7 +190,7 @@
             <div data-role="header" class="header-balk-locatie">
 
 
-                        <a href="index.html" class="opties">opties</a>
+                        <a href="index.html" data-role="none" class="header-knop-opties">opties</a>
                         <span class="ui-title" />
                         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
 
@@ -268,7 +268,7 @@
         <!-- DETAIL PAGE -->
         <div data-role="subpage" id="page-detail"> 
             <div data-role="header" data-id="indexPersist" data-position="fixed">
-                        <a href="index.html" class="opties">opties</a>
+                        <a href="index.html" data-role="none" class="header-knop-opties">opties</a>
                         <span class="ui-title" />
                         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
                             <a href="index.html" data-role="none" class="header-knop-zoek">Zoek</a>
@@ -299,7 +299,7 @@
         <!-- ROUTE PAGE -->
         <div data-role="subpage" id="page-route"> 
             <div data-role="header" data-id="indexPersist" data-position="fixed" class="header-balk-route">
-                        <a href="index.html" class="opties">opties</a>
+                        <a href="index.html" data-role="none" class="header-knop-opties">opties</a>
                         <span class="ui-title" />
                         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
                             <a href="index.html" data-role="none" class="header-knop-zoek">Zoek</a>
@@ -323,10 +323,10 @@
             <div data-role="footer" class="footer-balk-route">  
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#page-activiteit" data-transition="slide" data-theme="c">Activiteiten
-						<span class="footer-icon-activiteiten"></span></a></li>
-                        <li><a href="#" class="ui-btn-active ui-state-persist" data-theme="c">Route
-						<span class="footer-icon-route"></span></a></li>
+                        <li><a href="#page-activiteit" data-transition="slide" data-theme="c">
+						Activiteiten<span class="footer-icon-activiteiten"></span></a></li>
+                        <li><a href="#" class="ui-btn-active ui-state-persist" data-theme="c">
+						Route<span class="footer-icon-route"></span></a></li>
                         <li><a href="#page-op-route" data-transition="slide" data-theme="c">Activiteiten op route</a></li>
                         <li><a href="#" class="ui-disabled" data-theme="c">Delen</a></li>
                     </ul>
@@ -403,10 +403,14 @@
             <div data-role="footer"> 
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#page-activiteit" data-transition="slide">Activiteiten</a></li>
-                         <li><a href="#page-route" data-transition="slide">Route</a></li>
-                        <li><a href="#" class="ui-btn-active ui-state-persist">Activiteiten op route</a></li>
-                        <li><a href="#" class="ui-disabled">Delen</a></li>
+                        <li><a href="#page-activiteit" data-transition="slide">
+						<span class="footer-icon-activiteiten"></span>Activiteiten</a></li>
+                         <li><a href="#page-route" data-transition="slide">
+						 <span class="footer-icon-route"></span>Route</a></li>
+                        <li><a href="#" class="ui-btn-active ui-state-persist">
+						<span class="footer-icon-activiteiten"></span>Activiteiten op route</a></li>
+                        <li><a href="#" class="ui-disabled">
+						<span class="footer-icon-delen"></span?Delen</a></li>
                     </ul>
                 </div><!-- /navbar -->
             </div> 

@@ -1146,24 +1146,32 @@ a.ui-link-inherit {
 	background-image:url(../images/footer-icon-delen.png);
 	width:20px;
 	height:20px;
+	display: block;
+	float: right
 }
 	
 .footer-icon-activiteiten{
 	background-image:url(../images/footer-icon-activiteiten.png);
 	width:20px;
 	height:20px;
+	display: block;
+	float: right
 }	
 
 .footer-icon-route{
 	background-image:url(../images/footer-icon-route.png);
 	width:20px;
 	height:20px;
+	display: block;
+	float: right
 }
 
 .footer-icon-delen{
 	background-image:url(../images/footer-icon-delen.png);
 	width:20px;
 	height:20px;
+	display: block;
+	float: right
 }		
 
 /*end icons*/
