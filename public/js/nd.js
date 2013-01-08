@@ -2,8 +2,27 @@ var NSD = NSD || {};
 
 (function($){
 
-//Gebruik
-// remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ) 
+//
+//	DEBUG
+//
+$(document).on( 'keypress' , '*' , function(e){
+	if(e.keyCode == 97){
+		GMap.setDirectionsFromGeo( { latitude:52.043763 , longitude:5.377985 }  );
+	}
+	else if( e.keyCode == 113 ){
+		GMap.removeDirections();
+	}
+	else if( e.keyCode == 115 ){
+		NSD.gotoActiviteitMarker( '#marker-koffie-location' );
+	}
+	else if( e.keyCode == 100 ){
+		NSD.setActiveNavButton('.footer-knop-route');
+	}
+}) ;
+
+//
+//	FUNCTIONS
+//
 var remainingHeightPercentage = function (arr, num) {
 
     if (typeof arr === undefined) return;
@@ -33,21 +52,79 @@ var remainingHeightPercentage = function (arr, num) {
         console.log(err.message);
     }
     return included;
-}
+};
 
-$(document).on( 'keypress' , '*' , function(e){
-	if(e.keyCode == 97){
-		GMap.testDir();
-	}
-	else if( e.keyCode == 115 ){
-		NSD.gotoActiviteitMarker( '#marker-koffie-location' );
-	}
-}) ;
+NSD.setActiveNavButton = function ( s , n ){
+	var navbar = ( typeof n === "undefined" ) ? 'div[data-role="navbar"]' : n ,
+	selector = s;
+	$( navbar ).find( '.ui-btn-active' ).removeClass( 'ui-btn-active ui-state-persist' );
+	$( navbar ).find( selector ).addClass( 'ui-btn-active ui-state-persist' );
+};
 
-$('.content-80').on( 'click' , '.list-a-op-route, .list-b-op-route, .list-c-op-route, .list-d-op-route, .list-e-op-route'  , function(e){
+NSD.gotoActiviteitMarker = function( s ){
+	var marker = GMap.getMarkerBySelector( s );
+	GMap.triggerInfoWindow( marker );
+	GMap.centerToPoint( marker.point );
+	GMap.map.setZoom( 14 );
+};
+
+
+//
+//	EVENTS
+//
+$(document).bind('pagechange' , function(e,d){
+
+	if($.mobile.activePage.attr('id') == 'page-locatie')
+	{
+		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-locatie') , $('.titelblok-locatie') , $('.bevestig-div-locatie') ] ));
+		$("#map-canvas-locatie").css({'height':contentHeight + 'px'});
+
+		GMap.init( 'map-canvas-locatie' );
+		GMap.runGeoPage();
+	}
+	else if ($.mobile.activePage.attr('id') == 'page-activiteit')
+	{
+
+		if( NSD.prevPageID === 'page-detail' ){
+			NSD.prevPageID = 'page-activiteit';
+		}
+		else if( NSD.prevPageID === 'page-op-route' ){
+			NSD.prevPageID = 'page-activiteit';
+		}
+		else{
+			var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
+			$("#map-canvas-activiteit").css({'height':contentHeight + 'px'});
+			GMap.init( 'map-canvas-activiteit' );
+			GMap.runActivityPage();
+		}
+
+		$( '.footer-balk-activiteit , .footer-balk-op-route' ).on( 'click' , '.activiteit-marker , .route-direction' , function(e){
+
+			NSD.setActiveNavButton( e.currentTarget );
+
+			if( $(e.currentTarget).hasClass('route-direction') ){
+				GMap.setDirectionsFromGeo( { latitude:52.043763 , longitude:5.377985 }  )
+			}
+			else{
+
+			}
+
+		});
+
+	}
+	else if ($.mobile.activePage.attr('id') == 'page-route')
+	{
+		//var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-route') , $('.footer-balk-route')  , $('.titelblok-route') ] ));
+		//$("#map-canvas-route").css({'height':contentHeight + 'px'});
+		//GMap.init( 'map-canvas-route' );
+	}
+	else if ( $.mobile.activePage.attr('id') == 'page-op-route' )
+	{
+
+	NSD.setActiveNavButton( '.lijst-activiteit-op-route' );
+	$('.lijst-op-route').on( 'click' , '.list-a-op-route, .list-b-op-route, .list-c-op-route, .list-d-op-route, .list-e-op-route'  , function(e){
 
 	var selector;
-
 	switch( $(e.currentTarget).attr('class').split(' ')[0] ){
 		case 'list-a-op-route':
 		selector = '#marker-koffie-location';
@@ -73,60 +150,6 @@ $('.content-80').on( 'click' , '.list-a-op-route, .list-b-op-route, .list-c-op-r
 
 });
 
-$('.footer-knop-route').on( 'click' , function(){
-	GMap.testDir();
-});
-
-NSD.gotoActiviteitMarker = function( s ){
-	var marker = GMap.getMarkerBySelector( s );
-	GMap.triggerInfoWindow( marker );
-	GMap.centerToPoint( marker.point );
-	GMap.map.setZoom( 14 )
-};
-
-$(document).bind('pagechange' , function(e,d){
-
-	if($.mobile.activePage.attr('id') == 'page-locatie')
-	{
-		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-locatie') , $('.titelblok-locatie') , $('.bevestig-div-locatie') ] ));
-		$("#map-canvas-locatie").css({'height':contentHeight + 'px'});
-
-		GMap.init( 'map-canvas-locatie' );
-		GMap.runGeoPage();
-
-		//$( '.bevestig-div-locatie' ).append( '<a href="#" data-role="button" id="test-button">test</a>' )
-		//$( '.bevestig-div-locatie' ).on( 'click' , '#test-button' ,function(){ GMap.runActivityPage() } )
-	}
-	else if ($.mobile.activePage.attr('id') == 'page-activiteit')
-	{
-
-
-		if( NSD.prevPageID === 'page-detail' ){
-
-		}
-		else if( NSD.prevPageID === 'page-op-route' ){
-
-		}
-		else{
-
-
-			var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
-			$("#map-canvas-activiteit").css({'height':contentHeight + 'px'});
-			
-			GMap.init( 'map-canvas-activiteit' );
-			GMap.runActivityPage();
-
-		}
-
-	}
-	else if ($.mobile.activePage.attr('id') == 'page-route')
-	{
-		var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-route') , $('.footer-balk-route')  , $('.titelblok-route') ] ));
-		$("#map-canvas-route").css({'height':contentHeight + 'px'});
-		GMap.init( 'map-canvas-route' );
-
-
-
 	}
 
 });
@@ -135,9 +158,9 @@ $(document).bind('pagebeforeshow' , function(e,d){
 	NSD.prevPageID = d.prevPage.attr('id');
 });
 
-/*
-*	GOOGLE MAPS FUNCTIONS
-*/
+//
+//	GOOGLE MAPS FUNCTIONS
+//
 var GMap = {
 	containerID: 'map_canvas',
 	defaultLocation: new google.maps.LatLng(52.2167, 5.1333),
@@ -349,6 +372,7 @@ var GMap = {
 			}
 	},
 	initDirections: function(){
+		this.removeDirections();
 		this.directionRenderer = new google.maps.DirectionsRenderer();
 		this.directionRenderer.setOptions( { suppressMarkers: true , draggable: true } );
 		this.directionRenderer.setMap(this.map);
@@ -358,6 +382,7 @@ var GMap = {
 	removeDirections: function(){
 		if( (typeof this.directionRenderer === 'undefined') || (typeof this.directionService === 'undefined') ) return;
 			this.directionRenderer.setMap( null );
+			delete this.directionRenderer;
 			delete this.directionService;
 	},
 	calculateDirections: function( s , e ){
@@ -380,9 +405,16 @@ var GMap = {
 		});
 
 	},
-	testDir: function( ){
+	setDirectionsFromGeo: function( l ){
+		var latlong = ( l instanceof google.maps.LatLng ) ? l : new google.maps.LatLng( l.latitude , l.longitude );
 		this.initDirections();
-		this.calculateDirections( this.geoLocation , new google.maps.LatLng( 52.043763 , 5.377985 ));
+		this.calculateDirections( this.geoLocation , latlong );
+	},
+	setDirections: function( s , e ){
+		var start = ( s instanceof google.maps.LatLng ) ? s : new google.maps.LatLng( s.latitude , s.longitude );
+		var end = ( e instanceof google.maps.LatLng ) ? e : new google.maps.LatLng( e.latitude , e.longitude );
+		this.initDirections();
+		this.calculateDirections( start , end );
 	},
 	createGeoMarker: function( g ){
 		var position =  ( g instanceof google.maps.LatLng ) ? g : new google.maps.LatLng( g.latitude , g.longitude ),

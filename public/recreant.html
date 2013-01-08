@@ -239,7 +239,7 @@
             </div> <!-- end header -->
 
 			
-			<div class="ui-body titelBlok titelblok-activiteit">
+	       <div class="ui-body titelBlok titelblok-activiteit">
                         <div class="titelFoto"></div>
                         <div class="titelHeader"><a href="#" data-role="button" data-theme="b"  data-inline="true"  data-mini="true" data-rel=back >terug</a>Activiteiten in jou buurt</div>
 						<div class="page-title-arrow"></div>
@@ -258,10 +258,10 @@
                 <div data-role="footer" class="footer-balk-activiteit" data-theme="c"> 
                     <div data-role="navbar"  >
                         <ul>
-                            <li><a href="#page-activiteit"  class="ui-btn-active ui-state-persist" data-transition="slide" data-theme="c">
+                            <li><a href="#page-activiteit"  class="ui-btn-active ui-state-persist activiteit-marker" id="footer-knop-activiteit-activiteit" data-transition="slide" data-theme="c">
                             <span class="footer-icon-activiteiten" ></span>Activiteiten</a></li>
 
-                             <li><a href="#" data-transition="slide" data-theme="c" class="footer-knop-route">
+                             <li><a href="#" data-transition="slide" data-theme="c" class="footer-knop-route route-direction" >
                              <span class="footer-icon-route"></span>Route</a></li>
 
                             <li><a href="#page-op-route"  data-transition="slide" data-theme="c">
@@ -307,74 +307,6 @@
 
 
 
-
-
-        <!-- ROUTE PAGE -->
-        <div data-role="subpage" id="page-route"> 
-            <div data-role="header" data-id="indexPersist" data-position="fixed" class="header-balk-route">
-                        <a href="index.html" data-role="none" class="header-knop-opties">opties</a>
-                        <span class="ui-title" />
-                        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-                            <a href="index.html" data-role="none" class="header-knop-zoek">Zoek</a>
-                            <a href="index.html" data-role="none" class="header-knop-help">Help</a>
-                        </div>
-            </div> <!-- end header -->
-
-                   <div class="ui-body titelBlok titelblok-route">
-                        <div class="titelFoto"></div>
-                        <div class="titelHeader"><a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> Route</div>
-						<div class="page-title-arrow"></div>
-                        <!--<div class="kopHeader"></div>-->
-                    </div>
-
-            <div data-role="none" >
-			<div class="map-container">
-                <div id="map-canvas-route"></div>
-			</div>
-
-            </div> <!-- end content -->
-
-            <div data-role="footer" data-theme="c" class="footer-balk-route">  
-                <div data-role="navbar">
-                    <ul>
-
-                        <li>
-                            <a href="#page-activiteit" data-transition="slide" data-theme="c">
-                                Activiteiten
-                                <span class="footer-icon-activiteiten"></span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="ui-btn-active ui-state-persist" data-theme="c">
-			Route 
-                                <span class="footer-icon-route"> </span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#page-op-route" data-transition="slide" data-theme="c">
-			Activiteiten op route
-                                <span class="footer-icon-activiteiten"></span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="ui-disabled" data-theme="c">
-                                Delen
-		          <span class="footer-icon-delen"></span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div><!-- /navbar -->
-            </div> 
-			
-        </div>  <!-- end page -->
-
-
-
-
         <!-- OP ROUTE PAGE -->
         <div data-role="subpage" id="page-op-route"> 
             <div data-role="header" data-id="indexPersist" data-position="fixed">
@@ -397,7 +329,7 @@
 			
                
 
-            <div data-role="content" class="content-80" data-theme="a">
+            <div data-role="content" class="lijst-op-route" data-theme="a">
                 <div >
                         <ul data-role="listview" data-inset="true">     
                             <li>
@@ -439,14 +371,14 @@
                 </div>
             </div> <!-- end content -->
 
-            <div data-role="footer"> 
+            <div data-role="footer" class="footer-balk-op-route"> 
                 <div data-role="navbar" >
                     <ul>
-                        <li><a href="#page-activiteit" data-transition="slide" data-theme="c">
+                        <li><a href="#page-activiteit" data-transition="slide" data-theme="c" class="activiteit-marker">
 						<span class="footer-icon-activiteiten" ></span>Activiteiten</a></li>
-                         <li><a href="#page-route" data-transition="slide" data-theme="c">
+                         <li><a href="#page-activiteit" data-transition="slide" data-theme="c" class="footer-knop-route route-direction" >
 						 <span class="footer-icon-route"></span>Route</a></li>
-                        <li><a href="#" class="ui-btn-active ui-state-persist" data-theme="c">
+                        <li><a href="#" class="ui-btn-active ui-state-persist lijst-activiteit-op-route" data-theme="c">
 						<span class="footer-icon-activiteiten"></span>Activiteiten op route</a></li>
                         <li><a href="#" class="ui-disabled" data-theme="c">
 						<span class="footer-icon-delen"></span>Delen</a></li>
