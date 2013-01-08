@@ -40,16 +40,49 @@ $(document).on( 'keypress' , '*' , function(e){
 		GMap.testDir();
 	}
 	else if( e.keyCode == 115 ){
-		var marker = GMap.getMarkerBySelector( '#marker-koffie-location' );
-		GMap.triggerInfoWindow( marker );
-		GMap.centerToPoint( marker.point );
+		NSD.gotoActiviteitMarker( '#marker-koffie-location' );
 	}
 }) ;
 
+$('.content-80').on( 'click' , '.list-a-op-route, .list-b-op-route, .list-c-op-route, .list-d-op-route, .list-e-op-route'  , function(e){
+
+	var selector;
+
+	switch( $(e.currentTarget).attr('class').split(' ')[0] ){
+		case 'list-a-op-route':
+		selector = '#marker-koffie-location';
+		break;
+		case 'list-b-op-route':
+		selector = '#marker-lunch-location';
+		break;
+		case 'list-c-op-route':
+		selector = '#marker-kinderboerderij-location';
+		break;
+		case 'list-d-op-route':
+		selector = '#marker-speurtocht-location';
+		break;
+		case 'list-e-op-route':
+		selector = '#marker-wild-location';
+		break;
+		default: 
+		selector = '#marker-koffie-location';
+		break;
+	};
+
+	NSD.gotoActiviteitMarker( selector );
+
+});
+
 $('.footer-knop-route').on( 'click' , function(){
-	alert( 'klik' )
 	GMap.testDir();
 });
+
+NSD.gotoActiviteitMarker = function( s ){
+	var marker = GMap.getMarkerBySelector( s );
+	GMap.triggerInfoWindow( marker );
+	GMap.centerToPoint( marker.point );
+	GMap.map.setZoom( 14 )
+};
 
 $(document).bind('pagechange' , function(e,d){
 
