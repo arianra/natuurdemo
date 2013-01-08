@@ -39,6 +39,11 @@ $(document).on( 'keypress' , '*' , function(e){
 	if(e.keyCode == 97){
 		GMap.testDir();
 	}
+	else if( e.keyCode == 115 ){
+		var marker = GMap.getMarkerBySelector( '#marker-koffie-location' );
+		GMap.triggerInfoWindow( marker );
+		GMap.centerToPoint( marker.point );
+	}
 }) ;
 
 $('.footer-knop-route').on( 'click' , function(){
@@ -62,15 +67,22 @@ $(document).bind('pagechange' , function(e,d){
 	else if ($.mobile.activePage.attr('id') == 'page-activiteit')
 	{
 
-		
-		if( NSD.prevPageID != 'page-detail'){
+
+		if( NSD.prevPageID === 'page-detail' ){
+
+		}
+		else if( NSD.prevPageID === 'page-op-route' ){
+
+		}
+		else{
+
 
 			var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-activiteit') , $('.footer-balk-activiteit') , $('.titelblok-activiteit') ] ));
 			$("#map-canvas-activiteit").css({'height':contentHeight + 'px'});
 			
 			GMap.init( 'map-canvas-activiteit' );
 			GMap.runActivityPage();
-			
+
 		}
 
 	}
@@ -166,8 +178,9 @@ var GMap = {
 
 		this.initGeo( ['updateGeo','centerToPoint'] );
 
-		this.centerToPoint( this.defaultLocation );
-		this.updateGeo( this.defaultLocation );
+		var location = ( typeof this.geoLocation === 'undefined' ) ? this.defaultLocation : this.geoLocation; 
+		this.centerToPoint( location );
+		this.updateGeo( location );
 
 		this.clickToPositionLocation( true , this.geoMarker.marker );
 
@@ -368,6 +381,23 @@ var GMap = {
 			self.closeInfoWindow();
 		});
 	},
+	triggerInfoWindow: function( m ){
+		var marker = ( m instanceof google.maps.Marker ) ? m : m.marker;
+		google.maps.event.trigger( marker , 'click' );
+
+	},
+	getMarkerBySelector: function( s ){
+		var selector = s,
+		marker;
+
+		for ( var m in this.allMarkers ){
+			if( this.allMarkers[m].selector === selector ){
+				marker = this.allMarkers[m];
+			}
+		}
+
+		return marker;
+	},
 	closeInfoWindow: function( m, ex ) {
 		var marker = ( typeof ex === 'undefined' ) ? false : m,
 		exclude = ( typeof ex === 'undefined' ) ? false : !!ex; 
@@ -410,8 +440,6 @@ var GMap = {
 		this.map.setCenter( this.defaultLocation );
 	},
 	centerToPoint: function( point ){
-		if( arguments.length < 1 ) return;
-
 		try{
 			var point = ( point instanceof google.maps.LatLng ) ? point : new google.maps.LatLng( point.latitude , point.longitude );
 			this.map.setCenter( point )
