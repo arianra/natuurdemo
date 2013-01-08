@@ -285,16 +285,16 @@ var GMap = {
 			if(error){
 				switch(error.code){
 					case error.TIMEOUT:
-						console.log('Timeout');
+						alert('Timeout');
 						break;
 					case error.POSITION_UNAVAILABLE:
-						console.log ('Position unavailable');
+						alert('Position unavailable');
 						break;
 					case error.PERMISSION_DENIED:
-						console.log ('Permission denied');
+						alert('Permission denied');
 						break;
 					case error.UNKNOWN_ERROR:
-						console.log ('Unknown error');
+						alert('Unknown error');
 						break;
 				}
 			}
