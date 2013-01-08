@@ -266,15 +266,15 @@ var GMap = {
 			}, function (err) {
 
 				console.log( "initGeo() -> getCurrentPosition() failed. retryCount: " + self.geoRetryCount + ". callback: " + callback );
-				self.handleNoGeolocation(err);
+				self.handleNoGeo(err);
 
 				if( self.geoRetryCount > 0 ){
 					self.geoRetryCount--;
-					self.intiGeo(callback);
+					self.initGeo(callback);
 				}
 
 
-			} , {timeout:120 , enableHighAccuracy: true});
+			} , {timeout:1200 , enableHighAccuracy: true});
 		}
 		 else {
 			// Browser doesn't support Geolocation
@@ -285,16 +285,16 @@ var GMap = {
 			if(error){
 				switch(error.code){
 					case error.TIMEOUT:
-						alert ('Timeout');
+						console.log('Timeout');
 						break;
 					case error.POSITION_UNAVAILABLE:
-						alert ('Position unavailable');
+						console.log ('Position unavailable');
 						break;
 					case error.PERMISSION_DENIED:
-						alert ('Permission denied');
+						console.log ('Permission denied');
 						break;
 					case error.UNKNOWN_ERROR:
-						alert ('Unknown error');
+						console.log ('Unknown error');
 						break;
 				}
 			}
