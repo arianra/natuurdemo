@@ -274,7 +274,7 @@ var GMap = {
 				}
 
 
-			} , {timeout:1200 , enableHighAccuracy: true});
+			} , {timeout:20000 , enableHighAccuracy: true});
 		}
 		 else {
 			// Browser doesn't support Geolocation
@@ -285,16 +285,16 @@ var GMap = {
 			if(error){
 				switch(error.code){
 					case error.TIMEOUT:
-						alert('Timeout');
+						alert('Geo location: Timeout');
 						break;
 					case error.POSITION_UNAVAILABLE:
-						alert('Position unavailable');
+						alert('Geo location: Position unavailable');
 						break;
 					case error.PERMISSION_DENIED:
-						alert('Permission denied');
+						alert('Geo location: Permission denied');
 						break;
 					case error.UNKNOWN_ERROR:
-						alert('Unknown error');
+						alert('Geo location: Unknown error');
 						break;
 				}
 			}
