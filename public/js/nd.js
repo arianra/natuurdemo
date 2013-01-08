@@ -274,7 +274,7 @@ var GMap = {
 				}
 
 
-			} , {timeout:20000 , enableHighAccuracy: true});
+			} , {timeout:60000 , enableHighAccuracy: true});
 		}
 		 else {
 			// Browser doesn't support Geolocation
