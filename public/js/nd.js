@@ -70,6 +70,59 @@ var NSD = NSD || {};
         GMap.map.setZoom(14);
     };
 
+    NSD.HTMLFab = {
+
+    	createElement: function( tag , content , attributes ){
+    		return { tag: tag, content: content , attributes: attributes };
+    	},
+    	render: function( element ){
+    		var parts = [];
+
+    		if( typeof element === "undefined" ) return;
+
+    		function renderAttributes( attributes ){
+    			var result = [];
+
+    			for( var name in attributes ){
+    				if( attributes[name].length == 0 ){
+    					result.push( " " + name );
+    				}
+    				else{
+    					result.push( " " + name + "=\"" + attributes[name] + "\"" );
+    				}
+    			}
+
+    			return result.join("");
+    		};
+
+    		function renderElement( element ){
+    			var self = this;
+
+    			if( typeof element === 'string' ){
+    				parts.push( element );
+    			}
+    			else if( !element.content || element.content.length == 0  ){
+    				parts.push( "<" + element.tag + renderAttributes( element.attributes ) + "/>" )
+    			}
+    			else {
+    				parts.push( "<" + element.tag + renderAttributes( element.attributes ) + ">");
+
+    				$.each( element.content , function(i,e){
+    					renderElement( e );
+    				});
+
+				parts.push( "</" + element.tag + ">" );
+    			}
+
+    		};
+
+    		renderElement( element );
+    		return parts.join("");
+    	}
+
+
+    };
+
 
     //
     // EVENTS
@@ -298,11 +351,20 @@ var NSD = NSD || {};
             fm.kinderboerderij = this.createMarker('#marker-kinderboerderij-location', this.markerTypes[2], rndLocations[2].latLng, this.popupContent.detail);
             fm.speurtocht = this.createMarker('#marker-speurtocht-location', this.markerTypes[2], rndLocations[3].latLng, this.popupContent.detail);
             fm.wild = this.createMarker('#marker-wild-location', this.markerTypes[4], rndLocations[4].latLng, this.popupContent.detail);
-            fm.uitkijkpost = this.createMarker('#marker-uitkijkpost-location', this.markerTypes[1], rndLocations[5].latLng, this.popupContent.full);
+            //fm.uitkijkpost = this.createMarker('#marker-uitkijkpost-location', this.markerTypes[1], rndLocations[5].latLng, this.popupContent.full);
+         	fm.uitkijkpost = this.createMarker('#marker-uitkijkpost-location', this.markerTypes[1], rndLocations[5].latLng, $('#popup-infowindow-full').html() );
 
-            for (var e in fm) {
+         	var test = this.createPopupContent( 
+         		'full',
+         		'#marker-dit-is-een-test',
+         		[
+         		NSD.HTMLFab.createElement( 'a' , 'something mama' , { href: 'http://ss.ss' , class: 'dit-is-een-class' } ),
+         		NSD.HTMLFab.createElement( 'div' , 'something mama' , { "data-role": 'niks' , class: 'dit-is-een-class-joh' , disabled: "" } )
+         		]
+         	 );
 
-                this.activityMarkers.push(fm[e]);
+            for (var e in fm) {		            
+            	this.activityMarkers.push(fm[e]);
             }
 
 
@@ -321,6 +383,36 @@ var NSD = NSD || {};
 
             this.createInfoWindowListeners();
 
+        },
+
+        // Pass c (content) as an array with element objects. Use NSD.HTMLFab.createElement( tag , content , attributes );
+        createPopupContent: function( t , s, c){
+        	var type = t,
+        	selector = s.substring(1),
+        	content = c,
+        	output;
+
+        	switch( type ){
+        		case 'full':
+        		output = $('#popup-infowindow-full'); 
+        		break;
+        		case 'detail':
+        		output = $('#popup-infowindow-detail');
+        		break;
+        		case 'current':
+        		output = $('#popup-infowindow-current');
+        		break;
+        	}
+
+	$(output).find('.popup-content').attr( 'id' , selector );
+
+        	if(  !(typeof content === "undefined") ){
+        		$.each( content , function(i,e){
+        			$(output).find('.popup-content').append( $( NSD.HTMLFab.render(e) ) );
+        		});
+        	}
+
+        	return output.html();
         },
         initGeo: function (c) {
             var self = this,
