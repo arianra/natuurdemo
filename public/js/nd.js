@@ -69,15 +69,16 @@ var NSD = NSD || {};
         GMap.map.setZoom(14);
         GMap.triggerInfoWindow(marker);
     };
-    /*
+
 
    NSD.Queue = function(){
         this.queueArray = [];
    };
+
    NSD.Queue.prototype.addToQueue = function( func , args){
-    this.queueArray.push( this.wrapCall( func , args ) )
-    }
-   };
+    this.queueArray.push( this.wrapCall( func , args ) );
+    };
+
    NSD.Queue.prototype.removeFromQueue = function( index , all ){
       var index = ( typeof index === 'number' ) ? i : 0,
       all = ( typeof all === 'undefined' ) ? false : !!all;
@@ -98,14 +99,13 @@ var NSD = NSD || {};
     };
     NSD.Queue.prototype.runQueue = function(){
         var self = this,
-        i = this.queuArray.length
-       while( i > 0 ){
-
+        i = this.queueArray.length
+       while( i-- > 0 ){
+            this.queueArray[0]();
+            this.removeFromQueue();
        }
+    };
 
-
-    } 
-*/
 
     NSD.HTMLFab = {
 
