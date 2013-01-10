@@ -72,7 +72,7 @@ var NSD = NSD || {};
 
     NSD.HTMLFab = {
 
-    	createElement: function( tag , content , attributes ){
+    	tag: function( tag , content , attributes ){
     		return { tag: tag, content: content , attributes: attributes };
     	},
     	render: function( element ){
@@ -84,12 +84,7 @@ var NSD = NSD || {};
     			var result = [];
 
     			for( var name in attributes ){
-    				if( attributes[name].length == 0 ){
-    					result.push( " " + name );
-    				}
-    				else{
-    					result.push( " " + name + "=\"" + attributes[name] + "\"" );
-    				}
+    				result.push( " " + name + "=\"" + attributes[name] + "\"" );
     			}
 
     			return result.join("");
@@ -101,7 +96,7 @@ var NSD = NSD || {};
     			if( typeof element === 'string' ){
     				parts.push( element );
     			}
-    			else if( !element.content || element.content.length == 0  ){
+    			else if( !element.content || element.content.length == 0 || typeof element.content === undefined ){
     				parts.push( "<" + element.tag + renderAttributes( element.attributes ) + "/>" )
     			}
     			else {
@@ -252,30 +247,6 @@ var NSD = NSD || {};
         isGeoSet: false,
         geoRetryCount: 5,
         geoRetryCountTotal: 5,
-        popupContent: {
-            current: "\
-			<div class=\"popup-content popup-current\">\
-				<a href=\"#page-locatie\"  data-rel=\"back\" data-direction=\"reverse\" data-transition=slide\" data-role=\"button\" class=\"popup-knop-change-location\">\
-					Change location\
-				</a>\
-			</div>\
-			",
-            full: "\
-			<div class=\"popup-content popup-full\">\
-				<a href=\"#page-detail\" data-transition=\"slide\" data-role=\"button\" class=\"popup-knop-meer-info\">\
-					Zie meer informatie\
-				</a>\
-			</div>\
-			",
-            detail: "\
-			<div class=\"popup-content popup-detail\">\
-				<a href=\"#page-detail\" data-transition=\"slide\" data-role=\"button\" class=\"popup-knop-meer-info\">\
-					Zie meer informatie\
-				</a>\
-			</div>\
-			"
-        },
-
         init: function (mapID) {
             this.clear();
             this.containerID = (typeof mapID === 'string') ? mapID : 'map_canvas';
@@ -346,28 +317,34 @@ var NSD = NSD || {};
                 e.latLng = new google.maps.LatLng(e.latitude, e.longitude);
             });
 
-            fm.koffie = this.createMarker('#marker-koffie-location', this.markerTypes[3], rndLocations[0].latLng, this.popupContent.detail);
-            fm.lunch = this.createMarker('#marker-lunch-location', this.markerTypes[3], rndLocations[1].latLng, this.popupContent.detail);
-            fm.kinderboerderij = this.createMarker('#marker-kinderboerderij-location', this.markerTypes[2], rndLocations[2].latLng, this.popupContent.detail);
-            fm.speurtocht = this.createMarker('#marker-speurtocht-location', this.markerTypes[2], rndLocations[3].latLng, this.popupContent.detail);
-            fm.wild = this.createMarker('#marker-wild-location', this.markerTypes[4], rndLocations[4].latLng, this.popupContent.detail);
-            //fm.uitkijkpost = this.createMarker('#marker-uitkijkpost-location', this.markerTypes[1], rndLocations[5].latLng, this.popupContent.full);
-         	fm.uitkijkpost = this.createMarker('#marker-uitkijkpost-location', this.markerTypes[1], rndLocations[5].latLng, $('#popup-infowindow-full').html() );
+            fm.koffie = this.createMarker('#marker-koffie-location', this.markerTypes[3], rndLocations[0].latLng, this.createPopupContent( 'full', 'marker-koffie-location'),
+            	{thumb:'images/thumb_huis.png' , title: 'Lekkere koffie', sub: 'bron: natuurmonumenten' } );
+            fm.lunch = this.createMarker('#marker-lunch-location', this.markerTypes[3], rndLocations[1].latLng, this.createPopupContent( 'full', 'marker-lunch-location'),
+            	{thumb:'images/thumb_kerk.png' , title: 'Broodjes' , sub: 'bron: natuurmonumenten'  } );
+            fm.kinderboerderij = this.createMarker('#marker-kinderboerderij-location', this.markerTypes[2], rndLocations[2].latLng,  this.createPopupContent( 'full', 'marker-kinderboederij-location'),
+            	{thumb:'images/thumb_huis.png' , title: 'Geiten en varkens' , sub: 'bron: natuurmonumenten'  } );
+            fm.speurtocht = this.createMarker('#marker-speurtocht-location', this.markerTypes[2], rndLocations[3].latLng,  this.createPopupContent( 'full', 'marker-speurtocht-location'),
+            	{thumb:'images/thumb_hert3.png' , title: 'Rondrennen in het bos', sub: 'bron: natuurmonumenten'  } );
+            fm.wild = this.createMarker('#marker-wild-location', this.markerTypes[4], rndLocations[4].latLng,  this.createPopupContent( 'full', 'marker-wild-location'),
+            	{thumb:'images/thumb_hert2.png' , title: 'Het wildleven', sub: 'bron: natuurmonumenten'  } );
+            fm.uitkijkpost = this.createMarker('#marker-uitkijkpost-location', this.markerTypes[1], rndLocations[5].latLng,  this.createPopupContent( 'full', 'marker-uitkijkpost-location'),
+            	{thumb: 'images/thumb_post.png', title: 'Hoog in de lucht' , sub: 'bron: natuurmonumenten'  } );
 
-         	var test = this.createPopupContent( 
-         		'full',
-         		'#marker-dit-is-een-test',
-         		[
-         		NSD.HTMLFab.createElement( 'a' , 'something mama' , { href: 'http://ss.ss' , class: 'dit-is-een-class' } ),
-         		NSD.HTMLFab.createElement( 'div' , 'something mama' , { "data-role": 'niks' , class: 'dit-is-een-class-joh' , disabled: "" } )
-         		]
-         	 );
+            for (var e in fm) {		
 
-            for (var e in fm) {		            
+            	var con = $( fm[e].content );
+
+            	con.find( '.ui-block-a' ).prepend( NSD.HTMLFab.render( NSD.HTMLFab.tag( 'img' , [] , { src:fm[e].thumb } ) ) );
+            	con.prepend( NSD.HTMLFab.render( NSD.HTMLFab.tag( 'p' , [fm[e].sub] ) ) );
+            	con.prepend( NSD.HTMLFab.render( NSD.HTMLFab.tag( 'h3' , [fm[e].title] ) ) );
+
+
+            	fm[e].content = $("<div>").append( con.clone() ).html();
+
+            	fm[e].infoWindow.setContent( $("<div>").append( con.clone() ).html() );
+
             	this.activityMarkers.push(fm[e]);
             }
-
-
 
             this.centerToPoint({
                 latitude: 52.046521,
@@ -385,11 +362,9 @@ var NSD = NSD || {};
 
         },
 
-        // Pass c (content) as an array with element objects. Use NSD.HTMLFab.createElement( tag , content , attributes );
-        createPopupContent: function( t , s, c){
+        createPopupContent: function( t , s ){
         	var type = t,
-        	selector = s.substring(1),
-        	content = c,
+        	selector = s,
         	output;
 
         	switch( type ){
@@ -405,12 +380,6 @@ var NSD = NSD || {};
         	}
 
 	$(output).find('.popup-content').attr( 'id' , selector );
-
-        	if(  !(typeof content === "undefined") ){
-        		$.each( content , function(i,e){
-        			$(output).find('.popup-content').append( $( NSD.HTMLFab.render(e) ) );
-        		});
-        	}
 
         	return output.html();
         },
@@ -541,7 +510,7 @@ var NSD = NSD || {};
         createGeoMarker: function (g) {
             var position = (g instanceof google.maps.LatLng) ? g : new google.maps.LatLng(g.latitude, g.longitude),
                 marker;
-            marker = this.createMarker('#marker-geo-location', this.markerTypes[0], position, this.popupContent.current);
+           marker = this.createMarker('#marker-geo-location', this.markerTypes[0], position, this.createPopupContent( 'current' , 'marker-geo-location' ));
             this.isGeoSet = true;
             return marker;
         },
@@ -630,19 +599,19 @@ var NSD = NSD || {};
             }
 
         },
-        createMarker: function (selector, type, point, content) {
+        createMarker: function (selector, type, point, content, detail) {
             var selector = selector,
                 type = type,
                 point = point,
                 content = content,
                 self = this,
+                detail = detail,
                 marker = {
                     selector: selector,
                     content: content,
                     point: (point instanceof google.maps.LatLng) ? point : new google.maps.LatLng(point.latitude, point.longitude),
                     type: type,
                     marker: new google.maps.Marker({
-                        map: this.map,
                         animation: 'BOUNCE',
                         position: point,
                         map: self.map,
@@ -654,6 +623,12 @@ var NSD = NSD || {};
                         content: content
                     })
                 };
+
+                if( typeof detail !== 'undefined' ){
+                	marker.thumb = detail.thumb;
+                	marker.title = detail.title;
+                	marker.sub = detail.sub;
+                }
 
             this.allMarkers.push(marker);
 
