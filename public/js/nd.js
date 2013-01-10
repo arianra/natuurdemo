@@ -70,6 +70,41 @@ var NSD = NSD || {};
         GMap.triggerInfoWindow(marker);
     };
 
+   NSD.Queue = function(){
+        this.queueArray = [];
+   };
+   NSD.Queue.prototype.addToQueue = function( func , args){
+    this.queueArray.push( this.wrapCall( func , args ) )
+    }
+   };
+   NSD.Queue.prototype.removeFromQueue = function( index , all ){
+      var index = ( typeof index === 'number' ) ? i : 0,
+      all = ( typeof all === 'undefined' ) ? false : !!all;
+
+      if( !all ){
+        this.queueArray.splice( index , 1 );
+      }
+      else{
+        this.queueArray.splice( index , this.queueArray.length );
+      }
+   };
+   NSD.Queue.prototype.wrapCall = function(f,a){
+      var func = f,
+      args = a;
+      return function(){
+        func.apply( this, args );
+      };
+    };
+    NSD.Queue.prototype.runQueue = function(){
+        var self = this,
+        i = this.queuArray.length
+       while( i > 0 ){
+        
+       }
+
+
+    } 
+
     NSD.HTMLFab = {
 
     	tag: function( tag , content , attributes ){
@@ -137,6 +172,12 @@ var NSD = NSD || {};
             if (NSD.prevPageID === 'page-detail') {
                 NSD.prevPageID = 'page-activiteit';
             } else if (NSD.prevPageID === 'page-op-route') {
+                
+                if( NSD.isSetOpRoute ){
+                    NSD.gotoActiviteitMarker(NSD.opRouteSelector);
+                }
+
+                NSD.isSetOpRoute = false;
                 NSD.prevPageID = 'page-activiteit';
             } else {
                 var contentHeight = Math.round(remainingHeightPercentage([$('.header-balk-activiteit'), $('.footer-balk-activiteit'), $('.titelblok-activiteit')]));
@@ -149,7 +190,7 @@ var NSD = NSD || {};
 
             $('.footer-balk-activiteit , .footer-balk-op-route').on('click', '.activiteit-marker , .route-direction', function (e) {
 
-                NSD.setActiveNavButton(e.currentTarget);
+               NSD.setActiveNavButton( $(e.currentTarget) );
 
                 if ($(e.currentTarget).hasClass('route-direction')) {
                     GMap.setDirectionsFromGeo({
@@ -157,7 +198,6 @@ var NSD = NSD || {};
                         longitude: 5.377985
                     });
                 } else {
-
                 }
 
             });
@@ -195,7 +235,9 @@ var NSD = NSD || {};
                         break;
                 }
 
-                NSD.gotoActiviteitMarker(selector);
+                NSD.opRouteSelector = selector;
+                NSD.isSetOpRoute = true;
+                //NSD.gotoActiviteitMarker(selector);
 
             });
 
@@ -215,7 +257,7 @@ var NSD = NSD || {};
         defaultLocation: new google.maps.LatLng(52.2167, 5.1333),
         defaultOptions: {
             zoom: 12,
-            disableDefaultUI: true,
+            disableDefaultUI: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         },
         markerTypes: [{
@@ -323,13 +365,13 @@ var NSD = NSD || {};
             	{thumb:'images/thumb_huis.png' , title: 'Lekkere koffie', sub: 'bron: natuurmonumenten' } );
             fm.lunch = this.createMarker('#marker-lunch-location', this.markerTypes[3], rndLocations[1].latLng, this.createPopupContent( 'full', 'marker-lunch-location'),
             	{thumb:'images/thumb_kerk.png' , title: 'Broodjes' , sub: 'bron: natuurmonumenten'  } );
-            fm.kinderboerderij = this.createMarker('#marker-kinderboerderij-location', this.markerTypes[2], rndLocations[2].latLng,  this.createPopupContent( 'full', 'marker-kinderboederij-location'),
+            fm.kinderboerderij = this.createMarker('#marker-kinderboerderij-location', this.markerTypes[2], rndLocations[2].latLng,  this.createPopupContent( 'full', 'marker-kinderboerderij-location'),
             	{thumb:'images/thumb_huis.png' , title: 'Geiten en varkens' , sub: 'bron: natuurmonumenten'  } );
             fm.speurtocht = this.createMarker('#marker-speurtocht-location', this.markerTypes[2], rndLocations[3].latLng,  this.createPopupContent( 'full', 'marker-speurtocht-location'),
             	{thumb:'images/thumb_hert3.png' , title: 'Rondrennen in het bos', sub: 'bron: natuurmonumenten'  } );
             fm.wild = this.createMarker('#marker-wild-location', this.markerTypes[4], rndLocations[4].latLng,  this.createPopupContent( 'full', 'marker-wild-location'),
             	{thumb:'images/thumb_hert2.png' , title: 'Het wildleven', sub: 'bron: natuurmonumenten'  } );
-            fm.uitkijkpost = this.createMarker('#marker-uitkijkpost-location', this.markerTypes[1], rndLocations[5].latLng,  this.createPopupContent( 'full', 'marker-uitkijkpost-location'),
+            fm.uitkijkpost = this.createMarker('#marker-uitkijkpost-location', this.markerTypes[1], rndLocations[5].latLng,  this.createPopupContent( 'detail', 'marker-uitkijkpost-location'),
             	{thumb: 'images/thumb_post.png', title: 'Hoog in de lucht' , sub: 'bron: natuurmonumenten'  } );
 
             for (var e in fm) {		
