@@ -65,9 +65,9 @@ var NSD = NSD || {};
 
     NSD.gotoActiviteitMarker = function (s) {
         var marker = GMap.getMarkerBySelector(s);
-        GMap.triggerInfoWindow(marker);
         GMap.centerToPoint(marker.point);
         GMap.map.setZoom(14);
+        GMap.triggerInfoWindow(marker);
     };
 
     NSD.HTMLFab = {
@@ -162,10 +162,12 @@ var NSD = NSD || {};
 
             });
 
-        } else if ($.mobile.activePage.attr('id') === 'page-route') {
-            //var contentHeight = Math.round(remainingHeightPercentage( [ $('.header-balk-route') , $('.footer-balk-route')  , $('.titelblok-route') ] ));
-            //$("#map-canvas-route").css({'height':contentHeight + 'px'});
-            //GMap.init( 'map-canvas-route' );
+            $('#map-canvas-activiteit').on( 'click' , '.popup-knop-stippel-route' , function(e){
+                var markerSelector =  $(e.currentTarget).parentsUntil( '#page-activiteit' , '.popup-content' ).attr( 'id' );
+                
+                GMap.setDirectionsFromGeo( GMap.getMarkerBySelector( '#'+markerSelector ).point  );
+            });
+
         } else if ($.mobile.activePage.attr('id') === 'page-op-route') {
 
             NSD.setActiveNavButton('.lijst-activiteit-op-route');
@@ -333,15 +335,11 @@ var NSD = NSD || {};
             for (var e in fm) {		
 
             	var con = $( fm[e].content );
-
             	con.find( '.ui-block-a' ).prepend( NSD.HTMLFab.render( NSD.HTMLFab.tag( 'img' , [] , { src:fm[e].thumb } ) ) );
-            	con.prepend( NSD.HTMLFab.render( NSD.HTMLFab.tag( 'p' , [fm[e].sub] ) ) );
-            	con.prepend( NSD.HTMLFab.render( NSD.HTMLFab.tag( 'h3' , [fm[e].title] ) ) );
-
-
-            	fm[e].content = $("<div>").append( con.clone() ).html();
-
-            	fm[e].infoWindow.setContent( $("<div>").append( con.clone() ).html() );
+            	con.find( '.ui-block-b' ).prepend( NSD.HTMLFab.render( NSD.HTMLFab.tag( 'p' , [fm[e].sub] ) ) );
+            	con.find( '.ui-block-b' ).prepend( NSD.HTMLFab.render( NSD.HTMLFab.tag( 'h3' , [fm[e].title] ) ) );
+            	fm[e].content = $("<div>").append( con ).html();
+            	fm[e].infoWindow.setContent( $("<div>").append( con ).html() );
 
             	this.activityMarkers.push(fm[e]);
             }
@@ -539,7 +537,6 @@ var NSD = NSD || {};
         triggerInfoWindow: function (m) {
             var marker = (m instanceof google.maps.Marker) ? m : m.marker;
             google.maps.event.trigger(marker, 'click');
-
         },
         getMarkerBySelector: function (s) {
             var selector = s,
@@ -599,13 +596,14 @@ var NSD = NSD || {};
             }
 
         },
-        createMarker: function (selector, type, point, content, detail) {
+        createMarker: function (selector, type, point, content, detail , info) {
             var selector = selector,
                 type = type,
                 point = point,
                 content = content,
                 self = this,
                 detail = detail,
+                info = ( typeof info === 'undefined' ) ? true : !!info;
                 marker = {
                     selector: selector,
                     content: content,
@@ -619,10 +617,13 @@ var NSD = NSD || {};
                         icon: type['icon'],
                         title: type['title']
                     }),
-                    infoWindow: new google.maps.InfoWindow({
+                };
+
+                if( info ){
+                    marker.infoWindow = new google.maps.InfoWindow({
                         content: content
                     })
-                };
+                }
 
                 if( typeof detail !== 'undefined' ){
                 	marker.thumb = detail.thumb;
@@ -634,8 +635,13 @@ var NSD = NSD || {};
 
             return marker;
         },
+        createInfoWindow: function( m ){
+            m.infoWindow = new google.maps.InfoWindow({
+                        content: m.content
+                    })
+        },
         clickToPositionLocation: function (t, m) {
-            var toggle = (typeof t === 'undefined') ? false : !! t,
+            var toggle = (typeof t === 'undefined') ? false : !!t,
                 marker = (!(typeof m === "undefined") && (m instanceof google.maps.Marker)) ? m : undefined;
             self = this;
             if (m === undefined && toggle) {

@@ -250,7 +250,7 @@
                     </div>
 					
 					<!-- origin <div data-role="content" class="main"> -->
-					<div data-role="none" >
+	   <div  >
 
 					<div class="map-container">
 						<div id="map-canvas-activiteit"></div> 
@@ -401,29 +401,26 @@
 
         <div data-role="subpage" id="popup-infowindow-full">
             <div class="popup-content popup-full">
+
                 <div class='ui-grid-a'>
-                    <div class="ui-block-a">
-                    </div>
-                    <div class="ui-block-b">
-                        <div data-role="controlgroup" data-mini="true">
-                                <a href="#page-locatie"  data-rel="back" data-direction="reverse" data-transition="slide" data-role="button" class="popup-knop-meer-info">
-                                Informatie
-                            </a>
-                            <a href="#page-locatie"  data-rel="back" data-direction="reverse" data-transition="slide" data-role="button" class="popup-knop-meer-info">
-                                Stippel route
-                            </a>
-                        </div>
-                    </div>
+                    <div class="ui-block-a"></div>
+                    <div class="ui-block-b"></div>
                 </div>
+
+                <div data-role="controlgroup" data-mini="true">
+                    <a href="#page-detail"  data-transition="slide" data-role="button" class="popup-knop-meer-info">Informatie</a>
+                    <a href="#"  data-transition="slide" data-role="button" class="popup-knop-stippel-route">Stippel route</a>
+                </div>
+
             </div>
         </div> 
 
         <div data-role="subpage" id="popup-infowindow-detail">
             <div class="popup-content popup-detail">
-                <a href="#page-locatie"  data-rel="back" data-direction="reverse" data-transition="slide" data-role="button" class="popup-knop-meer-info">
+                <a href="#page-detail"   data-transition="slide" data-role="button" class="popup-knop-meer-info">
                     Informatie
                 </a>
-                <a href="#page-locatie"  data-rel="back" data-direction="reverse" data-transition="slide" data-role="button" class="popup-knop-meer-info">
+                <a href="#"  data-direction="reverse" data-transition="slide" data-role="button" class="popup-knop-stippel-route">
                     Stippel route
                 </a>
             </div>
