@@ -69,6 +69,7 @@ var NSD = NSD || {};
         GMap.map.setZoom(14);
         GMap.triggerInfoWindow(marker);
     };
+    /*
 
    NSD.Queue = function(){
         this.queueArray = [];
@@ -99,11 +100,12 @@ var NSD = NSD || {};
         var self = this,
         i = this.queuArray.length
        while( i > 0 ){
-        
+
        }
 
 
     } 
+*/
 
     NSD.HTMLFab = {
 
