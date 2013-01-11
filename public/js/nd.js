@@ -70,7 +70,6 @@ var NSD = NSD || {};
         GMap.triggerInfoWindow(marker);
     };
 
-
    NSD.Queue = function(){
         this.queueArray = [];
    };
@@ -79,9 +78,9 @@ var NSD = NSD || {};
     this.queueArray.push( this.wrapCall( func , args ) );
     };
 
-   NSD.Queue.prototype.removeFromQueue = function( index , all ){
-      var index = ( typeof index === 'number' ) ? i : 0,
-      all = ( typeof all === 'undefined' ) ? false : !!all;
+   NSD.Queue.prototype.removeFromQueue = function( i , a ){
+      var index = ( typeof i === 'number' ) ? i : 0,
+      all = ( typeof a === 'undefined' ) ? false : !!a;
 
       if( !all ){
         this.queueArray.splice( index , 1 );
@@ -93,13 +92,14 @@ var NSD = NSD || {};
    NSD.Queue.prototype.wrapCall = function(f,a){
       var func = f,
       args = a;
-      return function(){
+      return function(){ 
         func.apply( this, args );
       };
     };
     NSD.Queue.prototype.runQueue = function(){
         var self = this,
-        i = this.queueArray.length
+        i = this.queueArray.length;
+      
        while( i-- > 0 ){
             this.queueArray[0]();
             this.removeFromQueue();
@@ -366,15 +366,15 @@ var NSD = NSD || {};
             fm.koffie = this.createMarker('#marker-koffie-location', this.markerTypes[3], rndLocations[0].latLng, this.createPopupContent( 'full', 'marker-koffie-location'),
             	{thumb:'images/thumb_huis.png' , title: 'Lekkere koffie', sub: 'bron: natuurmonumenten' } );
             fm.lunch = this.createMarker('#marker-lunch-location', this.markerTypes[3], rndLocations[1].latLng, this.createPopupContent( 'full', 'marker-lunch-location'),
-            	{thumb:'images/thumb_kerk.png' , title: 'Broodjes' , sub: 'bron: natuurmonumenten'  } );
+            	{thumb:'images/thumb_kerk.png' , title: 'Pannenkoekenrestaurant de Veldkamp' , sub: 'Bron: Natuurmonumenten'  } );
             fm.kinderboerderij = this.createMarker('#marker-kinderboerderij-location', this.markerTypes[2], rndLocations[2].latLng,  this.createPopupContent( 'full', 'marker-kinderboerderij-location'),
-            	{thumb:'images/thumb_huis.png' , title: 'Geiten en varkens' , sub: 'bron: natuurmonumenten'  } );
+            	{thumb:'images/thumb_huis.png' , title: 'Beleef het burlen van edelherten per fiets en te voet' , sub: 'Bron: Epenaren.nl'  } );
             fm.speurtocht = this.createMarker('#marker-speurtocht-location', this.markerTypes[2], rndLocations[3].latLng,  this.createPopupContent( 'full', 'marker-speurtocht-location'),
-            	{thumb:'images/thumb_hert3.png' , title: 'Rondrennen in het bos', sub: 'bron: natuurmonumenten'  } );
+            	{thumb:'images/thumb_hert3.png' , title: 'Bezoekerscentrum Veluwezoom (speurtocht)', sub: 'Bron: Natuurmonumenten'  } );
             fm.wild = this.createMarker('#marker-wild-location', this.markerTypes[4], rndLocations[4].latLng,  this.createPopupContent( 'full', 'marker-wild-location'),
-            	{thumb:'images/thumb_hert2.png' , title: 'Het wildleven', sub: 'bron: natuurmonumenten'  } );
+            	{thumb:'images/thumb_hert2.png' , title: 'Jachthuis Sint Hubertus in De Hoge Veluwe', sub: 'Bron: Stichting Nationaal park Hoge Veluwe'  } );
             fm.uitkijkpost = this.createMarker('#marker-uitkijkpost-location', this.markerTypes[1], rndLocations[5].latLng,  this.createPopupContent( 'detail', 'marker-uitkijkpost-location'),
-            	{thumb: 'images/thumb_post.png', title: 'Hoog in de lucht' , sub: 'bron: natuurmonumenten'  } );
+            	{thumb: 'images/thumb_post.png', title: 'Kootwijk uitkijktoren Kootwijker Zandverstuiving' , sub: 'Bron: Staatbosbeheer'  } );
 
             for (var e in fm) {		
 
@@ -392,7 +392,7 @@ var NSD = NSD || {};
                 latitude: 52.046521,
                 longitude: 5.366448
             })
-            this.map.setZoom(13);
+            this.map.setZoom(9);
 
             if (!this.geoLocation) {
                 this.initGeo(['updateGeo']);
