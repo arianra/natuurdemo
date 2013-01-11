@@ -218,7 +218,7 @@ var NSD = NSD || {};
                 var selector;
                 switch ($(e.currentTarget).attr('class').split(' ')[0]) {
                     case 'list-a-op-route':
-                        selector = '#marker-koffie-location';
+                        selector = '#marker-uitkijkpost-location';
                         break;
                     case 'list-b-op-route':
                         selector = '#marker-lunch-location';
@@ -233,7 +233,7 @@ var NSD = NSD || {};
                         selector = '#marker-wild-location';
                         break;
                     default:
-                        selector = '#marker-koffie-location';
+                        selector = '#marker-uitkijkpost-location';
                         break;
                 }
 
@@ -363,8 +363,10 @@ var NSD = NSD || {};
                 e.latLng = new google.maps.LatLng(e.latitude, e.longitude);
             });
 
-            fm.koffie = this.createMarker('#marker-koffie-location', this.markerTypes[3], rndLocations[0].latLng, this.createPopupContent( 'full', 'marker-koffie-location'),
-            	{thumb:'images/thumb_huis.png' , title: 'Lekkere koffie', sub: 'bron: natuurmonumenten' } );
+            fm.uitkijkpost = this.createMarker('#marker-uitkijkpost-location', this.markerTypes[1], rndLocations[5].latLng,  this.createPopupContent( 'detail', 'marker-uitkijkpost-location'),
+                        {thumb: 'images/thumb_post.png', title: 'Kootwijk uitkijktoren Kootwijker Zandverstuiving' , sub: 'Bron: Staatbosbeheer'  } );
+          //  fm.koffie = this.createMarker('#marker-koffie-location', this.markerTypes[3], rndLocations[0].latLng, this.createPopupContent( 'full', 'marker-koffie-location'),
+           // 	{thumb:'images/thumb_huis.png' , title: 'Lekkere koffie', sub: 'bron: natuurmonumenten' } );
             fm.lunch = this.createMarker('#marker-lunch-location', this.markerTypes[3], rndLocations[1].latLng, this.createPopupContent( 'full', 'marker-lunch-location'),
             	{thumb:'images/thumb_kerk.png' , title: 'Pannenkoekenrestaurant de Veldkamp' , sub: 'Bron: Natuurmonumenten'  } );
             fm.kinderboerderij = this.createMarker('#marker-kinderboerderij-location', this.markerTypes[2], rndLocations[2].latLng,  this.createPopupContent( 'full', 'marker-kinderboerderij-location'),
@@ -373,8 +375,6 @@ var NSD = NSD || {};
             	{thumb:'images/thumb_hert3.png' , title: 'Bezoekerscentrum Veluwezoom (speurtocht)', sub: 'Bron: Natuurmonumenten'  } );
             fm.wild = this.createMarker('#marker-wild-location', this.markerTypes[4], rndLocations[4].latLng,  this.createPopupContent( 'full', 'marker-wild-location'),
             	{thumb:'images/thumb_hert2.png' , title: 'Jachthuis Sint Hubertus in De Hoge Veluwe', sub: 'Bron: Stichting Nationaal park Hoge Veluwe'  } );
-            fm.uitkijkpost = this.createMarker('#marker-uitkijkpost-location', this.markerTypes[1], rndLocations[5].latLng,  this.createPopupContent( 'detail', 'marker-uitkijkpost-location'),
-            	{thumb: 'images/thumb_post.png', title: 'Kootwijk uitkijktoren Kootwijker Zandverstuiving' , sub: 'Bron: Staatbosbeheer'  } );
 
             for (var e in fm) {		
 
