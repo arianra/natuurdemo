@@ -161,6 +161,8 @@ var NSD = NSD || {};
 		imageTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "image" , "" , {src: marker.image} ) ),
 		tekstTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "p", marker.text ) );
 
+		
+
 		$('.content-detail-titel').html("");
 		$( "<div/>" , { html: titleTag + subTag } ).appendTo( '.content-detail-titel' );
 
@@ -169,6 +171,8 @@ var NSD = NSD || {};
 
 		$('.content-detail-tekst').html("");
 		$( "<div/>" , { html: tekstTag } ).appendTo( '.content-detail-tekst' );
+
+		$( '#page-detail .main' ).fadeIn( 'fast' ) ;
 	};
 
 
@@ -193,6 +197,7 @@ var NSD = NSD || {};
 
 		$('#map-canvas-activiteit').on('click', '.popup-knop-meer-info', function(e) {
 			var markerSelector = $(e.currentTarget).parentsUntil('#page-activiteit', '.popup-content').attr('id');
+			$( '#page-detail .main' ).hide( false ) ;
 			NSD.pageQueues.detail.addToQueue( NSD.updateDetailPage , [markerSelector] )
 		});
 
