@@ -394,35 +394,35 @@ var NSD = NSD || {};
 				title: 'Kootwijk uitkijktoren Kootwijker Zandverstuiving',
 				sub: 'Bron: Staatbosbeheer',
 				image: 'images/full_post.png',
-				text: 'test'
+				text: 'Zandverstuivingen ontstonden in het verleden doordat de heidevelden werden overbegraasd en te veel werden afgeplagd. De heideplaggen werden gebruikt in de potstal en als bemesting van het bouwland. Als er te veel werd geplagd kon de hei zich niet meer herstellen. Een andere schadelijke activiteiten was het maken van soms honderden meters brede karrensporen.\nDe wind zorgde er dan voor dat het stuifzand zich steeds verder verspreidde waardoor de zandverstuiving steeds groter werd. In een grote zandverstuiving kunnen door de wind duinen ontstaan. Langs de rand van een zandverstuiving ligt meestal een hoge zandwal, waar het zand zich op verzamelt. Soms werden hele dorpen bedreigd door het oprukkende zand. Zo kon een enkele storm vanuit de zandverstuiving een oogst door een dunne zandlaag op de kwetsbare plantjes vernietigen'
 			});
 			fm.lunch = this.createMarker('#marker-lunch-location', this.markerTypes[3], rndLocations[1].latLng, this.createPopupContent('full', 'marker-lunch-location'), {
 				thumb: 'images/thumb_kerk.png',
 				title: 'Pannenkoekenrestaurant de Veldkamp',
 				sub: 'Bron: Natuurmonumenten',
 				image: 'images/full_kerk.png',
-				text: 'test'
+				text: 'Sfeervol en eigentijds ingericht pannenkoekenrestaurant, gelegen in Epe op de Veluwe. Ambachtelijk gebakken pannenkoeken met schitterende open keuken.'
 			});
 			fm.kinderboerderij = this.createMarker('#marker-kinderboerderij-location', this.markerTypes[2], rndLocations[2].latLng, this.createPopupContent('full', 'marker-kinderboerderij-location'), {
 				thumb: 'images/thumb_huis.png',
 				title: 'Beleef het burlen van edelherten per fiets en te voet',
 				sub: 'Bron: Epenaren.nl',
 				image: 'images/full_huis.png',
-				text: 'test'
+				text: 'Het edelhert is de grootste wildsoort die in Nederland voorkomt. Op heldere koude avonden en ochtenden is het oergeluid van de herten te horen, het zogenaamde burlen. Het VVV laat ons weten dat er weer diverse excursies worden georganiseerd om dit fenomeen te beleven. \n\nVanaf begin september tot half oktober zijn de edelherten op vrijersvoeten. Als de mannetjes de vrouwtjes het hof maken en hun concurrenten hardhandig bevechten, gaat dat met een enorm lawaai gepaard. Burlen heet die oerschreeuw van het edelhert, een geluid dat natuurliefhebbers keer op keer de rillingen bezorgt. Ook breken er soms gevechten uit waarbij men de herten met de geweien tegen elkaar kan horen slaan. \n\nOm naar deze geluiden te luisteren worden er verschillende tochten door het Kroondomein georganiseerd in samenwerking met natuurrondleidingen G.B. Rekers en natuurgids Jan Niebeek.'
 			});
 			fm.speurtocht = this.createMarker('#marker-speurtocht-location', this.markerTypes[2], rndLocations[3].latLng, this.createPopupContent('full', 'marker-speurtocht-location'), {
 				thumb: 'images/thumb_hert3.png',
 				title: 'Bezoekerscentrum Veluwezoom (speurtocht)',
 				sub: 'Bron: Natuurmonumenten',
 				image: 'images/full_hert3.png',
-				text: 'test'
+				text: 'Bezoekerscentrum Veluwezoom is een prima begin- of eindpunt van een dagje Nationaal Park Veluwezoom. Het ligt bij Rheden, ten oosten van Arnhem. Neem ook een kijkje bij de VVV-post en de brasserie in dit fraaie boerderijencomplex.\nBekijk de mooie expositie, de leuke winkel en de gezellige tekenhoek in Bezoekerscentrum Veluwezoom. In de kinderkuil kunnen kinderen verkleed als wild zwijn spelen en lekker lui op hun rug naar informatieve filmpjes kijken.'
 			});
 			fm.wild = this.createMarker('#marker-wild-location', this.markerTypes[4], rndLocations[4].latLng, this.createPopupContent('full', 'marker-wild-location'), {
 				thumb: 'images/thumb_hert2.png',
 				title: 'Jachthuis Sint Hubertus in De Hoge Veluwe',
 				sub: 'Bron: Stichting Nationaal park Hoge Veluwe',
 				image: 'images/full_hert2.png',
-				text: 'test'
+				text: 'Het monumentale gebouw \'Jachthuis Sint Hubertus\' is gebouwd naar een ontwerp van de architect H.P. Berlage. Bij de vormgeving zijn de motieven uit de legende van St. Hubertus gebruikt. Het jachthuis en de tuinen rondom de vijver zijn het hele jaar open voor bezoekers.'
 			});
 			for(var e in fm) {
 
