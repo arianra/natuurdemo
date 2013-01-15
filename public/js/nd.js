@@ -79,7 +79,7 @@ var NSD = NSD || {};
 
 	NSD.Queue.prototype.removeFromQueue = function(i, a) {
 		var index = (typeof i === 'number') ? i : 0,
-			all = (typeof a === 'undefined') ? false : !! a;
+		all = (typeof a === 'undefined') ? false : !!a;
 
 		if(!all) {
 			this.queueArray.splice(index, 1);
@@ -89,14 +89,14 @@ var NSD = NSD || {};
 	};
 	NSD.Queue.prototype.wrapCall = function(f, a) {
 		var func = f,
-			args = a;
+		args = a;
 		return function() {
 			func.apply(this, args);
 		};
 	};
 	NSD.Queue.prototype.runQueue = function() {
 		var self = this,
-			i = this.queueArray.length;
+		i = this.queueArray.length;
 
 		if(i === 0) return;
 
@@ -161,6 +161,25 @@ var NSD = NSD || {};
 
 	};
 
+	NSD.updateDetailPage = function(s){
+		var marker = GMap.getMarkerBySelector("#"+s),
+		titleTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "h3" , marker.title  ) ),
+		subTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "h4" , marker.sub  ) ),
+		imageTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "image" , "" , {src: marker.image} ) ),
+		tekstTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "p", marker.text ) );
+
+
+
+		$('.content-detail-titel').html("");
+		$( "<div/>" , { html: titleTag + subTag } ).appendTo( '.content-detail-titel' );
+
+		$('.content-detail-image').html("");
+		$( "<div/>" , { html: imageTag } ).appendTo( '.content-detail-image' );
+
+		$('.content-detail-tekst').html("");
+		$( "<div/>" , { html: tekstTag } ).appendTo( '.content-detail-tekst' );
+	};
+
 
 	//
 	// EVENTS
@@ -183,7 +202,7 @@ var NSD = NSD || {};
 
 		$('#map-canvas-activiteit').on('click', '.popup-knop-meer-info', function(e) {
 			var markerSelector = $(e.currentTarget).parentsUntil('#page-activiteit', '.popup-content').attr('id');
-			//NSD.pageQueues.detail.addQueue(  )
+			NSD.pageQueues.detail.addToQueue( NSD.updateDetailPage , [markerSelector] )
 		});
 
 	});
@@ -409,7 +428,6 @@ var NSD = NSD || {};
 				image: 'images/full_hert2.png',
 				text: 'test'
 			});
-
 			for(var e in fm) {
 
 				var con = $(fm[e].content);
@@ -423,7 +441,6 @@ var NSD = NSD || {};
 
 				this.activityMarkers.push(fm[e]);
 			}
-
 			this.centerToPoint({
 				latitude: 52.046521,
 				longitude: 5.366448
@@ -706,6 +723,8 @@ var NSD = NSD || {};
 			if(typeof detail !== 'undefined') {
 				marker.thumb = detail.thumb;
 				marker.title = detail.title;
+				marker.image = detail.image;
+				marker.text = detail.text;
 				marker.sub = detail.sub;
 			}
 
