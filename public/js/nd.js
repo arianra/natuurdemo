@@ -7,18 +7,11 @@ var NSD = NSD || {};
 	// DEBUG
 	//
 	$(document).on('keypress', '*', function(e) {
+		e.stopImmediatePropagation();
 		if(e.keyCode === 97) {
-			GMap.setDirectionsFromGeo({
-				latitude: 52.043763,
-				longitude: 5.377985
-			});
-		} else if(e.keyCode === 113) {
-			GMap.removeDirections();
-		} else if(e.keyCode === 115) {
-			NSD.gotoActiviteitMarker('#marker-koffie-location');
-		} else if(e.keyCode === 100) {
-			NSD.setActiveNavButton('.footer-knop-route');
-		}
+			console.log( "ok" );
+			$( "#popup-donate" ).popup( "open", {transition: 'flow'} );
+		} 
 	});
 
 	//
@@ -167,8 +160,6 @@ var NSD = NSD || {};
 		subTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "h4" , marker.sub  ) ),
 		imageTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "image" , "" , {src: marker.image} ) ),
 		tekstTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "p", marker.text ) );
-
-
 
 		$('.content-detail-titel').html("");
 		$( "<div/>" , { html: titleTag + subTag } ).appendTo( '.content-detail-titel' );
