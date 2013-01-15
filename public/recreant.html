@@ -228,6 +228,20 @@
 
 <!-- ACTIVITEIT PAGE -->
 <div data-role="subpage" id="page-activiteit">  
+
+	<!-- requires jQM 1.3.0 
+	<div data-role="panel" id="leftpanel1" data-position="left" data-display="reveal" data-dismissible="true" data-theme="a">
+		<div class="ui-body" data-theme="b">
+			<h4>Recreant</h4>
+			<a href="#page-activiteit"  class="ui-btn-active ui-state-persist activiteit-marker" id="footer-knop-activiteit-activiteit" data-transition="slide" data-theme="c"><span class="footer-icon-activiteiten" data-rel="close"></span>Activiteiten</a>
+			<a href="#" data-transition="slide" data-theme="c" class="footer-knop-route route-direction" data-rel="close"> <span class="footer-icon-route"></span>Route</a>
+			<a href="#" class="ui-disabled" data-theme="c" data-rel="close"><span class="footer-icon-delen"></span>Delen</a>
+			<a href="#page-op-route"  data-transition="slide" data-theme="c" data-rel="close"><span class="footer-icon-activiteiten"></span>Activiteiten op route</a>
+		</div>
+				
+	</div>
+	-->
+
 	<div data-role="header" id="header-balk-activiteit">
 		<a href="index.html"  data-role="none" class="header-knop-opties" data-transition="slidedown" >opties</a>
 		<span class="ui-title" />
@@ -351,19 +365,17 @@
 			<div data-role="content" class="main">
 				<div class="ui-body">
 
-					<div data-role="controlgroup"  data-type="horizontal" >
-						<a href="#page-activiteit" data-role="button">Toon op kaart</a>
-						<a href="#page-activiteit" data-role="button" class="route-direction">Routebeschrijving</a>
-					</div>
-
-					<article class="content-detail-titel">
-						<h3>Neque porro quisquam est qui dolorem</h3>
-						<h4> Bron: Database foobar </h4>
-					</article>
-
-					<div class="ui-body content-detail-image">
-						<img src="images/full_post.png"/>
-					</div>
+						<div data-role="controlgroup"  data-type="horizontal" >
+							<a href="#page-activiteit" data-role="button">Toon op kaart</a>
+							<a href="#page-activiteit" data-role="button" class="route-direction">Routebeschrijving</a>
+						</div>
+						<article class="content-detail-titel">
+							<h3>Neque porro quisquam est qui dolorem</h3>
+							<h4> Bron: Database foobar </h4>
+						</article>
+						<div class="ui-body content-detail-image">
+							<img src="images/full_post.png"/>
+						</div>
 					
 					<div data-role="collapsible-set" data-inset="false">
 						<div data-role="collapsible" data-collapsed="false" >
@@ -495,6 +507,7 @@
 						<div data-role="controlgroup" data-mini="true">
 							<a href="#page-detail"  data-transition="flip" data-role="button" class="popup-knop-meer-info">Informatie</a>
 							<a href="#"  data-transition="flip" data-role="button" class="popup-knop-stippel-route">Bepaal route</a>
+							<a href="#popup-donate" data-rel="popup" data-transition="flow" data-role="button" class="popup-knop-doneer">Help mee</a>
 						</div>
 
 					</div>

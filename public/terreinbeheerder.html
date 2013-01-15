@@ -24,7 +24,7 @@
 
 	<div data-role="content" >
 		<h2>Login <span>beheerder</span></h2>
-		<div class="ui-body">
+		<div class="ui-bodypho" >
 			<form action="#" method="get">
 				<div data-role="fieldcontain" class="ui-hide-label">
 					<label for="username">Gebruikersnaam:</label>
@@ -34,7 +34,7 @@
 				</div>
 
 			</form>
-			<a href="#" data-role="button" data-transition="slide" id="knop-beheerder-login">Verstuur</a>
+			<a href="#page-beheerder-keuze" data-role="button" data-transition="slide" id="knop-beheerder-login">Verstuur</a>
 		</div>
 	</div>	<!--/content-->
 
@@ -51,6 +51,46 @@
 begin 
 subpages
 -->
+
+	<div data-role="subpage" id="page-beheerder-keuze"> 
+		<div data-role="header" class="header-balk-locatie">
+			<a href="index.html" data-role="none" class="header-knop-opties" data-transition="slidedown" >opties</a>
+			<span class="ui-title" />
+			<div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+				<a href="index.html" data-role="none" class="header-knop-zoek" data-transition="slidedown" >Zoek</a>
+				<a href="index.html" data-role="none" class="header-knop-help" data-transition="slidedown" >Help</a>
+			</div>
+		</div> <!-- end header -->
+
+		<div class="ui-body titelBlok titelblok-locatie">
+			<div class="titelFoto"></div>
+			<div class="titelHeader">
+				<a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> 
+			 	 Terreinbeheerder menu
+			  </div>
+			  <div class="page-title-arrow"></div>
+		</div> <!-- end content -->
+
+		<div data-role="content">
+			<div class="ui-body ui-body-b">
+				<p>Functie: Boswachter</p>
+				<hr>
+				<p> Locatie: Veluwen Gelderland </p>
+				<hr>
+				<p>Datum: Dinsdag 15 Januari 2013</p>
+			</div>
+			<div class="ui-body-a">
+				<ul data-role="listview" data-inset="true">
+				<li><a href="#" class="ui-disabled">Mijn locatie</a></li>
+				<li><a href="#" class="ui-disabled">Nabije meldingen</a></li>
+				<li><a href="#" class="ui-disabled">Alle meldingen</a></li>
+				<li><a href="#" class="ui-disabled">Maak een melding</a></li>
+				<li><a href="#" class="ui-disabled">Zoek in de database</a></li>
+			</ul>
+			</div>
+
+		</div>
+	</div>  <!-- end page -->
 
 
 <!--
