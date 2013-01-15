@@ -81,14 +81,110 @@ subpages
 			</div>
 			<div class="ui-body-a">
 				<ul data-role="listview" data-inset="true">
-				<li><a href="#" class="ui-disabled">Mijn locatie</a></li>
+				<li><a href="#page-beheerder-locatie" data-transition="flip">Mijn locatie</a></li>
 				<li><a href="#" class="ui-disabled">Nabije meldingen</a></li>
-				<li><a href="#" class="ui-disabled">Alle meldingen</a></li>
+				<li><a href="#page-beheerder-alle-meldingen" data-transition="flip">Alle meldingen</a></li>
 				<li><a href="#" class="ui-disabled">Maak een melding</a></li>
 				<li><a href="#" class="ui-disabled">Zoek in de database</a></li>
 			</ul>
 			</div>
 
+		</div>
+	</div>  <!-- end page -->
+
+		<!-- LOCATIE PAGE -->
+	<div data-role="subpage" id="page-beheerder-locatie"> 
+		<div data-role="header" class="header-balk-locatie header-balk-beheerder-locatie">
+			<a href="index.html" data-role="none" class="header-knop-opties" data-transition="slidedown" >opties</a>
+			<span class="ui-title" />
+			<div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+				<a href="index.html" data-role="none" class="header-knop-zoek" data-transition="slidedown" >Zoek</a>
+				<a href="index.html" data-role="none" class="header-knop-help" data-transition="slidedown" >Help</a>
+			</div>
+		</div> <!-- end header -->
+		<div class="ui-body titelBlok titelblok-locatie titelblok-beheerder-locatie">
+			<div class="titelFoto"></div>
+			<div class="titelHeader">
+				<a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-transition="slide" data-rel=back >terug</a> 
+			  	Bevestig uw Locatie
+			  	<span> (Klik op de map om uw locatie aan te passen.) </span>
+		  	</div>
+		  	<div class="page-title-arrow"></div>
+	  	</div>
+	  	<div data-role="none">
+			<div class="map-container">
+			 	<div id="map-canvas-beheerder-locatie"></div>	
+		 	</div> 
+
+			 <div class="bevestig-div-beheerder-locatie">
+				<a href="#page-beheerder-keuze" data-role="button" data-theme="b" data-transition="flip" id="bevestig-button">Bevestig mijn locatie</a>
+			</div>
+		</div> <!-- end content -->
+	</div>  <!-- end page -->
+
+	<div data-role="subpage" id="page-beheerder-alle-meldingen"> 
+		<div data-role="header" class="header-balk-locatie">
+			<a href="index.html" data-role="none" class="header-knop-opties" data-transition="slidedown" >opties</a>
+			<span class="ui-title" />
+			<div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+				<a href="index.html" data-role="none" class="header-knop-zoek" data-transition="slidedown" >Zoek</a>
+				<a href="index.html" data-role="none" class="header-knop-help" data-transition="slidedown" >Help</a>
+			</div>
+
+		</div> <!-- end header -->
+
+		<div class="ui-body titelBlok titelblok-locatie">
+			<div class="titelFoto"></div>
+			<div class="titelHeader">
+				<a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> 
+			 	Alle Meldingen
+		  	</div>
+		  	<div class="page-title-arrow"></div>
+		</div> <!-- end content -->
+
+		<div data-role="content" data-theme="a">
+			<ul data-role="listview" data-inset="true">
+				<li data-role="list-divider">Vandaag</li>
+				<li><a href="#">
+					<h3>Brandende prullenbak</h3>
+					<p><strong>Bezoeker melding:</strong> Bij de kinderspeelplaats staat een prullenbak te branden, veel rook! </p>
+					<p>Categorie: Vandalisme</p>
+					<p class="ui-li-aside">15/01/2013 <strong>18:24</strong></p>
+				</a></li>
+				<li><a href="#">
+					<h3>Dood hert</h3>
+					<p><strong>Surveillant melding:</strong> Een rottend hert - late fase van decompositie</p>
+					<p>Categorie: Dieren</p>
+					<p class="ui-li-aside">15/01/2013 <strong>10:16</strong></p>
+				</a></li>
+				<li data-role="list-divider">Gisteren</li>
+				<li><a href="#">
+					<h3>Pasgeboren wilde zwijnen</h3>
+					<p><strong>Bezoeker melding:</strong> Geef het door, leuk om te zien.</p>
+					<p>Categorie: Dieren</p>
+					<p class="ui-li-aside">14/01/2013 <strong>14:20</strong></p>
+				</a></li>
+				<li data-role="list-divider">Zondag 13 Januari 2013</li>
+				<li><a href="#">
+					<h3>Brandende prullenbak</h3>
+					<p><strong>Bezoeker melding:</strong> Bij de kinderspeelplaats staat een prullenbak te branden, veel rook! </p>
+					<p>Categorie: Vandalisme</p>
+					<p class="ui-li-aside">13/01/2013 <strong>18:24</strong></p>
+				</a></li>
+				<li><a href="#">
+					<h3>Dood hert</h3>
+					<p><strong>Surveillant melding:</strong> Een rottend hert - late fase van decompositie</p>
+					<p>Categorie: Dieren</p>
+					<p class="ui-li-aside">13/01/2013 <strong>10:16</strong></p>
+				</a></li>
+				<li><a href="#">
+					<h3>Pasgeboren wilde zwijnen</h3>
+					<p><strong>Bezoeker melding:</strong> Geef het door, leuk om te zien.</p>
+					<p>Categorie: Dieren</p>
+					<p class="ui-li-aside">13/01/2013 <strong>14:20</strong></p>
+				</a></li>
+
+			</ul>
 		</div>
 	</div>  <!-- end page -->
 

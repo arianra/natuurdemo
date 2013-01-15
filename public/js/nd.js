@@ -264,13 +264,20 @@ var NSD = NSD || {};
 				GMap.init('map-canvas-activiteit');
 				GMap.runActivityPage();
 			}
-
 		} else if($.mobile.activePage.attr('id') === 'page-op-route') {
 
 			NSD.setActiveNavButton('.lijst-activiteit-op-route');
 
 		} else if($.mobile.activePage.attr('id') === 'page-detail') {
 			NSD.pageQueues.detail.runQueue();
+		} else if( $.mobile.activePage.attr('id') === 'page-beheerder-locatie' ) {
+			var contentHeight = Math.round(remainingHeightPercentage([$('.header-balk-beheerder-locatie'), $('.titelblok-beheerder-locatie'), $('.bevestig-div-beheerder-locatie')]));
+			$("#map-canvas-beheerder-locatie").css({
+				'height': contentHeight + 'px'
+			});
+
+			GMap.init('map-canvas-beheerder-locatie');
+			GMap.runGeoPage();
 		}
 
 	});
