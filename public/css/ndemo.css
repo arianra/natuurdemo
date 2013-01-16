@@ -1372,7 +1372,7 @@ a.ui-link-inherit {
 	top: 1em;
 	margin: .2em 1em;
  }
- /* DIT MOET PRECIESER TIM*/
+
  #page-beheerder-login form label{
 	color: white;
 	line-height: 2em;
@@ -1384,4 +1384,27 @@ a.ui-link-inherit {
 	bottom: 0;
 	width: 100%;
 }
- 
+
+#page-detail{
+	color: white;
+}
+
+#page-detail .ui-body{
+	padding: 0;
+}
+
+#page-detail .ui-controlgroup, #page-detail .content-detail-image{
+	text-align: center;
+}
+
+#page-detail .ui-controlgroup-controls, #page-detail .content-detail-image img{
+	margin: 0 auto;
+}
+
+#page-detail .content-detail-image img{
+	max-width: 100%;
+}
+
+#page-detail .ui-collapsible-set{
+	margin: .5em 1em;
+}
