@@ -9,9 +9,11 @@ var NSD = NSD || {};
 	$(document).on('keypress', '*', function(e) {
 		e.stopImmediatePropagation();
 		if(e.keyCode === 97) {
-			console.log( "ok" );
-			$( "#popup-donate" ).popup( "open", {transition: 'flow'} );
-		} 
+			console.log("ok");
+			$("#popup-donate").popup("open", {
+				transition: 'flow'
+			});
+		}
 	});
 
 	//
@@ -72,7 +74,7 @@ var NSD = NSD || {};
 
 	NSD.Queue.prototype.removeFromQueue = function(i, a) {
 		var index = (typeof i === 'number') ? i : 0,
-		all = (typeof a === 'undefined') ? false : !!a;
+			all = (typeof a === 'undefined') ? false : !! a;
 
 		if(!all) {
 			this.queueArray.splice(index, 1);
@@ -82,14 +84,14 @@ var NSD = NSD || {};
 	};
 	NSD.Queue.prototype.wrapCall = function(f, a) {
 		var func = f,
-		args = a;
+			args = a;
 		return function() {
 			func.apply(this, args);
 		};
 	};
 	NSD.Queue.prototype.runQueue = function() {
 		var self = this,
-		i = this.queueArray.length;
+			i = this.queueArray.length;
 
 		if(i === 0) return;
 
@@ -154,25 +156,33 @@ var NSD = NSD || {};
 
 	};
 
-	NSD.updateDetailPage = function(s){
-		var marker = GMap.getMarkerBySelector("#"+s),
-		titleTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "h3" , marker.title  ) ),
-		subTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "h4" , marker.sub  ) ),
-		imageTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "image" , "" , {src: marker.image} ) ),
-		tekstTag = NSD.HTMLFab.render( NSD.HTMLFab.tag( "p", marker.text ) );
+	NSD.updateDetailPage = function(s) {
+		var marker = GMap.getMarkerBySelector("#" + s),
+			titleTag = NSD.HTMLFab.render(NSD.HTMLFab.tag("h3", marker.title)),
+			subTag = NSD.HTMLFab.render(NSD.HTMLFab.tag("h4", marker.sub)),
+			imageTag = NSD.HTMLFab.render(NSD.HTMLFab.tag("image", "", {
+				src: marker.image
+			})),
+			tekstTag = NSD.HTMLFab.render(NSD.HTMLFab.tag("p", marker.text));
 
-		
+
 
 		$('.content-detail-titel').html("");
-		$( "<div/>" , { html: titleTag + subTag } ).appendTo( '.content-detail-titel' );
+		$("<div/>", {
+			html: titleTag + subTag
+		}).appendTo('.content-detail-titel');
 
 		$('.content-detail-image').html("");
-		$( "<div/>" , { html: imageTag } ).appendTo( '.content-detail-image' );
+		$("<div/>", {
+			html: imageTag
+		}).appendTo('.content-detail-image');
 
 		$('.content-detail-tekst').html("");
-		$( "<div/>" , { html: tekstTag } ).appendTo( '.content-detail-tekst' );
+		$("<div/>", {
+			html: tekstTag
+		}).appendTo('.content-detail-tekst');
 
-		$( '#page-detail .main' ).fadeIn( 'fast' ) ;
+		$('#page-detail .main').fadeIn('fast');
 	};
 
 
@@ -197,8 +207,8 @@ var NSD = NSD || {};
 
 		$('#map-canvas-activiteit').on('click', '.popup-knop-meer-info', function(e) {
 			var markerSelector = $(e.currentTarget).parentsUntil('#page-activiteit', '.popup-content').attr('id');
-			$( '#page-detail .main' ).hide( false ) ;
-			NSD.pageQueues.detail.addToQueue( NSD.updateDetailPage , [markerSelector] )
+			$('#page-detail .main').hide(false);
+			NSD.pageQueues.detail.addToQueue(NSD.updateDetailPage, [markerSelector])
 		});
 
 	});
@@ -270,7 +280,7 @@ var NSD = NSD || {};
 
 		} else if($.mobile.activePage.attr('id') === 'page-detail') {
 			NSD.pageQueues.detail.runQueue();
-		} else if( $.mobile.activePage.attr('id') === 'page-beheerder-locatie' ) {
+		} else if($.mobile.activePage.attr('id') === 'page-beheerder-locatie') {
 			var contentHeight = Math.round(remainingHeightPercentage([$('.header-balk-beheerder-locatie'), $('.titelblok-beheerder-locatie'), $('.bevestig-div-beheerder-locatie')]));
 			$("#map-canvas-beheerder-locatie").css({
 				'height': contentHeight + 'px'
