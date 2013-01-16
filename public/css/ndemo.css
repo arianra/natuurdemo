@@ -1369,4 +1369,21 @@ a.ui-link-inherit {
 	background-image: linear-gradient( #f9f9f9,#eeeeee ); */
  }
  
+ .bevestig-div-beheerder-locatie .ui-btn,  .bevestig-div-locatie .ui-btn{
+	top: 1em;
+	margin: .2em 1em;
+ }
+ /* DIT MOET PRECIESER TIM*/
+ #page-beheerder-login form label{
+	color: white;
+	line-height: 2em;
+ }
+ 
+.ui-block-a{
+	width: 0;
+}
+
+.ui-block-b{
+	width: 480px;
+}
  
