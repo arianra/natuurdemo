@@ -14,23 +14,24 @@
     src: url(../fonts/BetaSans.otf);
     font-weight:400;
 }
-
+*/
 
 .titelBlok {
+	left: 0;
+	width: 100%;
+	
+	margin-bottom: -2em;
+	margin: 0;
+	font-family: BetaSans, Helvetica, Arial, sans-serif;
+	color:white
+}
+
+.titelHeader {
 	background:#87A513;
 	left: 0;
 	width: 100%;
 	font-family: BetaSans, Helvetica, Arial, sans-serif;
-	color:white}
-*/
-.titelHeader {
-	background:#87A513;
-	left: 0;
-	width: 101%;
-	font-family: BetaSans, Helvetica, Arial, sans-serif;
 	color:white;
-	padding-left: 10px;
-	margin-left: -15px;
 	height: 50px;
 	padding-top: 9px;
 	padding-top: 9px;
