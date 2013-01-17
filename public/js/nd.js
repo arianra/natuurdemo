@@ -67,11 +67,9 @@ var NSD = NSD || {};
 	NSD.Queue = function() {
 		this.queueArray = [];
 	};
-
 	NSD.Queue.prototype.addToQueue = function(func, args) {
 		this.queueArray.push(this.wrapCall(func, args));
 	};
-
 	NSD.Queue.prototype.removeFromQueue = function(i, a) {
 		var index = (typeof i === 'number') ? i : 0,
 			all = (typeof a === 'undefined') ? false : !! a;
@@ -100,14 +98,12 @@ var NSD = NSD || {};
 			this.removeFromQueue();
 		}
 	};
-
 	NSD.pageQueues = {
-		detail: new NSD.Queue()
+		detail: new NSD.Queue(),
+		activiteit: new NSD.Queue()
 	}
 
-
 	NSD.HTMLFab = {
-
 		tag: function(tag, content, attributes) {
 			return {
 				tag: tag,
@@ -117,43 +113,31 @@ var NSD = NSD || {};
 		},
 		render: function(element) {
 			var parts = [];
-
 			if(typeof element === "undefined") return;
-
 			function renderAttributes(attributes) {
 				var result = [];
-
 				for(var name in attributes) {
 					result.push(" " + name + "=\"" + attributes[name] + "\"");
 				}
-
 				return result.join("");
 			};
-
 			function renderElement(element) {
 				var self = this;
-
 				if(typeof element === 'string') {
 					parts.push(element);
 				} else if(!element.content || element.content.length == 0 || typeof element.content === undefined) {
 					parts.push("<" + element.tag + renderAttributes(element.attributes) + "/>")
 				} else {
 					parts.push("<" + element.tag + renderAttributes(element.attributes) + ">");
-
 					$.each(element.content, function(i, e) {
 						renderElement(e);
 					});
-
 					parts.push("</" + element.tag + ">");
 				}
-
 			};
-
 			renderElement(element);
 			return parts.join("");
 		}
-
-
 	};
 
 	NSD.updateDetailPage = function(s) {
@@ -164,8 +148,6 @@ var NSD = NSD || {};
 				src: marker.image
 			})),
 			tekstTag = NSD.HTMLFab.render(NSD.HTMLFab.tag("p", marker.text));
-
-
 
 		$('.content-detail-titel').html("");
 		$("<div/>", {
@@ -191,14 +173,17 @@ var NSD = NSD || {};
 	//
 	$(document).on('pageinit', '#page-activiteit', function(e, d) {
 
-		$('.footer-balk-activiteit , .footer-balk-op-route').on('click', '.activiteit-marker , .route-direction', function(e) {
-			NSD.setActiveNavButton($(e.currentTarget));
+		$('.footer-balk-activiteit , .footer-balk-op-route').on('click', '.activiteit-marker', function(e) {
+			NSD.pageQueues.activiteit.addToQueue( NSD.setActiveNavButton , [ '.activiteit-marker' , '.footer-balk-activiteit' ] ); 
+		});
+		$('.footer-balk-activiteit , .footer-balk-op-route').on('click', '.route-direction', function(e) {
+			NSD.pageQueues.activiteit.addToQueue( NSD.setActiveNavButton , [ '.route-direction' , '.footer-balk-activiteit' ] ); 
 			if($(e.currentTarget).hasClass('route-direction')) {
 				GMap.setDirectionsFromGeo({
 					latitude: 52.043763,
 					longitude: 5.377985
 				});
-			} else {}
+			}
 		});
 		$('#map-canvas-activiteit').on('click', '.popup-knop-stippel-route', function(e) {
 			var markerSelector = $(e.currentTarget).parentsUntil('#page-activiteit', '.popup-content').attr('id');
@@ -256,6 +241,8 @@ var NSD = NSD || {};
 			GMap.init('map-canvas-locatie');
 			GMap.runGeoPage();
 		} else if($.mobile.activePage.attr('id') === 'page-activiteit') {
+			NSD.pageQueues.activiteit.runQueue();
+
 			if(NSD.prevPageID === 'page-detail') {
 				NSD.prevPageID = 'page-activiteit';
 			} else if(NSD.prevPageID === 'page-op-route') {
@@ -534,8 +521,6 @@ var NSD = NSD || {};
 						self.geoRetryCount--;
 						self.initGeo(callback);
 					}
-
-
 				}, {
 					timeout: 60000,
 					enableHighAccuracy: true
