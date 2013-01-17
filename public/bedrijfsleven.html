@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<link rel="stylesheet" href="css/normalize.css"> 
 	<link rel="stylesheet" href="css/ndemo.css"> 
-	<link rel="stylesheet" type="text/css" href="css/jqm-datebox.min.css" /> 
 </head>
 <body>
 
@@ -35,7 +34,7 @@
 				</div>
 
 			</form>
-			<a href="#" data-role="button" data-transition="slide" id="knop-bedrijfsleven-login">Verstuur</a>
+			<a href="#page-bedrijfsleven-gegevens" data-role="button" data-transition="slide" id="knop-bedrijfsleven-login">Verstuur</a>
 		</div>
 	</div>	<!--/content-->
 
@@ -75,16 +74,75 @@ subpages
 
 		<div data-role="content">
 			<section>
-				<form action="#" method="get">
-					<div class="ui-body"> 
-						<div data-role="fieldcontain">
-	         						<label for="name">Bedrijfsnaam:</label>
-	         						<input type="text" name="name" id="form-name-bedrijfsleven-gegevens" value="Fietsverhuur"  />
-	         						<label for="adres">Bedrijfsnaam:</label>
-	         						<input type="text" name="name" id="form-name-bedrijfsleven-gegevens" value="Fietsverhuur"  />
+				<div class="ui-body"> 
+					<form action="#" method="get">
+						<div class="ui-body">
+							<legend>Adres:</legend>
+							<div data-role="fieldcontain" class="ui-hide-label">
+		         						<label for="name" class="ui-hidden-accessible">Bedrijfsnaam:</label>
+		         						<input type="text" name="name" id="form-name-bedrijfsleven-gegevens" value="" placeholder="Bedrijfsnaam"  />
+							</div>
+							<div data-role="fieldcontain" class="ui-hide-label">
+		         						<label for="name" class="ui-hidden-accessible">Straat:</label>
+		         						<input type="text" name="name" id="form-name-bedrijfsleven-gegevens" value="" placeholder="Straat"  />
+							</div>
+							<div data-role="fieldcontain" class="ui-hide-label">
+		         						<label for="name" class="ui-hidden-accessible">Postcode:</label>
+		         						<input type="text" name="name" id="form-name-bedrijfsleven-gegevens" value="" placeholder="Postcode"  />
+							</div>
+							<div data-role="fieldcontain" class="ui-hide-label">
+		         						<label for="name" class="ui-hidden-accessible">Stad:</label>
+		         						<input type="text" name="name" id="form-name-bedrijfsleven-gegevens" value="" placeholder="Stad"  />
+							</div>
 						</div>
-					</div>
-				</form>
+
+						<div class="ui-body" >
+							<legend>Beschrijving:</legend>
+							<div data-role="fieldcontain" class="ui-hide-label">
+								<label for="name" class="ui-hidden-accessible">Kort:</label>
+								<input type="text" name="name" id="name" value=""  placeholder="Korte beschrijving" />
+							</div>
+							<div data-role="fieldcontain" class="ui-hide-label">
+								<label for="textarea" class="ui-hidden-accessible">Lange:</label>
+								<textarea cols="40" rows="8" name="textarea" id="textarea" placeholder="Uitgebreide beschrijving"></textarea>
+							</div>
+						</div>
+
+						<div class="ui-body">
+							<legend>Openingstijden:</legend>
+							<div class="ui-grid-a">
+								<div class="ui-block-a">
+									<div data-role="fieldcontain" >
+										<label for="date-openingstijden-vanaf">Vanaf: </label>
+										<input name="date-openingstijden-vanaf" id="date-openingstijden-vanaf" type="date" data-role="datebox"  data-options='{"mode": "timebox", "overrideTimeFormat": 24}'>
+									</div>
+								</div>
+								<div class="ui-block-b">
+									<div data-role="fieldcontain" >
+										<label for="date-openingstijden-tot">Tot: </label>
+										<input name="date-openingstijden-tot" id="date-openingstijden-tot" type="date" data-role="datebox"  data-options='{"mode": "timebox", "overrideTimeFormat": 24 }'>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-body">
+							<div data-role="fieldcontain">
+								<fieldset data-role="controlgroup">
+									<legend>Voorzieningen:</legend>
+									<input type="checkbox" name="checkbox-1a" id="checkbox-1a" class="custom" />
+									<label for="checkbox-1a">Toegankelijk voor rolstoelen</label>
+									<input type="checkbox" name="checkbox-2a" id="checkbox-2a" class="custom" />
+									<label for="checkbox-2a">Parkeerplaats</label>
+									<input type="checkbox" name="checkbox-3a" id="checkbox-3a" class="custom" />
+									<label for="checkbox-3a">EHBO Post</label>
+									<input type="checkbox" name="checkbox-4a" id="checkbox-4a" class="custom" />
+									<label for="checkbox-4a">Sanitaire voorzieningen</label>
+								</fieldset>
+							</div>
+						</div>
+					</form>
+				</div>
 			</section>
 			<section>
 				<a href="#page-bedrijfsleven-acties" data-role="button">Acties</a>
@@ -119,9 +177,6 @@ SCRIPTS
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	<script src="js/lib/jquery.mobile.subpage.js"></script>
-	<script type="text/javascript" src="js/lib/jqm-datebox.core.min.js"></script>
-	<script type="text/javascript" src="js/lib/jqm-datebox.mode.flipbox.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=true"></script>
 	<script src="js/nd.js"></script>
 </body>

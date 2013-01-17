@@ -275,6 +275,7 @@ var NSD = NSD || {};
 
 			GMap.init('map-canvas-beheerder-locatie');
 			GMap.runGeoPage();
+		} else if($.mobile.activePage.attr('id') === 'page-bedrijfsleven-gegevens'){
 		}
 
 	});
@@ -292,7 +293,7 @@ var NSD = NSD || {};
 		defaultOptions: {
 			zoom: 12,
 			disableDefaultUI: false,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
+			mapTypeId: google.maps.MapTypeId.TERRAIN
 		},
 		markerTypes: [{
 			type: 'current',
