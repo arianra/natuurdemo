@@ -145,7 +145,7 @@ subpages
 				</div>
 			</section>
 			<section>
-				<a href="#page-bedrijfsleven-acties" data-role="button">Acties</a>
+				<a href="#page-bedrijfsleven-acties" data-role="button" data-transition="flip">Acties</a>
 			</section>
 		</div>
 
@@ -153,16 +153,85 @@ subpages
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#" class="ui-btn-active ui-state-persist">Gegevens</a></li>
-					<li><a href="#">Acties</a></li>
+					<li><a href="#page-bedrijfsleven-acties" data-transition="flip">Acties</a></li>
 					<li><a href="#" class="ui-disabled">Upload foto</a></li>
 					<li><a href="#" class="ui-disabled">Vergunningen</a></li>
 				</ul>
 			</div> <!--/navbar-->
 		</div> <!--/footer-->
-
 	</div>  <!-- end page -->
 
+	<div data-role="subpage" id="page-bedrijfsleven-acties"> 
+		<div data-role="header" class="header-balk-locatie">
+			<a href="index.html" data-role="none" class="header-knop-opties" data-transition="slidedown" >opties</a>
+			<span class="ui-title" />
+			<div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+				<a href="index.html" data-role="none" class="header-knop-zoek" data-transition="slidedown" >Zoek</a>
+				<a href="index.html" data-role="none" class="header-knop-help" data-transition="slidedown" >Help</a>
+			</div>
 
+		</div> <!-- end header -->
+
+		<div class="ui-body titelBlok titelblok-locatie">
+			<div class="titelFoto"></div>
+			<div class="titelHeader">
+				<a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> 
+			 	 Acties
+		  	</div>
+		  	<div class="page-title-arrow"></div>
+		</div> <!-- end content -->
+
+		<div data-role="content">
+
+			<section>
+				<div data-role="fieldcontain">
+					<label for="date-acties-date">Datum:</label>
+					<input name="date-acties-date" id="date-acties-date" type="date" data-role="datebox" data-options='{"mode": "datebox"}'>
+				</div>
+
+				<div data-role="fieldcontain">
+					<label for="select-choice-day">Thema:</label>
+					<select name="select-choice-thema" id="select-choice-thema">
+						<option>Selecteer een thema</option>
+						<option value="1">Sinterklaas</option>
+						<option value="2">Kerst</option>
+					</select> 
+				</div>
+
+				<div data-role="fieldcontain">
+					<label for="slider-step-prijs">Prijs:</label>
+					<input type="range" name="slider-step-prijs" id="slider-step-prijs" value="12.5" min="0" max="50" step=".1" data-highlight="true"/>
+				</div>
+
+				<div data-role="fieldcontain">
+					<label for="textarea">Uw actie tekst:</label>
+					<textarea cols="40" rows="16" name="textarea" id="textarea" placeholder="Actie tekst."></textarea>
+				</div>
+			</section>
+
+			<section>
+				<a href="#" data-role="button" class="ui-disabled">Upload afbeelding</a>
+				<img src="images/placeholder_image001.jpg" />
+			</section>
+
+
+
+			<section>
+				<a href="#page-bedrijfsleven-gegevens" data-role="button" data-transition="flip">Maak actief</a>
+			</section>
+		</div>
+
+		<div data-role="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#page-bedrijfsleven-gegevens" data-transition="flip">Gegevens</a></li>
+					<li><a href="#" class="ui-btn-active ui-state-persist">Acties</a></li>
+					<li><a href="#" class="ui-disabled">Upload foto</a></li>
+					<li><a href="#" class="ui-disabled">Vergunningen</a></li>
+				</ul>
+			</div> <!--/navbar-->
+		</div>
+	</div>  <!-- end page -->
 <!--
 end 
 subpages
