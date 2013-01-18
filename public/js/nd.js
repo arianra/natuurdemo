@@ -35,7 +35,6 @@ var NSD = NSD || {};
 		} else {
 			excluded = arr.outerHeight();
 		}
-
 		try {
 			if(numType === 'percentage') {
 				included = 100 - (excluded / windowTotal * 100);
