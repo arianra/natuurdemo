@@ -1,0 +1,215 @@
+!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Natuurlijk Samen</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" href="css/normalize.css"> 
+	<link rel="stylesheet" href="css/ndemo.css"> 
+</head>
+<body>
+
+<div data-role="page" id="page-belangen-login" data-dom-cache="true"> 
+
+	<div data-role="header">
+		<a href="index.html" data-role="none" class="header-knop-opties" data-transition="slidedown" >opties</a>
+		<span class="ui-title" />
+		<div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+			<a href="index.html" data-role="none" class="header-knop-map" data-transition="slidedown" >Map</a>
+			<a href="index.html" data-role="none" class="header-knop-help" data-transition="slidedown" >Help</a>
+		</div>
+	</div> <!--/header-->
+
+	<div data-role="content" >
+		<h2>Login <span>belangenbehartiger</span></h2>
+		<div class="ui-body">
+			<form action="#" method="get">
+				<div data-role="fieldcontain" class="ui-hide-label">
+					<label for="username-belangen">Gebruikersnaam:</label>
+					<input type="text" name="username-belangen" id="form-belangen-login-username" value="" placeholder="Gebruikersnaam"/>
+					<label for="password-belangen">Wachtwoord:</label>
+					<input type="text" name="password-belangen" id="form-belangen-login-password" value="" placeholder="Wachtwoord"/>
+				</div>
+
+			</form>
+			<a href="#page-belangen-omgeving" data-role="button" data-transition="slide" id="knop-belangen-login">Verstuur</a>
+		</div>
+	</div>	<!--/content-->
+
+	<div data-role="footer">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" class="ui-disabled">Wachtwoord vergeten?</a></li>
+				<li><a href="#" class="ui-disabled">Nieuwe gebruiker</a></li>
+			</ul>
+		</div> <!--/navbar-->
+	</div> <!--/footer-->
+
+<!--
+begin 
+subpages
+-->
+
+	<div data-role="subpage" id="page-belangen-omgeving"> 
+		<div data-role="header" class="header-balk-locatie">
+			<a href="index.html" data-role="none" class="header-knop-opties" data-transition="slidedown" >opties</a>
+			<span class="ui-title" />
+			<div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+				<a href="index.html" data-role="none" class="header-knop-zoek" data-transition="slidedown" >Zoek</a>
+				<a href="index.html" data-role="none" class="header-knop-help" data-transition="slidedown" >Help</a>
+			</div>
+
+		</div> <!-- end header -->
+
+		<div class="ui-body titelBlok titelblok-locatie">
+			<div class="titelFoto"></div>
+			<div class="titelHeader">
+				<a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> 
+				Milieudefensie 
+			 	<span>In uw omgeving</span>
+		  	</div>
+		  	<div class="page-title-arrow"></div>
+		</div> <!-- end content -->
+
+		<div data-role="content">
+			<div class="ui-body">
+				<h3>Toename sterfte onder herten op de Veluwe</h3>
+				<h4>Vivamus mauris neque, gravida eget tristique in, volutpat quis dolor. Curabitur aliquet, justo et pharetra pretium, augue lorem eleifend dui, sit amet suscipit libero tortor vitae tellus. </h4>
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<img src="images/thumb_hert.png" />
+					</div>
+					<div class="ui-block-b">
+						<p>In nisl felis, consequat in varius a, varius ac nunc. Suspendisse augue massa, adipiscing eu mollis nec, sodales in arcu. Aliquam erat volutpat.</p>
+					</div>
+				</div>
+			</div>
+			<div class="ui-body">
+				<h3>Schapen helpen Schotse hooglanders</h3>
+				<h4>Vivamus mauris neque, gravida eget tristique in, volutpat quis dolor. Curabitur aliquet, justo et pharetra pretium, augue lorem eleifend dui, sit amet suscipit libero tortor vitae tellus. </h4>
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<img src="images/thumb_geit.png" />
+					</div>
+					<div class="ui-block-b">
+						<p>In nisl felis, consequat in varius a, varius ac nunc. Suspendisse augue massa, adipiscing eu mollis nec, sodales in arcu. Aliquam erat volutpat.</p>
+					</div>
+				</div>
+			</div>
+			<div class="ui-body">
+				<h3>Heideherstel werpt vruchten af</h3>
+				<h4>Vivamus mauris neque, gravida eget tristique in, volutpat quis dolor. Curabitur aliquet, justo et pharetra pretium, augue lorem eleifend dui, sit amet suscipit libero tortor vitae tellus. </h4>
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<img src="images/thumb_hert3.png" />
+					</div>
+					<div class="ui-block-b">
+						<p>In nisl felis, consequat in varius a, varius ac nunc. Suspendisse augue massa, adipiscing eu mollis nec, sodales in arcu. Aliquam erat volutpat.</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div data-role="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" class="ui-btn-active ui-state-persist">In uw omgeving</a></li>
+					<li><a href="#page-belangen-nieuws" data-transition="flip">Nieuws</a></li>
+					<li><a href="#" class="ui-disabled">Foto / Video</a></li>
+				</ul>
+			</div> <!--/navbar-->
+		</div>
+	</div>  <!-- end page -->
+
+	<div data-role="subpage" id="page-belangen-nieuws"> 
+		<div data-role="header" class="header-balk-locatie">
+			<a href="index.html" data-role="none" class="header-knop-opties" data-transition="slidedown" >opties</a>
+			<span class="ui-title" />
+			<div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+				<a href="index.html" data-role="none" class="header-knop-zoek" data-transition="slidedown" >Zoek</a>
+				<a href="index.html" data-role="none" class="header-knop-help" data-transition="slidedown" >Help</a>
+			</div>
+
+		</div> <!-- end header -->
+
+		<div class="ui-body titelBlok titelblok-locatie">
+			<div class="titelFoto"></div>
+			<div class="titelHeader">
+				<a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> 
+			 	Nieuws
+		  	</div>
+		  	<div class="page-title-arrow"></div>
+		</div> <!-- end content -->
+
+		<div data-role="content">
+			<header>
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<img src="images/thumb_hert.png" />
+					</div>
+					<div class="ui-block-b">
+						<h4>Vraagstelling</h4>
+						<p>Wat vind u van het bouwen van megastallen in deze omgeving? Miss Piggy heeft een burgerinitiatief opgezet.</p>
+						<div>
+							<div data-role="fieldcontain">
+							    <fieldset data-role="controlgroup">
+							    	<legend>Bent u het met dit initiatief eens?</legend>
+							         	<input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" />
+							         	<label for="radio-choice-1">Helemaal mee ens</label>
+
+							         	<input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2"  />
+							         	<label for="radio-choice-2">Mee eens</label>
+
+							         	<input type="radio" name="radio-choice-1" id="radio-choice-3" value="choice-3"  />
+							         	<label for="radio-choice-3">Niet mee eens</label>
+
+							         	<input type="radio" name="radio-choice-1" id="radio-choice-4" value="choice-4"  />
+							         	<label for="radio-choice-4">Helemaal niet mee eens</label>
+							    </fieldset>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<article>
+				<h4>Lorem ipsum dolor sit amet.</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat nulla eu erat condimentum ut faucibus ipsum mattis. Integer eget scelerisque nibh. Vestibulum sed bibendum enim. Nunc velit lorem, convallis eu elementum vel, dictum quis mi. Mauris sollicitudin, urna eget placerat hendrerit, risus enim vestibulum tellus, vel ultrices magna mauris quis ipsum. Maecenas dui sem, scelerisque quis pulvinar ut, dictum vel purus.</p>
+				<p>Vivamus mauris neque, gravida eget tristique in, volutpat quis dolor. Curabitur aliquet, justo et pharetra pretium, augue lorem eleifend dui, sit amet suscipit libero tortor vitae tellus. Sed tempus nisl quis sapien malesuada et bibendum dui tempor. Nulla eros diam, posuere pretium ultricies et, mattis ut enim. Fusce quis enim ut ante luctus commodo. Mauris et dictum nulla. Praesent vitae sagittis nisi. Ut at feugiat eros. Nunc tellus nunc, blandit eget tincidunt et, laoreet quis leo. Nulla odio neque, aliquet in convallis id, semper fringilla sapien. Nulla felis arcu, porta tempus luctus eget, commodo vitae dolor.</p>
+				<p>In nisl felis, consequat in varius a, varius ac nunc. Suspendisse augue massa, adipiscing eu mollis nec, sodales in arcu. Aliquam erat volutpat.</p>
+			</article>
+
+		</div>
+
+		<div data-role="footer">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#page-belangen-omgeving" data-transition="flip" >In uw omgeving</a></li>
+					<li><a href="#" class="ui-btn-active ui-state-persist">Nieuws</a></li>
+					<li><a href="#" class="ui-disabled">Foto / Video</a></li>
+				</ul>
+			</div> <!--/navbar-->
+		</div>
+	</div>  <!-- end page -->
+
+<!--
+end 
+subpages
+-->
+</div>
+	
+	
+
+<!--
+SCRIPTS
+ -->
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script src="js/lib/jquery.mobile.subpage.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=true"></script>
+	<script src="js/nd.js"></script>
+</body>
+</html>

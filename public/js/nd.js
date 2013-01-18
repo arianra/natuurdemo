@@ -166,6 +166,91 @@ var NSD = NSD || {};
 		$('#page-detail .main').fadeIn('fast');
 	};
 
+	NSD.runNabijeMeldingen = function(){
+		var fm = {},
+		fLocs = [
+		{ longitude:52.101016 , latitude: 5.827623 },
+		{ longitude:52.106077 , latitude:5.865045 },
+		{ longitude:52.094794 , latitude:5.848394 },
+		{ longitude:52.075807 , latitude:5.828996 },
+		{ longitude:52.114828 , latitude:5.816465 },
+		{ longitude:52.073275 , latitude:5.816465 }
+		];
+		$.each(fLocs, function(i, e) {
+				e.latLng = new google.maps.LatLng(e.latitude, e.longitude);
+			});
+
+		fm.a = Gmap.createMarker('#marker-beheerder-melding-0', Gmap.markerTypes[4], fLocs[0].latLng, Gmap.createPopupContent('full-beheerder', '#marker-beheerder-melding-0'), {
+				thumb: 'images/thumb_hert.png',
+				title: 'Brandende prullenbak',
+				sub: 'Categorie: Vandalisme',
+				image: 'images/full_post.png',
+				text: 'Bij de kinderspeelplaats staat een prullenbak te branden, veel rook!'
+		});
+		fm.b = Gmap.createMarker('#marker-beheerder-melding-1', Gmap.markerTypes[4], fLocs[1].latLng, Gmap.createPopupContent('full-beheerder', '#marker-beheerder-melding-1'), {
+				thumb: 'images/thumb_hert.png',
+				title: 'Dood hert',
+				sub: 'Categorie: Dieren',
+				image: 'images/full_post.png',
+				text: 'Een rottend hert - late fase van decompositie'
+		});
+		fm.c = Gmap.createMarker('#marker-beheerder-melding-2', Gmap.markerTypes[4], fLocs[2].latLng, Gmap.createPopupContent('full-beheerder', '#marker-beheerder-melding-2'), {
+				thumb: 'images/thumb_hert.png',
+				title: 'Pasgeboren wilde zwijnen',
+				sub: 'Categorie: Dieren',
+				image: 'images/full_post.png',
+				text: 'Geef het door, leuk om te zien.'
+		});
+		fm.d = Gmap.createMarker('#marker-beheerder-melding-3', Gmap.markerTypes[4], fLocs[3].latLng, Gmap.createPopupContent('full-beheerder', '#marker-beheerder-melding-3'), {
+				thumb: 'images/thumb_hert.png',
+				title: 'Brandende prullenbak',
+				sub: 'Categorie: Vandalisme',
+				image: 'images/full_post.png',
+				text: 'Bij de kinderspeelplaats staat een prullenbak te branden, veel rook!'
+		});
+		fm.e = Gmap.createMarker('#marker-beheerder-melding-4', Gmap.markerTypes[4], fLocs[4].latLng, Gmap.createPopupContent('full-beheerder', '#marker-beheerder-melding-4'), {
+				thumb: 'images/thumb_hert.png',
+				title: 'Dood hert',
+				sub: 'Categorie: Dieren',
+				image: 'images/full_post.png',
+				text: 'Een rottend hert - late fase van decompositie'
+		});
+		fm.f = Gmap.createMarker('#marker-beheerder-melding-5', Gmap.markerTypes[4], fLocs[5].latLng, Gmap.createPopupContent('full-beheerder', '#marker-beheerder-melding-5'), {
+				thumb: 'images/thumb_hert.png',
+				title: 'Pasgeboren wilde zwijnen',
+				sub: 'Categorie: Dieren',
+				image: 'images/full_post.png',
+				text: 'Geef het door, leuk om te zien.'
+		});
+		
+		for(var e in fm) {
+
+				var con = $(fm[e].content);
+				con.find('.ui-block-a').prepend(NSD.HTMLFab.render(NSD.HTMLFab.tag('img', [], {
+					src: fm[e].thumb
+				})));
+				con.find('.ui-block-b').prepend(NSD.HTMLFab.render(NSD.HTMLFab.tag('p', [fm[e].sub])));
+				con.find('.ui-block-b').prepend(NSD.HTMLFab.render(NSD.HTMLFab.tag('h3', [fm[e].title])));
+				fm[e].content = $("<div>").append(con).html();
+				fm[e].infoWindow.setContent($("<div>").append(con).html());
+
+				GMap.activityMarkers.push(fm[e]);
+			}
+			Gmap.centerToPoint({
+				latitude: 52.08559,
+				longitude: 5.833974
+			})
+			Gmap.map.setZoom(9);
+
+			if(!Gmap.geoLocation) {
+				Gmap.initGeo(['updateGeo']);
+			} else {
+				Gmap.createGeoMarker(Gmap.geoLocation)
+			}
+
+			Gmap.createInfoWindowListeners();
+	};
+
 
 	//
 	// EVENTS
@@ -470,6 +555,9 @@ var NSD = NSD || {};
 				break;
 			case 'current':
 				output = $('#popup-infowindow-current');
+				break;
+			case 'full-beheerder':
+				output = $('#popup-beheerder-infowindow-full');
 				break;
 			}
 
