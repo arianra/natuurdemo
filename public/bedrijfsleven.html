@@ -73,6 +73,37 @@ subpages
 		</div> <!-- end content -->
 
 		<div data-role="content">
+			<header>
+				<div class="ui-grid-c ui-body-c">
+					<div class="ui-block-a">
+						<p>Aantal</p>
+					</div>
+					<div class="ui-block-b">
+						<p>bezoekers:<span>250</span></p>
+					</div>
+					<div class="ui-block-c">
+						<p>wandelaars:<span>138</span></p>
+					</div>
+					<div class="ui-block-d">
+						<p>SBB leden:<span>65</span></p>
+					</div>
+				</div>
+				<div class="ui-grid-c ui-body-c">
+					<div class="ui-block-a">
+						<p>Materiaal</p>
+					</div>
+					<div class="ui-block-b">
+						<p>fietsen:<span>15</span></p>
+					</div>
+					<div class="ui-block-c">
+						<p>tandems:<span>1</span></p>
+					</div>
+					<div class="ui-block-d">
+						<p>buggy's:<span>2</span></p>
+					</div>
+				</div>
+			</header>
+
 			<section>
 				<div class="ui-body"> 
 					<form action="#" method="get">
@@ -184,17 +215,73 @@ subpages
 		<div data-role="content">
 
 			<section>
+				<header>
+					<div class="ui-grid-c ui-body-c">
+						<div class="ui-block-a">
+							<p>Aantal</p>
+						</div>
+						<div class="ui-block-b">
+							<p>bezoekers:<span>250</span></p>
+						</div>
+						<div class="ui-block-c">
+							<p>wandelaars:<span>138</span></p>
+						</div>
+						<div class="ui-block-d">
+							<p>SBB leden:<span>65</span></p>
+						</div>
+					</div>
+					<div class="ui-grid-c ui-body-c">
+						<div class="ui-block-a">
+							<p>Materiaal</p>
+						</div>
+						<div class="ui-block-b">
+							<p>fietsen:<span>15</span></p>
+						</div>
+						<div class="ui-block-c">
+							<p>tandems:<span>1</span></p>
+						</div>
+						<div class="ui-block-d">
+							<p>buggy's:<span>2</span></p>
+						</div>
+					</div>
+				</header>
+
+				<div data-role="fieldcontain">
+					<label for="textarea">Uw actie tekst:</label>
+					<textarea cols="40" rows="16" name="textarea" id="textarea" placeholder="Actie tekst."></textarea>
+				</div>
+
+
 				<div data-role="fieldcontain">
 					<label for="date-acties-date">Datum:</label>
 					<input name="date-acties-date" id="date-acties-date" type="date" data-role="datebox" data-options='{"mode": "datebox"}'>
 				</div>
 
 				<div data-role="fieldcontain">
-					<label for="select-choice-day">Thema:</label>
+					<label for="select-choice-fiets">Fietsverhuur:</label>
+					<select name="select-choice-fiets" id="select-choice-fiets">
+						<option>Fietsverhuur</option>
+						<option value="3">Mountainbike</option>
+						<option value="4">Elektrische fiets</option>
+						<option value="5">Tandem</option>
+						<option value="6">Step</option>
+						<option value="7">Kinderfiets</option>
+						<option value="8">Bakfiets</option>
+						<option value="9">Hybride</option>
+						<option value="10">Diversen</option>
+						<option value="10">Accessoires</option>
+					</select> 
+				</div>
+
+				<div data-role="fieldcontain">
+					<label for="select-choice-thema">Thema:</label>
 					<select name="select-choice-thema" id="select-choice-thema">
 						<option>Selecteer een thema</option>
-						<option value="1">Sinterklaas</option>
-						<option value="2">Kerst</option>
+						<option value="3t">Familie</option>
+						<option value="4t">Bedrijfsuitje</option>
+						<option value="5t">Collega's club</option>
+						<option value="6t">Vrienden</option>
+						<option value="7t">Klasgenoten</option>
 					</select> 
 				</div>
 
@@ -203,15 +290,12 @@ subpages
 					<input type="range" name="slider-step-prijs" id="slider-step-prijs" value="12.5" min="0" max="50" step=".1" data-highlight="true"/>
 				</div>
 
-				<div data-role="fieldcontain">
-					<label for="textarea">Uw actie tekst:</label>
-					<textarea cols="40" rows="16" name="textarea" id="textarea" placeholder="Actie tekst."></textarea>
-				</div>
+				
 			</section>
 
 			<section>
 				<a href="#" data-role="button" class="ui-disabled">Upload afbeelding</a>
-				<img src="images/placeholder_image001.jpg" />
+				<img src="images/placeholder_image002.jpg" />
 			</section>
 
 
