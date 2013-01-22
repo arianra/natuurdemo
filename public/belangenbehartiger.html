@@ -21,20 +21,28 @@
 			<a href="index.html" data-role="none" class="header-knop-help" data-transition="slidedown" >Help</a>
 		</div>
 	</div> <!--/header-->
-
+	
+	<div id="page-title">	
+		<h2 class="green-title"><div id="logo-belanghartiger"></div></h2>
+		</div>
+		<div class="page-title-arrow"></div>
+		
 	<div data-role="content" >
-		<h2>Login <span>belangenbehartiger</span></h2>
+ 
 		<div class="ui-body">
 			<form action="#" method="get">
 				<div data-role="fieldcontain" class="ui-hide-label">
-					<label for="username-belangen">Gebruikersnaam:</label>
 					<input type="text" name="username-belangen" id="form-belangen-login-username" value="" placeholder="Gebruikersnaam"/>
-					<label for="password-belangen">Wachtwoord:</label>
-					<input type="text" name="password-belangen" id="form-belangen-login-password" value="" placeholder="Wachtwoord"/>
+					<br/>
+					<br/>
+				<input type="text" name="password-belangen" id="form-belangen-login-password" value="" placeholder="Wachtwoord"/>
 				</div>
-
 			</form>
-			<a href="#page-belangen-omgeving" data-role="button" data-transition="slide" id="knop-belangen-login">Verstuur</a>
+			
+			<div class="bevestig-div-verstuur">
+			<a href="#page-belangen-omgeving" data-role="button" data-theme="b"data-transition="slide" id="knop-belangen-login">Verstuur</a>
+			</div>
+			
 		</div>
 	</div>	<!--/content-->
 
@@ -67,13 +75,13 @@ subpages
 			<div class="titelFoto"></div>
 			<div class="titelHeader">
 				<a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> 
-				Milieudefensie 
-			 	<span>In uw omgeving</span>
+				<h1 class="title">Milieudefensie </h1>
+			 	<span class="locatie">In uw omgeving</span>
 		  	</div>
 		  	<div class="page-title-arrow"></div>
 		</div> <!-- end content -->
 
-		<div data-role="content">
+		<div data-role="content" data-theme="c">
 			<div class="ui-body">
 				<h3>Toename sterfte onder herten op de Veluwe</h3>
 				<h4>Vivamus mauris neque, gravida eget tristique in, volutpat quis dolor. Curabitur aliquet, justo et pharetra pretium, augue lorem eleifend dui, sit amet suscipit libero tortor vitae tellus. </h4>
@@ -139,12 +147,12 @@ subpages
 			<div class="titelFoto"></div>
 			<div class="titelHeader">
 				<a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> 
-			 	Nieuws
+			 	<h1 class="title">Nieuws</h1>
 		  	</div>
 		  	<div class="page-title-arrow"></div>
 		</div> <!-- end content -->
 
-		<div data-role="content">
+		<div data-role="content" data-theme="c">
 			<header>
 				<div class="ui-grid-a">
 					<div class="ui-block-a">
@@ -153,8 +161,6 @@ subpages
 					<div class="ui-block-b">
 						<h4>Vraagstelling</h4>
 						<p>Wat vind u van het bouwen van megastallen in deze omgeving? Miss Piggy heeft een burgerinitiatief opgezet.</p>
-					</div>
-				</div>
 						<div>
 							<div data-role="fieldcontain">
 							    <fieldset data-role="controlgroup">
@@ -173,6 +179,8 @@ subpages
 							    </fieldset>
 							</div>
 						</div>
+					</div>
+				</div>
 			</header>
 
 			<article>

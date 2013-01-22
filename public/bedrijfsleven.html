@@ -19,22 +19,31 @@
 		<div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
 			<a href="index.html" data-role="none" class="header-knop-map" data-transition="slidedown" >Map</a>
 			<a href="index.html" data-role="none" class="header-knop-help" data-transition="slidedown" >Help</a>
-		</div>
+	</div>
+		
 	</div> <!--/header-->
+		<div id="page-title">	
+		<h2 class="green-title"><div id="logo-bedrijfsleven"></div></h2>
+		</div>
+		<div class="page-title-arrow"></div>
 
 	<div data-role="content" >
-		<h2>Login <span>bedrijfsleven</span></h2>
-		<div class="ui-body">
+	
+		<div class="ui-body" >
 			<form action="#" method="get">
 				<div data-role="fieldcontain" class="ui-hide-label">
-					<label for="username">Gebruikersnaam:</label>
 					<input type="text" name="username" id="form-bedrijfsleven-login-username" value="" placeholder="Gebruikersnaam"/>
-					<label for="password">Wachtwoord:</label>
+					<br/>
+					<br/>	
 					<input type="text" name="password" id="form-bedrijfsleven-login-password" value="" placeholder="Wachtwoord"/>
 				</div>
 
 			</form>
-			<a href="#page-bedrijfsleven-gegevens" data-role="button" data-transition="slide" id="knop-bedrijfsleven-login">Verstuur</a>
+			
+			<div class="bevestig-div-verstuur">
+				<a href="#page-bedrijfsleven-gegevens" data-role="button" data-theme="b" data-transition="slide" id="knop-bedrijfsleven-login">Verstuur</a>
+			</div>
+		
 		</div>
 	</div>	<!--/content-->
 
@@ -63,18 +72,18 @@ subpages
 
 		</div> <!-- end header -->
 
-		<div class="ui-body titelBlok titelblok-locatie">
+		<div class="ui-body titelBlok titelblok-locatie" >
 			<div class="titelFoto"></div>
 				<div class="titelHeader">
 					<a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> 
-			 		Bedrijfsgegevens
+			 		<h1 class="title">Bedrijfsgegevens</h1>
 		  		</div>
 		  		<div class="page-title-arrow"></div>
 		</div> <!-- end content -->
 
-		<div data-role="content">
+		<div data-role="content" data-theme="c">
 			<header>
-				<div class="ui-grid-c ui-body-c">
+				<div class="ui-grid-c ui-body-c" >
 					<div class="ui-block-a">
 						<p>Aantal</p>
 					</div>
@@ -88,7 +97,8 @@ subpages
 						<p>SBB leden:<span>65</span></p>
 					</div>
 				</div>
-				<div class="ui-grid-c ui-body-c">
+				<br/>
+				<div class="ui-grid-c ui-body-c" >
 					<div class="ui-block-a">
 						<p>Materiaal</p>
 					</div>
@@ -105,10 +115,10 @@ subpages
 			</header>
 
 			<section>
-				<div class="ui-body"> 
+				<div class="ui-body" > 
 					<form action="#" method="get">
-						<div class="ui-body">
-							<legend>Adres:</legend>
+						<div class="ui-body" >
+							<legend><strong>Adres:</strong></legend>
 							<div data-role="fieldcontain" class="ui-hide-label">
 		         						<label for="name" class="ui-hidden-accessible">Bedrijfsnaam:</label>
 		         						<input type="text" name="name" id="form-name-bedrijfsleven-gegevens" value="" placeholder="Bedrijfsnaam"  />
@@ -128,7 +138,7 @@ subpages
 						</div>
 
 						<div class="ui-body" >
-							<legend>Beschrijving:</legend>
+							<legend><strong>Beschrijving:</strong></legend>
 							<div data-role="fieldcontain" class="ui-hide-label">
 								<label for="name" class="ui-hidden-accessible">Kort:</label>
 								<input type="text" name="name" id="name" value=""  placeholder="Korte beschrijving" />
@@ -140,7 +150,7 @@ subpages
 						</div>
 
 						<div class="ui-body">
-							<legend>Openingstijden:</legend>
+							<legend><strong>Openingstijden:</strong></legend>
 							<div class="ui-grid-a">
 								<div class="ui-block-a">
 									<div data-role="fieldcontain" >
@@ -157,17 +167,17 @@ subpages
 							</div>
 						</div>
 
-						<div class="ui-body">
-							<div data-role="fieldcontain">
-								<fieldset data-role="controlgroup">
-									<legend>Voorzieningen:</legend>
+						<div class="ui-body" >
+							<div data-role="fieldcontain"  data-theme="b">
+								<fieldset data-role="controlgroup" >
+									<legend><strong>Voorzieningen:</strong></legend>
 									<input type="checkbox" name="checkbox-1a" id="checkbox-1a" class="custom" />
 									<label for="checkbox-1a">Toegankelijk voor rolstoelen</label>
-									<input type="checkbox" name="checkbox-2a" id="checkbox-2a" class="custom" />
+									<input type="checkbox" name="checkbox-2a" id="checkbox-2a" class="custom"  />
 									<label for="checkbox-2a">Parkeerplaats</label>
-									<input type="checkbox" name="checkbox-3a" id="checkbox-3a" class="custom" />
+									<input type="checkbox" name="checkbox-3a" id="checkbox-3a" class="custom"  />
 									<label for="checkbox-3a">EHBO Post</label>
-									<input type="checkbox" name="checkbox-4a" id="checkbox-4a" class="custom" />
+									<input type="checkbox" name="checkbox-4a" id="checkbox-4a" class="custom" "/>
 									<label for="checkbox-4a">Sanitaire voorzieningen</label>
 								</fieldset>
 							</div>
@@ -176,7 +186,10 @@ subpages
 				</div>
 			</section>
 			<section>
-				<a href="#page-bedrijfsleven-acties" data-role="button" data-transition="flip">Acties</a>
+			
+			<div class="bevestig-div-verstuur">
+				<a href="#page-bedrijfsleven-acties" data-role="button" data-theme="b" data-transition="flip">Acties</a>
+			</div>	
 			</section>
 		</div>
 
@@ -207,12 +220,12 @@ subpages
 			<div class="titelFoto"></div>
 			<div class="titelHeader">
 				<a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> 
-			 	 Acties
+			 	 <h1 class="title">Acties</h1>
 		  	</div>
 		  	<div class="page-title-arrow"></div>
 		</div> <!-- end content -->
 
-		<div data-role="content">
+		<div data-role="content" data-theme="c">
 
 			<section>
 				<header>
@@ -257,9 +270,9 @@ subpages
 					<input name="date-acties-date" id="date-acties-date" type="date" data-role="datebox" data-options='{"mode": "datebox"}'>
 				</div>
 
-				<div data-role="fieldcontain">
-					<label for="select-choice-fiets">Fietsverhuur:</label>
-					<select name="select-choice-fiets" id="select-choice-fiets">
+				<div data-role="fieldcontain" >
+					<label for="select-choice-fiets" >Fietsverhuur:</label>
+					<select name="select-choice-fiets" id="select-choice-fiets" data-theme="c">
 						<option>Fietsverhuur</option>
 						<option value="3">Mountainbike</option>
 						<option value="4">Elektrische fiets</option>
@@ -275,7 +288,7 @@ subpages
 
 				<div data-role="fieldcontain">
 					<label for="select-choice-thema">Thema:</label>
-					<select name="select-choice-thema" id="select-choice-thema">
+					<select name="select-choice-thema" id="select-choice-thema" data-theme="c">
 						<option>Selecteer een thema</option>
 						<option value="3t">Familie</option>
 						<option value="4t">Bedrijfsuitje</option>
@@ -295,13 +308,15 @@ subpages
 
 			<section>
 				<a href="#" data-role="button" class="ui-disabled">Upload afbeelding</a>
-				<img src="images/placeholder_image002.jpg" />
+				<!--<img src="images/placeholder_image002.jpg" />-->
 			</section>
 
 
 
 			<section>
-				<a href="#page-bedrijfsleven-gegevens" data-role="button" data-transition="flip">Maak actief</a>
+			<div class="bevestig-div-verstuur">
+				<a href="#page-bedrijfsleven-gegevens" data-theme="b" data-role="button" data-transition="flip">Maak actief</a>
+			</div>	
 			</section>
 		</div>
 

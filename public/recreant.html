@@ -59,8 +59,8 @@
 							<option value=""> Kies een locatie </option>
 						</select>
 					</li>
-					
-					
+
+
 					<li data-role="fieldcontain">
 						<label for="formActiviteit" class="select">Activiteit:</label>
 						<select name="formActiviteit" id="formActiviteit" data-native-menu="false">
@@ -94,7 +94,7 @@
 								<option value=""> Wandelen </option>
 								<option value=""> Spa </option>
 								<option value=""> Vissen </option>
-								
+
 							</optgroup>
 
 							<optgroup label="Eten &quot; Drinken">
@@ -171,9 +171,9 @@
 			</div>
 		</form>
 
-
+		<div class="bevestig-div-ga">
 		<a href="#page-locatie" data-role="button" data-transition="slide" id="searchButton" data-theme="b"> Ga </a>
-
+		</div>
 	</div> <!-- end content MAINPAGE -->   
 
 
@@ -196,8 +196,8 @@
 			<div class="titelFoto"></div>
 			<div class="titelHeader">
 				<a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> 
-			  	Bevestig uw Locatie
-			  	<span> (Klik op de map om uw locatie aan te passen.) </span>
+			  	<h1 class="title">Bevestig uw Locatie</h1>
+			  	<span class="locatie"> (Klik op de map om uw locatie aan te passen.) </span>
 		  	</div>
 		  	<div class="page-title-arrow"></div>
 	  	</div>
@@ -245,7 +245,9 @@
 
 	<div class="ui-body titelBlok titelblok-activiteit">
 		<div class="titelFoto"></div>
-		<div class="titelHeader"><a href="#" data-role="button" data-theme="b"  data-inline="true"  data-mini="true" data-rel=back >terug</a>Uw activiteiten in de buurt</div>
+		<div class="titelHeader"><a href="#" data-role="button" data-theme="b"  data-inline="true"  data-mini="true" data-rel=back >terug</a>
+		<h1 class="title">Activiteiten</h1>
+		</div>
 		<div class="page-title-arrow"></div>
 		<!--<div class="kopHeader"></div>-->
 	</div>
@@ -348,7 +350,9 @@
 			</div> <!-- end header -->
 			<div class="ui-body" class="titelBlok">
 				<div class="titelFoto"></div>
-				<div class="titelHeader"><a href="#" data-role="button"  data-inline="true"  data-mini="true" data-rel=back >terug</a> DetailInformatie </div>
+				<div class="titelHeader"><a href="#" data-role="button"  data-inline="true" data-theme="b" data-mini="true" data-rel=back >terug</a> 
+				<h1 class="title">Informatie</h1>
+				</div>
 				<div class="page-title-arrow"></div>
 				<!--<div class="kopHeader"></div>-->
 			</div>
@@ -366,7 +370,7 @@
 						<div class="ui-body content-detail-image">
 							<img src="images/full_post.png"/>
 						</div>
-					
+
 					<div data-role="collapsible-set" data-inset="false">
 						<div data-role="collapsible" data-collapsed="false" >
 							<h4>Beschrijving</h4>
@@ -375,11 +379,23 @@
 								<p>In hac habitasse platea dictumst. Curabitur aliquam turpis mi, nec euismod leo. Morbi vitae eleifend dolor. Ut risus mi, feugiat at cursus a, varius porttitor est. Pellentesque accumsan, quam scelerisque mattis sagittis, metus augue vestibulum lectus, quis lobortis sapien ligula sed odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse potenti. Nam a varius augue. Duis accumsan tempus erat, in varius est pulvinar id. Nullam vehicula metus a mauris facilisis tempor mattis risus bibendum. Donec lectus lorem, tempus feugiat luctus eget, blandit vitae nibh. Nunc pharetra euismod mi, eu ornare felis lacinia quis. Suspendisse nec tortor ut sem congue aliquam a nec arcu. Ut et purus ut augue porta elementum a sed augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
 							</div>
 						</div>
-						
+
 						<div data-role="collapsible">
 							<h4>Openingstijden</h4>
-							<div>
-								<p>maandag t/m vrijdag</p>
+							<div >
+								<p> (onze keuken sluit om 19:30 uur) <br/>
+										Januari / februari<br/>
+										Zaterdag vanaf 16:00 uur<br/>
+										Zondag vanaf 12:00 uur<br/>
+<br/>
+										Voorjaarsvakantie (16/2 t/m 24/2)<br/>
+										Dinsdag t/m zaterdag vanaf 16:00 uur<br/>
+										Zondag vanaf 12:00 uur<br/>
+<br/>
+										Maandagen gesloten.<br/>
+										T. 0578 611438<br/>
+										e. info@develdkampepe.nl
+										</p>
 								<p>9:00 - 18:00</p>
 							</div>
 						</div>
@@ -387,13 +403,13 @@
 						<div data-role="collapsible">
 							<h4>Adresgegevens</h4>
 							<div>
-								<p>Naam</p>
-								<p>Adres</p>
-								<p>Postcode</p>
-								<p>Stad</p>
+								<p>Pannenkoekenrestaurant De Veldkamp</p>
+								<p>Veldkampweg 2</p>
+								<p>8162PV </p>
+								<p>Epe</p>
 							</div>
 						</div>
-						
+
 					</div> 
 
 				</div>                
@@ -415,15 +431,17 @@
 				</div>
 			</div> <!-- end header -->
 
-			
+
 			<div class="ui-body titelBlok titelblok-activiteiten-op-route">
 				<div class="titelFoto"></div>
-				<div class="titelHeader"><a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a> Activiteiten op de route</div>
+				<div class="titelHeader"><a href="#" data-role="button" data-theme="b" data-inline="true"  data-mini="true" data-rel=back >terug</a>
+				<h1 class="title">Activiteiten op de route</h1>
+				</div>
 				<div class="page-title-arrow"></div>
 				<!--<div class="kopHeader"></div>-->
 			</div> 
-			
-			
+
+
 
 			<div data-role="content" class="lijst-op-route" data-theme="a">
 				<div >
@@ -439,7 +457,6 @@
 							<a href="#page-activiteit" class="list-b-op-route" data-transition="flip">
 								<img src="images/thumb_huis.png" />
 								<h3>Pannenkoekenrestaurant de Veldkamp</h3>
-								<p>Bron: Natuurmonumenten</p>
 							</a>
 						</li>
 						<li>
@@ -453,7 +470,7 @@
 							<a href="#page-activiteit" class="list-d-op-route" data-transition="flip">
 								<img src="images/thumb_hert2.png" />
 								<h3>Bezoekerscentrum Veluwezoom (speurtocht)</h3>
-								<p>Bron: Natuurmonumenten</p>
+								 
 							</a>
 						</li>
 						<li>
@@ -529,7 +546,7 @@
 					</div>
 				</div> 
 
-				
+
 
 				<!-- END SUBPAGES -->
 			</div>  <!-- end page -->

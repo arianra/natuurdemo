@@ -24,6 +24,13 @@
 	color:white
 }
 
+h1.title {
+	font-size:1.3em; 
+	position: absolute;
+	float: left;
+	top: 9px;
+	left: 90px}
+
 .titelHeader {
 	background:#87A513;
 	left: 0;
@@ -31,8 +38,7 @@
 	font-family: BetaSans, Helvetica, Arial, sans-serif;
 	color:white;
 	height: 50px;
-	padding-top: 9px;
-	padding-top: 9px;
+	padding:15px 5px 0px 10px;
 	margin-top: -7px;
 	-moz-box-shadow: 0px 4px 7px #888;
 	-webkit-box-shadow: 0px 4px 7px #888;
@@ -40,6 +46,12 @@
 	z-index: 1;
 	position: relative}
 
+span.locatie  {
+	font-size: 1em;
+	float: right;
+	margin-right: 25px;
+	margin-top: 12px}
+	
 .map-container {
 	padding:0 !important;
 	margin-top:-21px;
@@ -49,7 +61,8 @@
 .content-80 {
 	margin-left: auto;
 	margin-right: auto;
-	width:80%
+	width:80%;
+	margin-top: -30px
 }
 /* Swatches */
 
@@ -781,6 +794,12 @@ a.ui-link-inherit {
 	border-bottom-style: solid;
 }
 
+#page-bedrijfsleven-gegevens .ui-br, #page-bedrijfsleven-gegevens .ui-br,
+#page-bedrijfsleven-acties .ui-br {
+	border-bottom:none !important 
+}
+
+
 /* Interaction cues
 -----------------------------------------------------------------------------------------------------------*/
 .ui-disabled {
@@ -1243,12 +1262,133 @@ a.ui-link-inherit {
 	background-image:url(../images/logo-jouwprofiel.png);
 	width: 188px;
 	height: 25px;
-	text-align: center;
 	z-index: 2;
 	position:absolute;
 	margin-top:15px;
 	margin-left:15px;
 }
+
+#logo-beheerder {
+	background-image:url(../images/logo-beheerder.png);
+	width: 188px;
+	height: 25px;
+	z-index: 2;
+	position:absolute;
+}
+
+#logo-belanghartiger {
+	background-image:url(../images/logo-belanghartiger.png);
+	width: 210px;
+	height: 25px;
+	z-index: 2;
+	position:absolute;
+}
+
+#logo-bedrijfsleven {
+	background-image:url(../images/logo-bedrijfsleven.png);
+	width: 195px;
+	height: 25px;
+	z-index: 2;
+	position:absolute;
+}
+
+#logo-overheid {
+	background-image:url(../images/logo-overheid.png);
+	width: 155px;
+	height: 25px;
+	z-index: 2;
+	position:absolute;
+}
+
+#logo-activiteiten {
+	background-image:url(../images/logo-activiteiten.png);
+	width: 233px;
+	height: 25px;
+	z-index: 2;
+	position: absolute;
+	float: left;
+	top: 20px;
+	left: 90px
+}
+
+#logo-activiteiten-route {
+	background-image:url(../images/logo-activiteiten-route.png);
+	width: 237px;
+	height: 25px;
+	z-index: 2;
+	position: absolute;
+	float: left;
+	top: 20px;
+	left: 90px
+}
+
+
+#logo-informatie {
+	background-image:url(../images/logo-informatie.png);
+	width: 123px;
+	height: 25px;
+	z-index: 2;
+	position: absolute;
+	float: left;
+	top: 20px;
+	left: 90px
+}
+
+#logo-bedrijfsgegevens {
+	background-image:url(../images/logo-bedrijfsgegevens.png);
+	width: 187px;
+	height: 25px;
+	z-index: 2;
+	position: absolute;
+	float: left;
+	top: 20px;
+	left: 90px
+}
+
+#logo-acties {
+	background-image:url(../images/logo-acties.png);
+	width: 63px;
+	height: 25px;
+	z-index: 2;
+	position: absolute;
+	float: left;
+	top: 20px;
+	left: 90px
+}
+
+#logo-nieuws {
+	background-image:url(../images/logo-nieuws.png);
+	width: 73px;
+	height: 25px;
+	z-index: 2;
+	position: absolute;
+	float: left;
+	top: 20px;
+	left: 90px
+}
+
+#logo-vergunning {
+	background-image:url(../images/logo-vergunning.png);
+	width: 117px;
+	height: 25px;
+	z-index: 2;
+	position: absolute;
+	float: left;
+	top: 20px;
+	left: 90px
+}
+
+#logo-vergunning-overzicht {
+	background-image:url(../images/logo-vergunning-overzicht.png);
+	width:216px;
+	height: 25px;
+	z-index: 2;
+	position: absolute;
+	float: left;
+	top: 20px;
+	left: 90px
+}
+
 
 #header-homepage { 
 	background-image:url(../images/header-homepage.jpg);
@@ -1257,6 +1397,14 @@ a.ui-link-inherit {
     -o-background-size: cover; /*opera*/
     background-size: cover; /*generic*/ 
 	height:125px; }	
+	
+#header-detailpage-edelhert { 
+	background-image:url(../images/header-detailpage-edelhert.jpg);
+	-webkit-background-size: cover; /*for webKit*/
+    -moz-background-size: cover; /*Mozilla*/
+    -o-background-size: cover; /*opera*/
+    background-size: cover; /*generic*/ 
+	height:125px; }		
  
 .main-homepage {
 	margin-left: auto;
@@ -1266,6 +1414,13 @@ a.ui-link-inherit {
 	z-index:3;
 	position:relative
 }
+
+.main .detailpage {
+	background:whitesmoke;
+	margin-top:-15px
+}
+
+.detailpage h3 {font-size:}
 
 #backgr-homepage {
 	background-image: url(../images/background-nederland.png);
@@ -1322,9 +1477,21 @@ a.ui-link-inherit {
 	/*width: 80%;*/
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom:35px;
+	padding-top: 40px;
+	margin-top: -20px;
+	padding-bottom:40px
 }		
 
-
+div.main-homepage.ui-content {
+	/*width: 80%;*/
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:0 !important;
+	padding-top: 40px;
+	top:-370px;
+	padding-bottom:40px
+}		
 
 .ui-body-a {
 	color: #333333 ;
@@ -1368,12 +1535,18 @@ a.ui-link-inherit {
 	background-image: linear-gradient( #f9f9f9,#eeeeee ); */
  }
  
- .bevestig-div-beheerder-locatie .ui-btn,  .bevestig-div-locatie .ui-btn{
+ .bevestig-div-beheerder-locatie .ui-btn,  .bevestig-div-locatie .ui-btn,  .bevestig-div-ga .ui-btn, 
+ .bevestig-div-verstuur .ui-btn {
 	top: 1em;
-	margin: .2em 1em;
+	margin: .7em 1em;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto
  }
 
- #page-beheerder-login form label{
+#page-bedrijfsleven-gegevens {color:white}
+ 
+#page-beheerder-login form label{
 	color: white;
 	line-height: 2em;
  }
@@ -1385,9 +1558,8 @@ a.ui-link-inherit {
 	width: 100%;
 }
 
-#page-detail{
-	color: white;
-}
+#page-detail .ui-content {background:#e7e7e7; margin-top:-15px}
+ 
 
 #page-detail .ui-body{
 	padding: 0;
@@ -1402,9 +1574,48 @@ a.ui-link-inherit {
 }
 
 #page-detail .content-detail-image img{
-	max-width: 100%;
+	max-width: 98%;
+	border: 3px solid white;
+	-moz-box-shadow: 0px 0px 7px 0px #333;
+	-webkit-box-shadow: 0px 0px 7px 0px #333;
+	box-shadow: 0px 0px 7px 0px #333;
+	margin-top:4px;
 }
 
 #page-detail .ui-collapsible-set{
 	margin: .5em 1em;
 }
+
+#page-detail .ui-collapsible-content {padding:0 !important}
+
+.popup-content div.ui-block-a img {width:95px; height:95px}
+
+.popup-content .ui-block-b {
+	width:70% !important;
+	margin-top:0px;
+}
+
+.popup-content .ui-block-a {
+	width:25% !important;
+	}
+
+.popup-content h3 {font-size:1em}
+	
+.popup-content p {font-size:0.8em}	
+
+.content-detail-tekst {
+	background:#662D91;
+	color:white;
+	font-size:0.9em;
+	padding: 5px 15px 10px 15px;
+	line-height: 1.3em
+	}
+	
+.green-title {
+	color: white;
+	font-size: 1em;
+	margin-left: 15px;
+	padding-top: 15px;
+	margin-top: 0px
+}
+
