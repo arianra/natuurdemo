@@ -163,6 +163,9 @@ var NSD = NSD || {};
 			html: tekstTag
 		}).appendTo('.content-detail-tekst');
 
+		$('.content-detail-openingstijden').html('').append( marker.openingstijden );
+		$('.content-detail-adres').html('').append( marker.adres );
+
 		$('#page-detail .main').fadeIn('fast');
 	};
 
@@ -452,8 +455,9 @@ var NSD = NSD || {};
 
 		},
 		runActivityPage: function() {
+			var h = NSD.HTMLFab,
 			//fm staat voor fakemarkers
-			var fm = {},
+				fm = {},
 				rndLocations = [{
 					latitude: 52.046086,
 					longitude: 5.388138
@@ -483,47 +487,58 @@ var NSD = NSD || {};
 				title: 'Kootwijk uitkijktoren Kootwijker Zandverstuiving',
 				sub: 'Bron: Staatbosbeheer',
 				image: 'images/full_post.png',
-				text: 'Zandverstuivingen ontstonden in het verleden doordat de heidevelden werden overbegraasd en te veel werden afgeplagd. De heideplaggen werden gebruikt in de potstal en als bemesting van het bouwland. Als er te veel werd geplagd kon de hei zich niet meer herstellen. Een andere schadelijke activiteiten was het maken van soms honderden meters brede karrensporen.\nDe wind zorgde er dan voor dat het stuifzand zich steeds verder verspreidde waardoor de zandverstuiving steeds groter werd. In een grote zandverstuiving kunnen door de wind duinen ontstaan. Langs de rand van een zandverstuiving ligt meestal een hoge zandwal, waar het zand zich op verzamelt. Soms werden hele dorpen bedreigd door het oprukkende zand. Zo kon een enkele storm vanuit de zandverstuiving een oogst door een dunne zandlaag op de kwetsbare plantjes vernietigen'
+				text: 'Zandverstuivingen ontstonden in het verleden doordat de heidevelden werden overbegraasd en te veel werden afgeplagd. De heideplaggen werden gebruikt in de potstal en als bemesting van het bouwland. Als er te veel werd geplagd kon de hei zich niet meer herstellen. Een andere schadelijke activiteiten was het maken van soms honderden meters brede karrensporen.\nDe wind zorgde er dan voor dat het stuifzand zich steeds verder verspreidde waardoor de zandverstuiving steeds groter werd. In een grote zandverstuiving kunnen door de wind duinen ontstaan. Langs de rand van een zandverstuiving ligt meestal een hoge zandwal, waar het zand zich op verzamelt. Soms werden hele dorpen bedreigd door het oprukkende zand. Zo kon een enkele storm vanuit de zandverstuiving een oogst door een dunne zandlaag op de kwetsbare plantjes vernietigen',
+				openingstijden: h.render( h.tag( 'p' , 'De uitkijktoren is alle dagen geopend.' ) ),
+				adres: h.render( h.tag( 'p' , [ 'Kootwijkerzand, Kootwijk' ] ))
 			});
 			fm.lunch = this.createMarker('#marker-lunch-location', this.markerTypes[3], rndLocations[1].latLng, this.createPopupContent('full', 'marker-lunch-location'), {
 				thumb: 'images/thumb_kerk.png',
 				title: 'Pannenkoekenrestaurant de Veldkamp',
 				sub: 'Bron: Natuurmonumenten',
 				image: 'images/full_kerk.png',
-				text: 'Sfeervol en eigentijds ingericht pannenkoekenrestaurant, gelegen in Epe op de Veluwe. Ambachtelijk gebakken pannenkoeken met schitterende open keuken.'
+				text: 'Sfeervol en eigentijds ingericht pannenkoekenrestaurant, gelegen in Epe op de Veluwe. Ambachtelijk gebakken pannenkoeken met schitterende open keuken.',
+				openingstijden: h.render( h.tag( 'div' , [ h.tag( 'p' , [ '(onze keuken sluit om 19:30 uur)' , h.tag('span','Januari / februari') , h.tag('span','Zaterdag vanaf 16:00 uur') , h.tag('span','Zondag vanaf 12:00 uur') , h.tag('span','Voorjaarsvakantie (16/2 t/m 24/2)') , h.tag('span','Dinsdag t/m zaterdag vanaf 16:00 uur') , h.tag('span','Zondag vanaf 12:00 uur') ] ) , h.tag( 'p', '9:00 - 18:00' ) ] ) ),
+				adres: h.render( h.tag( 'div' , [ h.tag( 'p' , 'Pannenkoekenrestaurant De Veldkamp' ) , h.tag( 'p' , [ h.tag( 'span' , 'Veldkampweg 2' ) , h.tag( 'span' , '8162PV' ) , h.tag( 'span' , 'Epe' )  ] )  ] ) )
 			});
+
 			fm.kinderboerderij = this.createMarker('#marker-kinderboerderij-location', this.markerTypes[2], rndLocations[2].latLng, this.createPopupContent('full', 'marker-kinderboerderij-location'), {
 				thumb: 'images/thumb_huis.png',
 				title: 'Beleef het burlen van edelherten per fiets en te voet',
 				sub: 'Bron: Epenaren.nl',
 				image: 'images/full_huis.png',
-				text: 'Het edelhert is de grootste wildsoort die in Nederland voorkomt. Op heldere koude avonden en ochtenden is het oergeluid van de herten te horen, het zogenaamde burlen. Het VVV laat ons weten dat er weer diverse excursies worden georganiseerd om dit fenomeen te beleven. \n\nVanaf begin september tot half oktober zijn de edelherten op vrijersvoeten. Als de mannetjes de vrouwtjes het hof maken en hun concurrenten hardhandig bevechten, gaat dat met een enorm lawaai gepaard. Burlen heet die oerschreeuw van het edelhert, een geluid dat natuurliefhebbers keer op keer de rillingen bezorgt. Ook breken er soms gevechten uit waarbij men de herten met de geweien tegen elkaar kan horen slaan. \n\nOm naar deze geluiden te luisteren worden er verschillende tochten door het Kroondomein georganiseerd in samenwerking met natuurrondleidingen G.B. Rekers en natuurgids Jan Niebeek.'
+				text: 'Het edelhert is de grootste wildsoort die in Nederland voorkomt. Op heldere koude avonden en ochtenden is het oergeluid van de herten te horen, het zogenaamde burlen. Het VVV laat ons weten dat er weer diverse excursies worden georganiseerd om dit fenomeen te beleven. \n\nVanaf begin september tot half oktober zijn de edelherten op vrijersvoeten. Als de mannetjes de vrouwtjes het hof maken en hun concurrenten hardhandig bevechten, gaat dat met een enorm lawaai gepaard. Burlen heet die oerschreeuw van het edelhert, een geluid dat natuurliefhebbers keer op keer de rillingen bezorgt. Ook breken er soms gevechten uit waarbij men de herten met de geweien tegen elkaar kan horen slaan. \n\nOm naar deze geluiden te luisteren worden er verschillende tochten door het Kroondomein georganiseerd in samenwerking met natuurrondleidingen G.B. Rekers en natuurgids Jan Niebeek.',
+				openingstijden: h.render( h.tag( 'div' , [ h.tag('p' , 'Burltochten te voet: Op donderdag 15, zaterdag 17, dinsdag 20, donderdag 22, zaterdag 24, dinsdag 27 en donderdag 29 september, zaterdag 1 en dinsdag 4 oktober.') , h.tag('p', 'Burltochten per fiets: Op donderdag 15,donderdag 22, donderdag 29 september en donderdag 6 oktober.') ] ) ),
+				adres: h.render( h.tag( 'p' , 'Camping de Wildhoeve, Hanendorperweg 102 in Emst' ) )
 			});
 			fm.speurtocht = this.createMarker('#marker-speurtocht-location', this.markerTypes[2], rndLocations[3].latLng, this.createPopupContent('full', 'marker-speurtocht-location'), {
 				thumb: 'images/thumb_hert3.png',
 				title: 'Bezoekerscentrum Veluwezoom (speurtocht)',
 				sub: 'Bron: Natuurmonumenten',
 				image: 'images/full_hert3.png',
-				text: 'Bezoekerscentrum Veluwezoom is een prima begin- of eindpunt van een dagje Nationaal Park Veluwezoom. Het ligt bij Rheden, ten oosten van Arnhem. Neem ook een kijkje bij de VVV-post en de brasserie in dit fraaie boerderijencomplex.\nBekijk de mooie expositie, de leuke winkel en de gezellige tekenhoek in Bezoekerscentrum Veluwezoom. In de kinderkuil kunnen kinderen verkleed als wild zwijn spelen en lekker lui op hun rug naar informatieve filmpjes kijken.'
+				text: 'Bezoekerscentrum Veluwezoom is een prima begin- of eindpunt van een dagje Nationaal Park Veluwezoom. Het ligt bij Rheden, ten oosten van Arnhem. Neem ook een kijkje bij de VVV-post en de brasserie in dit fraaie boerderijencomplex.\nBekijk de mooie expositie, de leuke winkel en de gezellige tekenhoek in Bezoekerscentrum Veluwezoom. In de kinderkuil kunnen kinderen verkleed als wild zwijn spelen en lekker lui op hun rug naar informatieve filmpjes kijken.',
+				openingstijden: h.render( h.tag( 'p' , 'De Veluwezoom is alle dagen geopend.' ) ),	
+				adres: h.render( h.tag( 'div' , [ h.tag('p','Heuvensweg 5a, 6991 JE Rheden') , h.tag( 'p' , 'Tel: (026) 497 91 00' ) ] ) )
 			});
 			fm.wild = this.createMarker('#marker-wild-location', this.markerTypes[4], rndLocations[4].latLng, this.createPopupContent('full', 'marker-wild-location'), {
 				thumb: 'images/thumb_hert2.png',
 				title: 'Jachthuis Sint Hubertus in De Hoge Veluwe',
 				sub: 'Bron: Stichting Nationaal park Hoge Veluwe',
 				image: 'images/full_hert2.png',
-				text: 'Het monumentale gebouw \'Jachthuis Sint Hubertus\' is gebouwd naar een ontwerp van de architect H.P. Berlage. Bij de vormgeving zijn de motieven uit de legende van St. Hubertus gebruikt. Het jachthuis en de tuinen rondom de vijver zijn het hele jaar open voor bezoekers.'
+				text: 'Het monumentale gebouw \'Jachthuis Sint Hubertus\' is gebouwd naar een ontwerp van de architect H.P. Berlage. Bij de vormgeving zijn de motieven uit de legende van St. Hubertus gebruikt. Het jachthuis en de tuinen rondom de vijver zijn het hele jaar open voor bezoekers.',
+				openingstijden: h.render( h.tag('div', [ h.tag('p', 'Vanaf maandag 1 april 2013 is de camping weer open voor kampeerders. De camping sluit 31 oktober 2013. Voor kampeerders gelden dezelfde openingstijden voor het Park als voor bezoekers.'), h.tag('p',' Met ingang van 27 augustus 2012 tot medio juli 2013 is het Jachthuis gesloten vanwege restauratiewerkzaamheden.') ] )),
+				adres: h.render( h.tag('p' , [h.tag('p','Hertjesweg, Otterlo'),h.tag( 'p', 'In het noorden van het Park vindt u Jachthuis Sint Hubertus, gelegen aan een prachtige vijver in een geliefd wandelgebied.' )]) )
 			});
+			
 			for(var e in fm) {
-
+				//h hier is kort voor NSD.HTMLFab, gedeclareerd boven aan deze functie
 				var con = $(fm[e].content);
-				con.find('.ui-block-a').prepend(NSD.HTMLFab.render(NSD.HTMLFab.tag('img', [], {
+				con.find('.ui-block-a').prepend(h.render(h.tag('img', [], {
 					src: fm[e].thumb
 				})));
-				con.find('.ui-block-b').prepend(NSD.HTMLFab.render(NSD.HTMLFab.tag('p', [fm[e].sub])));
-				con.find('.ui-block-b').prepend(NSD.HTMLFab.render(NSD.HTMLFab.tag('h3', [fm[e].title])));
+				con.find('.ui-block-b').prepend(h.render(h.tag('p', [fm[e].sub])));
+				con.find('.ui-block-b').prepend(h.render(h.tag('h3', [fm[e].title])));
 				fm[e].content = $("<div>").append(con).html();
 				fm[e].infoWindow.setContent($("<div>").append(con).html());
-
 				this.activityMarkers.push(fm[e]);
 			}
 			this.centerToPoint({
@@ -812,6 +827,8 @@ var NSD = NSD || {};
 				marker.image = detail.image;
 				marker.text = detail.text;
 				marker.sub = detail.sub;
+				marker.openingstijden = detail.openingstijden;
+				marker.adres = detail.adres;
 			}
 
 			this.allMarkers.push(marker);
